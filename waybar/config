@@ -1,0 +1,33 @@
+{
+	"layer": "top",
+	"position": "left",
+	"modules-center":["sway/workspaces", "sway/mode"], 
+    "modules-left":["clock", "custom/day", "clock#date"],
+	
+	"clock": {
+		"format": "{:%H\n%M}",
+		"timezone": "America/Asuncion",
+	},
+
+	"clock#date": {
+		"format": "{:%d\n%m}",
+		"timezone": "America/Asuncion",
+	},
+	
+	"custom/day": {
+    	"format": "{}",
+		"interval": "once",
+		"exec" : "echo \"$(date +%a)\" | awk '{print substr($0,0,2)}' | tr [:upper:] [:lower:]",
+	},
+
+	"sway/workspaces": {
+    	"disable-scroll": true,
+    	"format": "{name}",
+		"persistent_workspaces": {
+    	    "1:t": [],
+    	    "2:n": [],
+			"3:w": [],
+    	    "4:v": [],
+    	}
+	}
+}

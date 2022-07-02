@@ -1,0 +1,90 @@
+* {
+    font-family: "SauceCodePro Nerd Font Mono", monospace;
+}
+
+window#waybar {
+	border-radius: 0px;
+    color: #cccccc;
+    background: #444444;
+}
+
+#workspaces button {
+	border-radius: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+	padding-left:3px;
+	padding-right: 3px;
+	margin-bottom: 10px;
+	margin-left: 3px;
+	margin-right: 3px;
+    background: #1c1c1c;
+    color: #cccccc;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#workspaces button.focused {
+    background: #5f87af;
+	color: black;
+}
+
+#workspaces button.persistent {
+    padding-top: 10px;
+    padding-bottom: 10px;
+	padding-left:3px;
+	padding-right: 3px;
+    background: #666666;
+    color: #cccccc;
+	font-weight: bold;
+}
+
+#clock {
+	border-radius: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+	padding-left: 5px;
+    padding-right: 5px;
+	margin-top: 10px;
+	margin-left: 3px;
+	margin-right: 3px;
+    background: #1c1c1c;
+    color: #cccccc;
+	font-size: 18px;
+	font-weight: bold
+}
+
+#clock.date {
+	border-bottom-left-radius: 14px; 
+	border-bottom-right-radius: 14px;
+	border-top-left-radius: 0px;   
+	border-top-right-radius: 0px;  
+    padding-bottom: 10px;
+    padding-top: 0px;
+	padding-left: 3px;
+    padding-right: 3px;
+	margin-top: 0px;
+	margin-left: 3px;
+	margin-right: 3px;
+    background: #1c1c1c;
+    color: #cccccc;
+	font-size: 17px;
+	font-weight: bold
+}
+
+#custom-day {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 14px;
+	border-top-right-radius: 14px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+	padding-left: 3px;
+    padding-right: 3px;
+	margin-top: 10px;
+	margin-left: 3px;
+	margin-right: 3px;
+    background: #1c1c1c;
+    color: #cccccc;
+	font-size: 17px;
+	font-weight: bold
+}
