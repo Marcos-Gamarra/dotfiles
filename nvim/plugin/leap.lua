@@ -21,12 +21,3 @@ require('leap').setup {
     },
 }
 
---vim.api.nvim_create_autocmd('User', {
---    pattern = 'LeapEnter',
---    command = 'hi CursorLineNr guibg=#373b41 guifg=#373b41 | hi LineNr guibg=#373b41',
---
---})
---vim.api.nvim_create_autocmd('User', {
---    pattern = 'LeapLeave',
---    command = 'hi LineNr guibg=NONE | hi CursorLineNR guibg=NONE guifg=#5f87af',
---})
