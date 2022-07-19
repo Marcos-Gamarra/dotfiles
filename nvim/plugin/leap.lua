@@ -1,8 +1,8 @@
 vim.api.nvim_set_keymap('', 'n', "<Plug>(leap-forward)", {})
 vim.api.nvim_set_keymap('', 't', "<Plug>(leap-backward)", {})
 
-local blue = '#5f87af'
-vim.api.nvim_set_hl(0, 'LeapLabelPrimary', { fg = "#ffffff", bg = blue, bold = true })
+local blue = '#458588'
+vim.api.nvim_set_hl(0, 'LeapLabelPrimary', { fg = "#eeeeee", bg = blue, bold = true })
 
 require('leap').setup {
     highlight_ahead_of_time = true,

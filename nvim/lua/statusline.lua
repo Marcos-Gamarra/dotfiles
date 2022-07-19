@@ -1,14 +1,33 @@
-local blue = '#5f87af'
+local blue = '#458588'
 local bg = "#1c1c1c"
-local grey = "#444444"
+local grey = "#666666"
 local left_sep = ''
 local right_sep = ''
 
-vim.highlight.create('StatuslineMode', {guibg=blue, guifg=bg, gui='bold'}, false)
-vim.highlight.create('StatuslineFilename', {guibg=grey, guifg="#ffffff"}, false)
-vim.highlight.create("StatuslineInactive", {guibg=grey, guifg="#ffffff", gui='bold'}, false)
-vim.highlight.create('SeparatorBlue', {guibg="NONE", guifg=blue, gui='bold'}, false)
-vim.highlight.create('SeparatorGrey', {guibg="NONE", guifg=grey, gui='bold'}, false)
+vim.cmd("set laststatus=0")
+
+
+local toggle_statusline = function()
+  local option = vim.api.nvim_get_option('laststatus')
+  if (option == 3) then
+    vim.api.nvim_set_option('laststatus', 0)
+  else
+    vim.api.nvim_set_option('laststatus', 3)
+  end
+end
+
+vim.keymap.set(
+  { 'n' },
+  'd',
+  toggle_statusline,
+  { silent = true }
+)
+
+vim.highlight.create('StatuslineMode', { guibg = blue, guifg = "#1c1c1c", gui = 'bold' }, false)
+vim.highlight.create('StatuslineFilename', { guibg = grey, guifg = "#ffffff" }, false)
+vim.highlight.create("StatuslineInactive", { guibg = grey, guifg = "#ffffff", gui = 'bold' }, false)
+vim.highlight.create('SeparatorBlue', { guibg = "NONE", guifg = blue, gui = 'bold' }, false)
+vim.highlight.create('SeparatorGrey', { guibg = "NONE", guifg = grey, gui = 'bold' }, false)
 
 local modes = {
   ["n"] = "NORMAL",
@@ -41,7 +60,7 @@ end
 local function filepath()
   local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
   if fpath == "" or fpath == "." then
-      return " "
+    return " "
   end
 
   return string.format(" %%<%s/", fpath)
@@ -50,7 +69,7 @@ end
 local function filename()
   local fname = vim.fn.expand "%:t"
   if fname == "" then
-      return ""
+    return ""
   end
   return fname .. " "
 end
@@ -65,7 +84,6 @@ local function lineinfo()
   end
   return " %P %l:%c "
 end
-
 
 Statusline = {}
 
@@ -130,7 +148,6 @@ function Statusline.inactive()
     " ",
   }
 end
-
 
 vim.api.nvim_exec([[
   augroup Statusline
