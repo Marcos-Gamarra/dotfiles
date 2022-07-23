@@ -62,5 +62,5 @@ local opts = {
   end
 }
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, opts)
+vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave", "WinEnter" }, opts)
 
