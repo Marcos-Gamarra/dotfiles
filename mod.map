@@ -135,11 +135,11 @@ keycode  42 = Shift
             
                     keycode  51 = w
             alt     keycode  51 = braceleft
+            altgr   keycode  52 = numbersign
             
 
                     keycode  52 = v
             alt     keycode  52 = braceright
-            altgr   keycode  52 = numbersign
 
                     keycode  53 = z
             altgr   keycode  53 = End

@@ -19,16 +19,9 @@ fn main() {
                 .spawn()
                 .unwrap();
         }
-    } else {
+    } 
+    else {
         let background = args[1].clone();
-        if background == "dark" {
-            Command::new("theme.sh")
-                .args(["gruvbox-material-dark-soft"])
-                .spawn()
-                .unwrap();
-        } else {
-            Command::new("theme.sh").args(["gruvbox-material-light-soft"]).spawn().unwrap();
-        }
         let mut file = fs::File::create("/home/hi/.style").unwrap();
         file.write_all(&mut background.as_bytes()).unwrap();
     }
