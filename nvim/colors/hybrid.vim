@@ -291,8 +291,8 @@ exe "hi! ColorColumn"   .s:fg_none        .s:bg_line        .s:fmt_none
 "exe "hi! CursorColumn"  .s:fg_none        .s:bg_line        .s:fmt_none
 "exe "hi! CursorLine"    .s:fg_none        .s:bg_line        .s:fmt_none
 "
-exe "hi! CursorLine guibg=#111111"
-exe "hi! CursorLineNr guifg=#5f87af guibg=#111111 gui=bold"
+exe "hi! CursorLine guibg=#312e30"
+exe "hi! CursorLineNr guifg=#5f87af guibg=#312e30 gui=bold"
 
 exe "hi! Directory"     .s:fg_blue        .s:bg_none        .s:fmt_none
 exe "hi! DiffAdd"       .s:fg_addfg       .s:bg_addbg       .s:fmt_none

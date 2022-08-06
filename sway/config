@@ -1,11 +1,11 @@
-client.focused #333333 #5f87af #1c1c1c #ffffff #5f87af
+client.focused #333333 #6e9cb0 #1c1c1c #ffffff #6e9cb0
 #client.focused #333333 #60d7cd #1c1c1c #ffffff #60d7cd
-client.unfocused #333333 #1c1c1c #b0b0b0 #ffffff #5f87af
+client.unfocused #333333 #1c1c1c #b0b0b0 #ffffff #6e9cb0
 
 
 workspace_layout tabbed
 
-titlebar_padding 6 1
+titlebar_padding 6 2
 
 font pango:SauceCodePro Nerd Font Bold 14
 smart_borders on
@@ -91,8 +91,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 	bindsym $mod+Shift+Up move up
 	bindsym $mod+Shift+Right move right
 
-	bindsym $mod+Ctrl+h splith
-	bindsym $mod+Ctrl+v splitv
+	bindsym $mod+Ctrl+v splith
+	bindsym $mod+Ctrl+z splitv
 	bindsym $mod+Ctrl+t layout tabbed
 	bindsym $mod+Ctrl+s layout toggle split
 	bindsym $mod+Ctrl+l sticky toggle
@@ -101,11 +101,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 	# Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+space workspace back_and_forth
 	bindsym $mod+f fullscreen
     bindsym $mod+a focus parent
     bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+minus scratchpad show
+
 #
 #
 # Workspaces:
@@ -182,6 +183,7 @@ input * {
 	repeat_rate 50
 	repeat_delay 400 
 	tap enable
+    xkb_options "ctrl:swapcaps"
 }
 
 bar {

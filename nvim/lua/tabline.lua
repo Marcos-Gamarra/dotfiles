@@ -1,9 +1,10 @@
-local blue = '#458588'
+local blue = '#6e9cb0'
 local bg = "#1c1c1c"
-local grey = "#666666"
+local grey = "#444444"
+local api = vim.api
 
-vim.highlight.create('TablineBufferActive', { guibg = blue, guifg = bg, gui = 'bold' }, false)
-vim.highlight.create('TablineBufferInactive', { guibg = grey, guifg = "#ffffff" }, false)
+api.nvim_set_hl(0, "TablineBufferActive", {bg = blue, fg = bg, bold = true})
+api.nvim_set_hl(0, "TablineBufferInactive", {bg = grey, fg = "#ffffff"})
 
 local active_buf_hi = '%#TablineBufferActive#'
 local inactive_buf_hi = '%#TablineBufferInactive#'
@@ -42,7 +43,6 @@ local function Tabline()
       buf_name = active_buf_hi .. buf_name .. inactive_buf_hi
     end
     tabline = tabline .. buf_name
-
     vim.keymap.set(
       { 'n' },
       'g' .. targets[k],
@@ -62,5 +62,5 @@ local opts = {
   end
 }
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave", "WinEnter" }, opts)
+vim.api.nvim_create_autocmd({ "BufEnter" }, opts)
 

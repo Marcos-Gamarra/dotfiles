@@ -1,7 +1,7 @@
 local api = vim.api
 vim.g.buf_list_is_open = false
-local blue = '#458588'
-vim.highlight.create('BufferListActive', { guibg = 'NONE', guifg = blue, gui = 'bold' }, false)
+local blue = '#6e9cb0'
+api.nvim_set_hl(0, "BufferListActive", {bg = 'NONE', fg = blue, bold = true})
 
 --new buffer to hold a list of all open buffers
 --local targets = { 'e', 'u', 'o', 'a', 'p', 'j', 'k', 'q' }

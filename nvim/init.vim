@@ -5,10 +5,9 @@ lua require('tabline')
 lua require('buffers')
 lua require('win_hl_on_change')
 
-set cmdheight=0
 set cursorline
-set showtabline=2
 set title
+set showtabline=2
 set titlestring=%t
 set number 
 set virtualedit=block

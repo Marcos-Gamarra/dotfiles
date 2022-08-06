@@ -1,18 +1,18 @@
-local blue = '#458588'
-local bg = "#1c1c1c"
-local grey = "#666666"
+local api = vim.api
+local blue = '#6e9cb0'
+local grey = "#444444"
 local left_sep = ''
 local right_sep = ''
-
-vim.cmd("set laststatus=0")
 
 
 local toggle_statusline = function()
   local option = vim.api.nvim_get_option('laststatus')
-  if (option == 3) then
-    vim.api.nvim_set_option('laststatus', 0)
-  else
+  if (option == 0) then
     vim.api.nvim_set_option('laststatus', 3)
+    vim.api.nvim_set_option('cmdheight', 1)
+  else
+    vim.api.nvim_set_option('laststatus', 0)
+    vim.api.nvim_set_option('cmdheight', 0)
   end
 end
 
@@ -23,11 +23,11 @@ vim.keymap.set(
   { silent = true }
 )
 
-vim.highlight.create('StatuslineMode', { guibg = blue, guifg = "#1c1c1c", gui = 'bold' }, false)
-vim.highlight.create('StatuslineFilename', { guibg = grey, guifg = "#ffffff" }, false)
-vim.highlight.create("StatuslineInactive", { guibg = grey, guifg = "#ffffff", gui = 'bold' }, false)
-vim.highlight.create('SeparatorBlue', { guibg = "NONE", guifg = blue, gui = 'bold' }, false)
-vim.highlight.create('SeparatorGrey', { guibg = "NONE", guifg = grey, gui = 'bold' }, false)
+api.nvim_set_hl(0, "StatusLineMode", {bg = blue, fg = "#1c1c1c", bold = true})
+api.nvim_set_hl(0, "StatuslineFilename", {bg = grey, fg = "#ffffff"})
+api.nvim_set_hl(0, "StatuslineInactive", {bg = grey, fg = "#ffffff", bold = true})
+api.nvim_set_hl(0, "SeparatorBlue", {bg = "NONE", fg = blue})
+api.nvim_set_hl(0, "SeparatorGrey", {bg = "NONE", fg = grey})
 
 local modes = {
   ["n"] = "NORMAL",
@@ -72,10 +72,6 @@ local function filename()
     return ""
   end
   return fname .. " "
-end
-
-local function filetype()
-  return string.format(" %s ", vim.bo.filetype):upper()
 end
 
 local function lineinfo()
