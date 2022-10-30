@@ -1,39 +1,40 @@
-client.focused #333333 #6e9cb0 #1c1c1c #ffffff #6e9cb0
+client.focused #875f5f #875f5f #1c1c1c #ffffff #858585
 #client.focused #333333 #60d7cd #1c1c1c #ffffff #60d7cd
-client.unfocused #333333 #1c1c1c #b0b0b0 #ffffff #6e9cb0
+client.unfocused #333333 #333333 #b0b0b0 #ffffff #858585
 
 
 workspace_layout tabbed
 
 titlebar_padding 6 2
 
-font pango:SauceCodePro Nerd Font Bold 14
-smart_borders on
-hide_edge_borders both
+font pango:DaddyTimeMono Nerd Font Bold 14
 
-#title_align center
+default_border pixel 2
+hide_edge_borders --i3 both
+
 for_window [app_id="chromium"] move container to workspace 1:t
 
-set $mod Mod1
 
-
-set $left h
-set $right s
-# Your preferred terminal emulator
+#terminal
 set $term foot
 
+#exec chromium with wayland flag
+exec chromium --enable-features=UseOzonePlatform --ozone-platform=wayland
+workspace number 2:n
+exec $term -c /home/hi/.config/foot/dark.ini
 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+#mod key
+set $mod Mod1
+
+#h and s for horizontal movement
+set $left h
+set $right s
+
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Input configuration
-#
-# Example configuration:
 #
    input "2:14:SynPS/2_Synaptics_TouchPad" {
        dwt enabled
@@ -41,19 +42,22 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
        natural_scroll enabled
        middle_emulation enabled
    }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
 # Basics:
 	#Screenshot
-	bindsym $mod+Control+d exec grim
+    bindsym Print exec grim - | wl-copy 
+    #audio
+    bindsym XF86AudioMute exec amixer -q set Master toggle
+    bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+    bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
+
+    #copy and paste
 
     # Start a terminal
-    #bindsym $mod+m exec $term
-    bindsym $mod+m exec ./.local/bin/styler
+    bindsym $mod+m exec $term -c /home/hi/.config/foot/dark.ini
+    #bindsym $mod+m exec ./.local/bin/styler
 
     # Kill focused window
     bindsym $mod+comma kill
@@ -120,14 +124,13 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+w workspace number 3:w
     bindsym $mod+4 workspace number 4:v
     bindsym $mod+v workspace number 4:v
-    bindsym $mod+5 workspace number 5:c
-    bindsym $mod+c workspace number 5:c
-    bindsym $mod+6 workspace number 6:r
-    bindsym $mod+r workspace number 6:r
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1:t 
     bindsym $mod+Shift+t move container to workspace number 1:t
@@ -151,12 +154,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 # Resizing containers:
 #
-bindsym $mod+Ctrl+r mode "resize"
+bindsym $mod+r mode "resize"
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $right resize grow width 10px
 

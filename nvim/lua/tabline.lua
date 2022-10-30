@@ -1,16 +1,15 @@
-local blue = '#6e9cb0'
-local bg = "#1c1c1c"
-local grey = "#444444"
+local decoration = '#875f5f'
+local grey = "#858585"
 local api = vim.api
 
-api.nvim_set_hl(0, "TablineBufferActive", {bg = blue, fg = bg, bold = true})
-api.nvim_set_hl(0, "TablineBufferInactive", {bg = grey, fg = "#ffffff"})
+api.nvim_set_hl(0, "TablineBufferActive", {bg = decoration, fg = "#1c1c1c", bold = true})
+api.nvim_set_hl(0, "TablineBufferInactive", {bg = grey, fg = "#333333"})
 
 local active_buf_hi = '%#TablineBufferActive#'
 local inactive_buf_hi = '%#TablineBufferInactive#'
 
---SeparatorBlue highlight defined in statusline.lua file
-local blue_sep_hi = '%#SeparatorBlue#'
+--Separatordecoration highlight defined in statusline.lua file
+local decoration_sep_hi = '%#Separatordecoration#'
 local grey_sep_hi = '%#SeparatorGrey#'
 
 local targets = { 'e', 'u', 'o', 'a', 'p', 'j', 'k', 'q' }
@@ -26,14 +25,17 @@ local function Tabline()
     end
   end
 
-
   for k, v in ipairs(buf_listed) do
     local buf_name = ' '
+    local current_buf = vim.fn.bufnr('%')
+    if (vim.fn.buflisted(current_buf) ~= 1) then
+      return
+    end
     if (vim.fn.bufnr('%') == vim.fn.bufnr(v)) then
-      buf_name = blue_sep_hi .. ''
+      buf_name = decoration_sep_hi .. ''
       local name = vim.fn.fnamemodify(vim.fn.bufname(v), ":t")
       buf_name = buf_name .. active_buf_hi .. targets[k] .. ": " .. name
-      buf_name = buf_name .. blue_sep_hi .. ' '
+      buf_name = buf_name .. decoration_sep_hi .. ' '
       buf_name = active_buf_hi .. buf_name .. inactive_buf_hi
     else
       buf_name = grey_sep_hi .. ''
@@ -62,5 +64,5 @@ local opts = {
   end
 }
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, opts)
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, opts)
 

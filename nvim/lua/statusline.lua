@@ -1,6 +1,6 @@
 local api = vim.api
-local blue = '#6e9cb0'
-local grey = "#444444"
+local decoration = '#875f5f'
+local grey = "#858585"
 local left_sep = ''
 local right_sep = ''
 
@@ -23,10 +23,10 @@ vim.keymap.set(
   { silent = true }
 )
 
-api.nvim_set_hl(0, "StatusLineMode", {bg = blue, fg = "#1c1c1c", bold = true})
+api.nvim_set_hl(0, "StatusLineMode", {bg = decoration, fg = "#1c1c1c", bold = true})
 api.nvim_set_hl(0, "StatuslineFilename", {bg = grey, fg = "#ffffff"})
 api.nvim_set_hl(0, "StatuslineInactive", {bg = grey, fg = "#ffffff", bold = true})
-api.nvim_set_hl(0, "SeparatorBlue", {bg = "NONE", fg = blue})
+api.nvim_set_hl(0, "Separatordecoration", {bg = "NONE", fg = decoration})
 api.nvim_set_hl(0, "SeparatorGrey", {bg = "NONE", fg = grey})
 
 local modes = {
@@ -88,11 +88,11 @@ Statusline.active = function()
     ----Mode part
     "%#Normal#",
     " ",
-    "%#SeparatorBlue#",
+    "%#Separatordecoration#",
     left_sep,
     "%#StatuslineMode#",
     mode(),
-    "%#SeparatorBlue#",
+    "%#Separatordecoration#",
     right_sep,
     ----Filename part
     "%#Normal#",
@@ -107,11 +107,11 @@ Statusline.active = function()
     right_sep,
     "%#Normal#",
     " ",
-    "%#SeparatorBlue#",
+    "%#Separatordecoration#",
     left_sep,
     "%#StatuslineMode#",
     lineinfo(),
-    "%#SeparatorBlue#",
+    "%#Separatordecoration#",
     right_sep,
     "%#Normal#",
     " ",

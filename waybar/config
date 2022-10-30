@@ -3,6 +3,7 @@
 	"position": "left",
 	"modules-center":["sway/workspaces", "sway/mode"], 
     "modules-left":["clock", "custom/day", "clock#date"],
+    "modules-right":["battery"],
 	
 	"clock": {
 		"format": "{:%H\n%M}",
@@ -21,13 +22,23 @@
 	},
 
 	"sway/workspaces": {
-    	"disable-scroll": true,
-    	"format": "{name}",
+    		"disable-scroll": true,
+    		"format": "{name}",
 		"persistent_workspaces": {
-    	    "1:t": [],
-    	    "2:n": [],
+    	    		"1:t": [],
+    	    		"2:n": [],
 			"3:w": [],
-    	    "4:v": [],
-    	}
-	}
+    	    		"4:v": [],
+    		}
+	},
+
+	"battery": {
+    		"interval": 60,
+    		"states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{capacity}",
+            "max-length": 25
+    }
 }

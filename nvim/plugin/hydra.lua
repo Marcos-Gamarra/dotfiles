@@ -1,4 +1,8 @@
 local Hydra = require('hydra')
+local decoration = '#875f5f'
+
+vim.keymap.set('', '<space>s', "<C-w>", {})
+vim.keymap.set('', '<space>s<space>', "<C-w><C-p>", {})
 
 Hydra({
   name = 'Window mode',
@@ -9,7 +13,7 @@ Hydra({
       vim.cmd("hi clear HydraHint")
       vim.cmd("hi clear HydraTeal")
       vim.cmd("hi HydraHint guibg='NONE' guifg=#458588 gui=bold")
-      --vim.cmd("hi NormalFloat guibg=#5f87af")
+      vim.api.nvim_set_hl(0, 'HydraHint', { fg = "#eeeeee", bg = decoration, bold = true })
     end,
     hint = {
       position = "middle",
@@ -18,7 +22,7 @@ Hydra({
     color = "amaranth",
   },
   mode = 'n',
-  body = '<C-w>',
+  body = '<space>s',
   heads = {
     { 's', '<C-w>l', { desc = false } },
     { "h", '<C-w>h', { desc = false } },
