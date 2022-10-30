@@ -1,9 +1,12 @@
 export LD_LIBRARY_PATH=/usr/local/lib
-export PATH=$PATH:$HOME/.local/bin:$HOME/.local/downloads/flutter/bin
-export ANDROID_HOME=$HOME/.android-sdk
-export PATH=$ANDROID_HOME/cmdline-tools/latest/bin/:$PATH
-export PATH=$ANDROID_HOME/emulator/:$PATH
-export PATH=$ANDROID_HOME/platform-tools/:$PATH
+export NODE_PATH=/home/hi/.local/downloads/node-v16.17.0-linux-x64/bin
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/downloads/flutter/bin"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+export PATH="$PATH:$HOME:$NODE_PATH"
+#export ANDROID_HOME=$HOME/.android-sdk
+#export PATH=$ANDROID_HOME/cmdline-tools/latest/bin/:$PATH
+#export PATH=$ANDROID_HOME/emulator/:$PATH
+#export PATH=$ANDROID_HOME/platform-tools/:$PATH
 export CHROME_EXECUTABLE=chromium
 
 set-window-title() {
@@ -29,8 +32,11 @@ alias ll="lsd -l"
 PROMPT_DIRTRIM=3
 export EDITOR=nvim
 
-PS1='\e[1;32m\w  \e[0m'
-#PS1='[\u@\h \W]\$ '
+GREEN="\[\e[1;32m\]"
+RESET="\[\e[0m\]"
+
+PS1="${GREEN}\w  ${RESET}" 
+#PS1='[\u@\h \w]\$ '
 . "$HOME/.cargo/env"
 
 
