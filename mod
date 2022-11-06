@@ -65,7 +65,7 @@ xkb_symbols "dvp" {
     key <AB01> { [ apostrophe,      dead_acute,       dead_acute, NoSymbol,quotedbl   ] };
     key <AB02> { [ q, Q,NoSymbol,NoSymbol, NoSymbol, NoSymbol, Q]	};
 	key <AB03> { [ j, J,bracketleft,NoSymbol,bracketleft,NoSymbol,J]};
-	key <AB04> { [ k, K,bracketright,NoSymbol,K,NoSymbol,K]};
+	key <AB04> { [ k, K,bracketright,NoSymbol,bracketright,NoSymbol,K]};
 	key <AB05> { [ x, X, NoSymbol, NoSymbol, X, NoSymbol,X ]};
 
 	//lower row, right side	

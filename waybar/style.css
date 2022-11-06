@@ -1,5 +1,5 @@
 * {
-    font-family: "DaddyTimeMono Nerd Font", monospace;
+    font-family: "SauceCodePro Nerd Font", monospace;
 }
 
 window#waybar {
@@ -9,7 +9,7 @@ window#waybar {
 }
 
 #workspaces button {
-	border-radius: 14px;
+	border-radius: 17px;
     padding-top: 10px;
     padding-bottom: 10px;
 	padding-left:5px;
@@ -39,7 +39,7 @@ window#waybar {
 }
 
 #clock {
-	border-radius: 14px;
+	border-radius: 17px;
     padding-top: 10px;
     padding-bottom: 10px;
 	padding-left: 5px;
@@ -54,8 +54,8 @@ window#waybar {
 }
 
 #clock.date {
-	border-bottom-left-radius: 14px; 
-	border-bottom-right-radius: 14px;
+	border-bottom-left-radius: 17px; 
+	border-bottom-right-radius: 17px;
 	border-top-left-radius: 0px;   
 	border-top-right-radius: 0px;  
     padding-bottom: 10px;
@@ -74,8 +74,8 @@ window#waybar {
 #custom-day {
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-	border-top-left-radius: 14px;
-	border-top-right-radius: 14px;
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
     padding-top: 10px;
     padding-bottom: 0px;
 	padding-left: 3px;
@@ -90,7 +90,7 @@ window#waybar {
 }
 
 #battery {
-	border-radius: 14px;
+	border-radius: 17px;
     padding-top: 10px;
     padding-bottom: 10px;
 	padding-left:3px;

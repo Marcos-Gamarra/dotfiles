@@ -5,9 +5,9 @@ client.unfocused #333333 #333333 #b0b0b0 #ffffff #858585
 
 workspace_layout tabbed
 
-titlebar_padding 6 2
+titlebar_padding 6 6
 
-font pango:DaddyTimeMono Nerd Font Bold 14
+font SauceCodePro Bold 14
 
 default_border pixel 2
 hide_edge_borders --i3 both

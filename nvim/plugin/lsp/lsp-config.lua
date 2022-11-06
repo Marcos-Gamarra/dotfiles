@@ -30,23 +30,8 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'lf', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 end
 
-require 'lspconfig'.dartls.setup {
-  on_attach = on_attach,
-  flags = {
-    -- This will be the default in neovim 0.7+
-    debounce_text_changes = 150,
-  }
-}
 
-require 'lspconfig'.html.setup {
-  on_attach = on_attach,
-}
-
-require 'lspconfig'.svelte.setup {
-  on_attach = on_attach,
-}
-
-require 'lspconfig'.clangd.setup {
+require 'lspconfig'.rust_analyzer.setup {
   on_attach = on_attach,
 }
 
@@ -54,17 +39,6 @@ require 'lspconfig'.tsserver.setup {
   on_attach = on_attach,
 }
 
-require 'lspconfig'.svelte.setup {
-  on_attach = on_attach,
-}
-
-require 'lspconfig'.rust_analyzer.setup {
-  on_attach = on_attach,
-}
-
-require 'lspconfig'.zls.setup {
-  on_attach = on_attach,
-}
 
 require 'lspconfig'.sumneko_lua.setup {
   on_attach = on_attach,
