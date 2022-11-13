@@ -6,8 +6,7 @@ require('win_hl_on_change')
 
 vim.opt.laststatus=0
 vim.opt.cursorline=true
-vim.opt.showtabline=2
-vim.opt.number=true
+vim.opt.number=false
 vim.opt.virtualedit="block"
 vim.opt.autoindent=true
 vim.opt.tabstop=4

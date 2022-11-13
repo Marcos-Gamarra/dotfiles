@@ -55,7 +55,10 @@ vim.g.copilot_no_tab_map = true
 -- buffers
 vim.keymap.set("n", "g<space>", "<C-6>", {noremap=true})
 
+--splits
+vim.keymap.set("n", "<C-h>", "<C-w>h", {noremap=true})
+vim.keymap.set("n", "<C-s>", "<C-w>l", {noremap=true})
+vim.keymap.set("n", "<C-v>", "<C-w>v", {noremap=true})
 
---
---buffd
---vim.keymap.set("n", "a", ":Buffd<CR>", {noremap=true})
+--toggle line number
+vim.keymap.set("n", "zn", ":set nu!<CR>", {noremap=true})
