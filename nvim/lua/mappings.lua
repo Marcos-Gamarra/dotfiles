@@ -55,5 +55,7 @@ vim.g.copilot_no_tab_map = true
 -- buffers
 vim.keymap.set("n", "g<space>", "<C-6>", {noremap=true})
 
+
+--
 --buffd
 --vim.keymap.set("n", "a", ":Buffd<CR>", {noremap=true})

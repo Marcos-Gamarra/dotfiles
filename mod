@@ -41,7 +41,7 @@ xkb_symbols "dvp" {
     key <AD07> { [ g, G, dead_acute, 7, slash, NoSymbol, G]};
     key <AD08> { [ c, C, less, 8,minus,C, C]};
     key <AD09> { [ r,               R,              greater, 9,plus,NoSymbol,R   ] };
-    key <AD10> { [ l,               L,              Delete, plus,plus,NoSymbol,L ] };
+    key <AD10> { [ l,               L,              omacron, plus,plus,NoSymbol,L ] };
     key <AD11> { [ dead_acute,      question,       questiondown,    U203D      ] };
     key <AD12> { [ at,              asciicircum,    dead_circumflex, dead_caron] };
 
@@ -58,6 +58,11 @@ xkb_symbols "dvp" {
     key <AC08> { [ t,               T,              Up,5,equal,NoSymbol,T     ] }; 
     key <AC09> { [ n,               N,              Down, 6, semicolon, Ntilde, N     ] };
     key <AC10> { [ s,               S,              Right, 0,asterisk,NoSymbol,S      ] };
+    key <AC11> {
+	    type[Group1]="ONE_LEVEL",
+	    symbols[Group1] = [voidsymbol],
+		actions[Group1] = [SetMods(mods=Control)]
+	};
     key <BKSL> { [ backslash,       bar                                         ] };
 	
 
@@ -75,7 +80,7 @@ xkb_symbols "dvp" {
 	key <AB09> { [ v,V, braceright,NoSymbol, question, NoSymbol, V]};
 	key <AB10> { [ z,Z, NoSymbol, minus, End, NoSymbol, Z]};
 	  key <SPCE> {
-		symbols[Group1]=[space,space,omacron,NoSymbol,Return]
+		symbols[Group1]=[space,space,NoSymbol,NoSymbol,Return]
 	  }; 
 
 	  
@@ -91,7 +96,8 @@ xkb_symbols "dvp" {
 
 	  key <CAPS> {
 	    type[Group1]="ONE_LEVEL",
-	    symbols[Group1] = [Super_L]
+	    symbols[Group1] = [NoSymbol],
+		actions[Group1] = [SetMods(mods=Control)]
 	  };
 
 	  key <LWIN> {
