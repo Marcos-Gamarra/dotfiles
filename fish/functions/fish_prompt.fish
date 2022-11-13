@@ -14,13 +14,12 @@ function fish_prompt --description 'Write out the prompt'
         set -l branch (git status | head -n 1 | string split ' ' | tail -n 1) 
         set -f dirty (git -C . status --porcelain)
         if test -n "$dirty"
-            set -f dirty ''
+            set -f dirty ' '
         end
-        set -f git_info (printf "$red_fg$reset$red_bg$branch$dirty$reset$red_fg$reset")
+        set -f git_info (printf " $red_fg$reset$red_bg$branch$dirty$reset$red_fg$reset")
     end
 
-    printf "$grey_fg$reset$grey_bg$(prompt_pwd -D 3)$reset$grey_fg$reset "
-    printf "$git_info"
-    printf ""\n"$green_fg  $reset"
+    printf "$grey_fg$reset$grey_bg$(prompt_pwd -D 3)$reset$grey_fg$reset$git_info\n"
+    printf "╰─ "
 
 end
