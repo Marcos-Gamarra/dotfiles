@@ -34,4 +34,4 @@ require("nvim-tree").setup({
 })
 
 
-vim.api.nvim_set_keymap('', '<Tab>', ":NvimTreeToggle<CR>", {})
+vim.api.nvim_set_keymap('', '<space>ot', ":NvimTreeToggle<CR>", {})

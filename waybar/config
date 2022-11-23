@@ -1,6 +1,8 @@
 {
 	"layer": "top",
-	"position": "left",
+	"position": "right",
+    "width": 55,
+    "ipc": true,
 	"modules-center":["sway/workspaces", "sway/mode"], 
     "modules-left":["clock", "custom/day", "clock#date"],
     "modules-right":["battery"],

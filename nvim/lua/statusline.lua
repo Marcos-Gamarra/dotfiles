@@ -18,7 +18,7 @@ end
 
 vim.keymap.set(
   { 'n' },
-  'd',
+  '<space>os',
   toggle_statusline,
   { silent = true }
 )

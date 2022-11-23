@@ -183,6 +183,7 @@ input * {
 	repeat_delay 400 
 	tap enable
     xkb_options "ctrl:swapcaps"
+
 }
 
 bar {

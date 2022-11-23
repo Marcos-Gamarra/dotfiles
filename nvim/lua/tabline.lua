@@ -1,8 +1,9 @@
 local decoration = '#875f5f'
 local grey = "#858585"
 local api = vim.api
+local white_fg = "#eeeeee"
 
-api.nvim_set_hl(0, "TablineBufferActive", { bg = decoration, fg = "#1c1c1c", bold = true })
+api.nvim_set_hl(0, "TablineBufferActive", { bg = decoration, fg = white_fg, bold = true })
 api.nvim_set_hl(0, "TablineBufferInactive", { bg = grey, fg = "#333333" })
 
 local active_buf_hi = '%#TablineBufferActive#'
@@ -15,7 +16,7 @@ local grey_sep_hi = '%#SeparatorGrey#'
 local targets = { 'e', 'u', 'o', 'a', 'p', 'j', 'k', 'q' }
 
 local function Tabline()
-    local tabline = '%#Normal# '
+    local tabline = '%#Normal#'
     local buf = vim.api.nvim_list_bufs()
     local buf_listed = {}
 
@@ -26,7 +27,7 @@ local function Tabline()
     end
 
     for k, v in ipairs(buf_listed) do
-        local buf_name = ' '
+        local buf_name = ''
         local current_buf = vim.fn.bufnr('%')
         if (vim.fn.buflisted(current_buf) ~= 1) then
             return
