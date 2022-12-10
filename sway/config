@@ -24,7 +24,7 @@ workspace number 2:n
 exec $term -c /home/hi/.config/foot/dark.ini
 
 #mod key
-set $mod Mod1
+set $mod Mod4
 
 #h and s for horizontal movement
 set $left h
@@ -182,7 +182,6 @@ input * {
 	repeat_rate 50
 	repeat_delay 400 
 	tap enable
-    xkb_options "ctrl:swapcaps"
 
 }
 

@@ -29,7 +29,7 @@ xkb_symbols "dvp" {
     key <AD02> { [ comma, period, period,comma,question,NoSymbol,5] };
 	key <AD03> { 	
 		symbols[Group1]=[VoidSymbol,NoSymbol,exclamdown,NoSymbol,parenleft],
-		actions[Group1]=[SetMods(modifiers=Alt), NoAction(), NoAction(), NoAction(), NoAction()]
+		actions[Group1]=[SetMods(modifiers=Super), NoAction(), NoAction(), NoAction(), NoAction()]
 	};  
 
     key <AD04> {[ p, P, asciitilde, NoSymbol, parenright, section, P]};
