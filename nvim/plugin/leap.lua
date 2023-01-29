@@ -6,7 +6,7 @@ vim.api.nvim_set_hl(0, 'LeapLabelPrimary', { fg = "#eeeeee", bg = decoration, bo
 
 require('leap').setup {
   case_sensitive = false,
-  safe_labels = { "t", "n", "h", "s", "u", "w", "j", "m", "k", "v", "q", "c", "r", "l", "z" },
+  safe_labels = { "t", "n", "s", "r", "h", "l", "m", "k", "v", "c", "p", "y", "z" },
   labels = { "t", "n", "h", "s", "e", "o", "u", "a", "w", "j", "m", "k", "v", "q", "c", "r", "l", "z" },
 
   special_keys = {

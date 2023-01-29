@@ -2,25 +2,25 @@ local efe = require 'efe'
 
 vim.keymap.set(
     { 'n', 'v', 'o' },
-    's',
+    'r',
     efe.forward,
     { silent = true }
 )
 vim.keymap.set(
     { 'n', 'v', 'o' },
-    'h',
+    's',
     efe.backward,
     { silent = true }
 )
 vim.keymap.set(
     { 'n', 'v', 'o' },
-    'S',
+    'R',
     efe.repeat_forward,
     { silent = true }
 )
 vim.keymap.set(
     { 'n', 'v', 'o' },
-    'H',
+    'S',
     efe.repeat_backward,
     { silent = true }
 )

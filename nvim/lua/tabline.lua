@@ -13,7 +13,7 @@ local inactive_buf_hi = '%#TablineBufferInactive#'
 local decoration_sep_hi = '%#Separatordecoration#'
 local grey_sep_hi = '%#SeparatorGrey#'
 
-local targets = { 'e', 'u', 'o', 'a', 'p', 'j', 'k', 'q' }
+local targets = { 'e', 'a', 'i', 'h', 'o', 'u', 'y', 'k' }
 
 local function Tabline()
     local tabline = '%#Normal#'

@@ -17,6 +17,7 @@ require("nvim-tree").setup({
       list = {
         { key = "<Left>", action = "dir_up" },
         { key = "<Right>", action = "edit" },
+        { key = "<CR>", action = "edit" },
         { key = "p", action = "preview" },
         { key = "c", action = "collapse_all" },
         { key = "a", action = "create" },

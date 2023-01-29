@@ -33,7 +33,7 @@ xkb_symbols "dvp" {
 	};  
 
     key <AD04> {[ p, P, asciitilde, NoSymbol, parenright, section, P]};
-	key <AD05> {[ y, Y,	NoSymbol, NoSymbol, backslash, NoSymbol, Y]};
+	key <AD05> {[ y, Y,	NoSymbol, z, backslash, NoSymbol, Y]};
 
     // upper row, right side
 	
@@ -54,9 +54,9 @@ xkb_symbols "dvp" {
 
     // home row, right side
     key <AC06> { [ d,               D,              quoteleft, period,at,6,D] };
-    key <AC07> { [ h,               H,              Left,4,underscore,NoSymbol,H                 ] };
-    key <AC08> { [ t,               T,              Up,5,equal,NoSymbol,T     ] }; 
-    key <AC09> { [ n,               N,              Down, 6, semicolon, Ntilde, N     ] };
+    key <AC07> { [ h,               H,              Left,4,underscore,NoSymbol, H, 8                 ] };
+    key <AC08> { [ t,               T,              Up,5,equal,z,T, b     ] }; 
+    key <AC09> { [ n,               N,              Down, 6, semicolon, Ntilde, N, a     ] };
     key <AC10> { [ s,               S,              Right, 0,asterisk,NoSymbol,S      ] };
     key <AC11> {
 	    type[Group1]="ONE_LEVEL",
@@ -78,9 +78,11 @@ xkb_symbols "dvp" {
 	key <AB07> { [ m,M, colon, 1,Home,NoSymbol, M]};
 	key <AB08> { [ w,W, braceleft,NoSymbol,numbersign, NoSymbol, W]};
 	key <AB09> { [ v,V, braceright,NoSymbol, question, NoSymbol, V]};
-	key <AB10> { [ z,Z, NoSymbol, minus, End, NoSymbol, Z]};
-	  key <SPCE> {
-		symbols[Group1]=[space,space,NoSymbol,NoSymbol,Return]
+	key <AB10> { [ z,Z, l, minus, End, A, Z]};
+	  
+      key <SPCE> {
+		symbols[Group1]=[space,space,NoSymbol,NoSymbol,Return],
+		actions[Group1] = [NoAction(),NoAction(),SetMods(mods=Super)]
 	  }; 
 
 	  
@@ -96,8 +98,7 @@ xkb_symbols "dvp" {
 
 	  key <CAPS> {
 	    type[Group1]="ONE_LEVEL",
-	    symbols[Group1] = [NoSymbol],
-		actions[Group1] = [SetMods(mods=Control)]
+	    symbols[Group1] = [ISO_Next_Group]
 	  };
 
 	  //key <LWIN> {
@@ -106,6 +107,14 @@ xkb_symbols "dvp" {
 	  //  actions[Group1] = [SetMods(mods=Control)]
 	  //};
 
+        key <HYPR> {    [ NoSymbol, Hyper_L ]   };
+        modifier_map Mod5   { <HYPR> };
+        
+    key <LCTL> {
+        type[Group1]="ONE_LEVEL",
+	    symbols[Group1] = [ voidsymbol],
+	    actions[Group1] = [SetMods(mods=Hyper)]
+    };
 	//include "level3(modifier_mapping)"
 	//include "level5(modifier_mapping)"
 };

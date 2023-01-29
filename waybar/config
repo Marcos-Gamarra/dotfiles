@@ -27,10 +27,10 @@
     		"disable-scroll": true,
     		"format": "{name}",
 		"persistent_workspaces": {
-    	    		"1:t": [],
-    	    		"2:n": [],
-			"3:w": [],
-    	    		"4:v": [],
+    	    		"1": [],
+    	    		"2": [],
+		            "3": [],
+    	    		"4": [],
     		}
 	},
 

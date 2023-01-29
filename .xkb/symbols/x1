@@ -1,0 +1,78 @@
+partial alphanumeric_keys
+xkb_symbols "dvp" {
+    key.type[Group1] = "EIGHT_LEVEL";
+    //upper row
+    key <TLDE> { [ ] };
+    key <AE01> { [ k, K, bracketleft ] };                
+    key <AE02> { [ y, Y, dollar] };                      
+    key <AE03> { [ o, O, colon]};                        
+    key <AE04> { [ apostrophe, NoSymbol, underscore]};   
+	key <AE05> { [ exclam, at, ampersand]};             
+                                                                             
+    key <AE06> { [ f, F, 3]};                                                
+    key <AE07> { [ c, C, slash]};                                            
+    key <AE08> { [ l, L, 1]};                                                
+    key <AE09> { [ p, P, asterisk]};                                         
+	key <AE10> { [ q, Q, dead_acute] };                                      
+    key <AE11> { [ z, Z, asciitilde] };                                      
+
+    //home row
+    key <AD01> { [ h, H, minus, NoSymbol, Delete] };     
+    key <AD02> { [ i, I, parenleft, NoSymbol, Tab] }; 
+    key <AD03> {
+        repeat=True,
+	    symbols[Group1] = [ e, E, period, voidsymbol, BackSpace]
+	};
+    key <AD04> { [ a, A, quotedbl, NoSymbol, Escape] };  
+	key <AD05> { [ u, U, less]};       
+                                                           
+	key <AD06> { [ d, D, greater] };   
+    key <AD07> { [ s, S, equal, NoSymbol, Left] };     
+    key <AD08> { [ t, T, comma, NoSymbol, Up] };     
+    key <AD09> { [ n, N, semicolon, NoSymbol, Down] }; 
+    key <AD10> { [ r, R, parenright, NoSymbol, Right] };
+    key <AD11> { [ v, V, bracketright] };                  
+
+    // lower row
+    key <AC01> { [ j, J, 8 ] };
+    key <AC02> { [ question, bar, 4] };
+    key <AC03> { [ 0, backslash, braceleft] };
+    key <AC04> { [ 2, asciicircum, braceright ] };
+    key <AC05> { [ numbersign, NoSymbol, 6] };
+
+    key <AC06> { [ w, W, percent] };
+    key <AC07> { [ g, G, plus] };
+    key <AC08> { [ m, M, 5] };
+    key <AC09> { [ b, B, 9] };
+    key <AC10> { [ x, X, 7] };
+	
+
+    //bottom row
+    key <AB01> { [ ] }; 
+    key <AB02> { [ ISO_Level5_Shift ] }; 
+	key <AB03> { [ space, NoSymbol, Return, NoSymbol, Return] }; 
+	key <AB04> { [ Control_L] }; 
+
+	key <AB05> { [ ] }; 
+	key <AB06> { [ Control_R] }; 
+	key <AB07> { 
+        type[Group1]="ONE_LEVEL",
+        symbols[Group1] = [ISO_Level5_Shift]
+    }; 
+	key <AB08> { [ ISO_Level3_Shift] }; 
+	key <AB09> { [ ] }; 
+	key <AB10> { [ ] }; 
+	  
+        
+    key <SPCE> {
+	    symbols[Group1] = [ voidSymbol ],
+	    actions[Group1] = [SetMods(mods=Mod3)]
+	  };
+
+    key <CAPS> {
+	    type[Group1]="ONE_LEVEL",
+	    symbols[Group1] = [ISO_Next_Group]
+	};
+	  
+
+};

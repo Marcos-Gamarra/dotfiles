@@ -1,0 +1,137 @@
+include "linux-with-alt-and-altgr"
+
+keymaps 0-127
+compose as usual
+strings as usual
+
+
+keycode  29 = Control
+keycode  56 = Alt
+keycode  57 = AltGr
+            alt keycode  57 = Delete           
+keycode  43 = AltGr
+keycode  97 = Control
+
+! --------------------------------------------------------------------------
+! Row 2
+! --------------------------------------------------------------------------
+keycode   2 = k             percent
+keycode   3 = y              seven
+keycode   4 = o              five
+keycode   5 = u            three
+keycode   6 = seven             one
+keycode   7 = six               nine
+keycode   8 = c               zero
+keycode   9 = l               two
+keycode  10 = p              four
+keycode  11 = q             six
+keycode  12 = exclam            eight
+keycode  13 = numbersign        grave
+keycode  14 = Delete
+! --------------------------------------------------------------------------
+! Row 3
+! --------------------------------------------------------------------------
+keycode  15 = Tab
+keycode  16 = h            
+keycode  17 = i        
+
+                    keycode  18 = e           
+            altgr   keycode  18 = parenleft            
+
+                    keycode  19 = a
+            alt     keycode  19 = asciitilde
+            altgr   keycode  19 = parenright
+                    
+                    keycode  20 = v
+            altgr   keycode  20 = backslash
+                    
+                    keycode  21 = d
+                    
+                    keycode  22 = s
+                    
+                    keycode  23 = t
+            alt     keycode  23 = less
+            altgr   keycode  23 = minus
+                    
+                    keycode  24 = n
+            alt     keycode  24 = greater
+            altgr   keycode  24 = plus
+
+                    keycode  25 = r
+            alt     keycode  25 = Remove
+
+! --------------------------------------------------------------------------
+! Row 4
+! --------------------------------------------------------------------------
+
+                    keycode  30 = z
+            alt     keycode  30 = percent
+            altgr   keycode  30 = slash
+
+                    keycode  31 = x
+            alt     keycode  31 = ampersand
+            altgr   keycode  31 = Tab
+
+                    keycode  32 = j
+            alt     keycode  32 = exclam
+            altgr   keycode  32 = Delete 
+
+
+                    keycode  33 = b
+            altgr   keycode  33 = Escape
+
+                    keycode  34 = i
+            altgr   keycode  34 = bar
+
+                    keycode  35 = d
+            altgr   keycode  35 = at
+            
+                    keycode  36 = g
+            altgr   keycode  36 = underscore
+            alt     keycode  36 = Left
+            
+                    keycode  37 = m
+            alt     keycode  37 = Up
+            altgr   keycode  37 = equal
+
+                    keycode  38 = f
+            alt     keycode  38 = Down
+            altgr     keycode  38 = semicolon
+
+                    keycode  39 = w
+            alt     keycode  39 = Right
+            altgr   keycode  39 = asterisk
+
+keycode  40 = minus          underscore
+keycode  43 = backslash      bar
+! --------------------------------------------------------------------------
+! Row 5
+! --------------------------------------------------------------------------
+keycode  42 = Shift
+                    keycode  44 = apostrophe    
+            altgr   keycode  44 = quotedbl
+
+
+                    keycode  46 = Alt
+
+                    keycode  47 = k
+            altgr   keycode  47 = bracketright
+            
+                    keycode  48 = x
+                    
+                    keycode  50 = space
+            alt     keycode  50 = Return
+            altgr   keycode  50 = Delete
+                    
+                    keycode  51 = w
+            alt     keycode  51 = braceleft
+            altgr   keycode  52 = numbersign
+            
+
+                    keycode  52 = v
+            alt     keycode  52 = braceright
+
+                    keycode  53 = z
+            altgr   keycode  53 = End
+
+
