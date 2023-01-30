@@ -26,7 +26,7 @@ xkb_symbols "dvp" {
     key <AD08> {[ t,    T,  Up,         asciitilde,     period      ]};     
     key <AD09> {[ n,    N,  Down,       numbersign,     colon       ]}; 
     key <AD10> {[ r,    R,  Right,      asciicircum,    semicolon   ]};
-    key <AD11> {[ Shift_L ]};
+    key <AD11> {[ Shift_R ]};
 
     ////lower row////
     key <AC01> {[ z,    Z,  NoSymbol,   NoSymbol,   bracketleft     ]};
