@@ -9,12 +9,12 @@
 	
 	"clock": {
 		"format": "{:%H\n%M}",
-		"timezone": "America/Asuncion",
+		"timezone": "Asia/Taipei",
 	},
 
 	"clock#date": {
 		"format": "{:%d\n%m}",
-		"timezone": "America/Asuncion",
+		"timezone": "Asia/Taipei",
 	},
 	
 	"custom/day": {

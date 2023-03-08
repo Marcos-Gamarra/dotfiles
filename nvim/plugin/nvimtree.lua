@@ -11,12 +11,13 @@ require("nvim-tree").setup({
   },
   sort_by = "case_sensitive",
   remove_keymaps = true,
+
   view = {
     adaptive_size = true,
     mappings = {
       list = {
         { key = "<Left>", action = "dir_up" },
-        { key = "<Right>", action = "edit" },
+        { key = "<Right>", action = "edit_no_picker" },
         { key = "<CR>", action = "edit" },
         { key = "p", action = "preview" },
         { key = "c", action = "collapse_all" },

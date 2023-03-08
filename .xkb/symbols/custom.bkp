@@ -5,7 +5,7 @@ xkb_symbols "dvp" {
     key <AE01> {[ k,    K,  NoSymbol,   NoSymbol,   less    ]};                
     key <AE02> {[ y,    Y,  NoSymbol,   6,          plus    ]};                      
     key <AE03> {[ o,    O,  NoSymbol,   5,          minus   ]};                        
-    key <AE04> {[ v,    V,  NoSymbol,   4,          greater ]};   
+    key <AE04> {[ u,    U,  NoSymbol,   4,          greater ]};   
     key <AE05> {[Super_L]};   
                                                                              
     key <AE07> {[ c,    C,  Home,       NoSymbol,   exclam      ]};                                      
@@ -16,16 +16,16 @@ xkb_symbols "dvp" {
     ////home row////
     key <TAB> {[Shift_L]};
     key <AD01> {[ h,    H,  NoSymbol,   3,          slash       ]};     
-    key <AD02> {[ i,    I,  Tab,   2,          parenleft   ]}; 
-    key <AD03> {[ e,    E,  BackSpace,   1,          parenright  ]};
-    key <AD04> {[ a,    A,  Escape,   0,          equal       ]};  
-	key <AD05> {[ u,    U,  NoSymbol,   NoSymbol,   asterisk    ]};       
-                                                          
-	key <AD06> {[ d,    D,  NoSymbol,   backslash,      apostrophe  ]};   
-    key <AD07> {[ s,    S,  Escape,     percent,        comma       ]};     
-    key <AD08> {[ t,    T,  BackSpace,  asciitilde,     period      ]};     
-    key <AD09> {[ n,    N,  Delete,     numbersign,     colon       ]}; 
-    key <AD10> {[ r,    R,  Tab,        asciicircum,    semicolon   ]};
+    key <AD02> {[ i,    I,  NoSymbol,   2,          parenleft   ]}; 
+    key <AD03> {[ e,    E,  NoSymbol,    1,          parenright  ]};
+    key <AD04> {[ a,    A,  NoSymbol,   0,          equal       ]};  
+	key <AD05> {[ v,    V,  NoSymbol,   NoSymbol,   asterisk    ]};       
+                                                           
+	key <AD06> {[ d,    D,  NoSymbol,   NoSymbol,       apostrophe  ]};   
+    key <AD07> {[ s,    S,  Left,       percent,        comma       ]};     
+    key <AD08> {[ t,    T,  Up,         asciitilde,     period      ]};     
+    key <AD09> {[ n,    N,  Down,       numbersign,     colon       ]}; 
+    key <AD10> {[ r,    R,  Right,      asciicircum,    semicolon   ]};
     key <AD11> {[ Shift_L ]};
 
     ////lower row////
@@ -35,10 +35,10 @@ xkb_symbols "dvp" {
     key <AC04> {[ b,    B,  NoSymbol,   7,          braceright      ]};
 
     key <AC06> {[ Super_L ]};
-    key <AC07> {[ g,    G,  Left,    NoSymbol,   underscore  ]};
-    key <AC08> {[ m,    M,  Up,      NoSymbol,   quotedbl    ]};
-    key <AC09> {[ f,    F,  Down,    NoSymbol,   dollar      ]};
-    key <AC10> {[ w,    W,  Right,   NoSymbol,   question    ]};
+    key <AC07> {[ g,    G,  Escape,     NoSymbol,   underscore  ]};
+    key <AC08> {[ m,    M,  Tab,        NoSymbol,   quotedbl    ]};
+    key <AC09> {[ f,    F,  Delete,     NoSymbol,   dollar      ]};
+    key <AC10> {[ w,    W,  NoSymbol,   NoSymbol,   question    ]};
 
     //bottom row
     key <AB02> {
@@ -46,13 +46,7 @@ xkb_symbols "dvp" {
         actions=[SetMods(mods=Shift+Mod5)]
     };
   
-	key <AB07> {[ space, NoSymbol, Return ] }; 
-     
-	key <AB03> {
-        repeat=True,
-	    symbols[Group1] = [ voidSymbol ],
-	    actions[Group1] = [SetMods(mods=Mod5)]
-    }; 
+	key <AB03> {[ space, NoSymbol, Return ] }; 
     
     key <AB04> {
         symbols=[voidsymbol],
@@ -64,6 +58,7 @@ xkb_symbols "dvp" {
         actions=[SetMods(mods=Control)]
     };
 
+	key <AB07> {[ ISO_Level3_Shift ] }; 
 	
     key <AB08> {
         symbols=[voidsymbol],
@@ -72,7 +67,7 @@ xkb_symbols "dvp" {
 
     key <SPCE> {
         repeat=True,
-	    symbols[Group1] = [ voidSymbol ],
+	    symbols[Group1] = [ voidSymbol, voidSymbol, BackSpace],
 	    actions[Group1] = [SetMods(mods=Mod3)]
 	  };
 

@@ -34,7 +34,7 @@ vim.keymap.set("v", "j", "yv", { noremap = true })
 vim.keymap.set("o", "j", "yv", { noremap = true })
 
 --save file
-vim.keymap.set("n", "<space>w", ":w<CR>", { noremap = true })
+vim.keymap.set("n", "<space>sa", ":w<CR>", { noremap = true })
 
 
 --paste text
@@ -57,6 +57,9 @@ vim.keymap.set("n", "<C-s>", "<C-w>h", { noremap = true })
 vim.keymap.set("n", "<C-r>", "<C-w>l", { noremap = true })
 vim.keymap.set("n", "<C-v>", "<C-w>v", { noremap = true })
 
+--redo
+vim.keymap.set("n", "<C-u>", "<C-r>", { noremap = true })
 
+--toggle options
 vim.keymap.set("n", "<space>on", ":set nu!<CR>", { noremap = true })
 vim.keymap.set("n", "<space>oh", ":set hlsearch!<CR>", { noremap = true })
