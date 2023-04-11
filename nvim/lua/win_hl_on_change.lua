@@ -20,10 +20,10 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 -------------------------------------------------------------
 
 
-local red = '#875f5f'
+local decoration = '#D8DEE9'
 --Highlight for border color of floating window
-vim.api.nvim_set_hl(0, 'FloatBorder', { fg = red, bg = "NONE", bold = true })
+vim.api.nvim_set_hl(0, 'FloatBorder', { fg = decoration, bg = "NONE", bold = true })
 vim.api.nvim_set_hl(0, 'NormalFloat', { fg = "NONE", bg = "NONE" })
 
 --Highlight for window separator
-vim.api.nvim_set_hl(0, 'VertSplit', { fg = red, bg = "NONE", bold = true })
+vim.api.nvim_set_hl(0, 'VertSplit', { fg = decoration, bg = "NONE", bold = true })

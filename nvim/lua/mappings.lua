@@ -8,46 +8,29 @@ vim.keymap.set("n", "f", "<C-e>", { noremap = true })
 vim.keymap.set("v", "m", "<C-y>", { noremap = true })
 vim.keymap.set("v", "f", "<C-e>", { noremap = true })
 
---move to the end of the line
-vim.keymap.set("n", "=", "g_", { noremap = true })
-vim.keymap.set("v", "=", "g_", { noremap = true })
-vim.keymap.set("o", "=", "g_", { noremap = true })
-
-vim.keymap.set("n", "*", "g_", { noremap = true })
-vim.keymap.set("v", "*", "g_", { noremap = true })
-vim.keymap.set("o", "*", "g_", { noremap = true })
+--move to the start/end of line
+vim.api.nvim_set_keymap("", "<space>eh", "^", { noremap = true })
+vim.api.nvim_set_keymap("", "<space>ea", "$", { noremap = true })
 
 --visual and block mode
-vim.keymap.set("n", "<space>v", "<C-v>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<space>v", "<C-v>", { noremap = true })
 
 --delete text
-vim.keymap.set("n", "e", "d", { noremap = true })
-vim.keymap.set("o", "e", "d", { noremap = true })
-vim.keymap.set("v", "e", "d", { noremap = true })
-vim.keymap.set("n", "e_", "dv^", { noremap = true })
-
---copy text
-vim.keymap.set("v", "Ż", "y:call system('wl-copy', @\")<C-M>", { noremap = true })
-vim.keymap.set("n", "j", "yv", { noremap = true })
-vim.keymap.set("n", "jj", "yy", { noremap = true })
-vim.keymap.set("v", "j", "yv", { noremap = true })
-vim.keymap.set("o", "j", "yv", { noremap = true })
+vim.api.nvim_set_keymap("", "e", "d", { noremap = true })
 
 --save file
-vim.keymap.set("n", "<space>sa", ":w<CR>", { noremap = true })
-
-
---paste text
-vim.keymap.set("n", "ż", "y:call system('wl-paste')<C-M>p", { noremap = true })
-vim.keymap.set("i", "ż", "<C-c>:let @\"=system('wl-paste -n')<C-M>pi", { noremap = true })
+vim.keymap.set("n", "<CR>", ":wa!<CR>", { noremap = true })
 
 --folding
 vim.keymap.set("n", "zn", "zj", { noremap = true })
 vim.keymap.set("n", "zt", "zk", { noremap = true })
 
 --copilot
-vim.keymap.set("i", "ō", "copilot#Accept('<CR>')", { expr = true })
+vim.api.nvim_set_keymap("i", "<C-a>", "copilot#Accept('CR')", { noremap = true, silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<C-j>", "<Plug>(copilot-next)", {})
+vim.api.nvim_set_keymap("n", "<space>co", ":Copilot panel<CR>", { noremap = true })
 vim.g.copilot_no_tab_map = true
+
 
 -- buffers
 vim.keymap.set("n", "g<space>", "<C-6>", { noremap = true })

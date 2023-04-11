@@ -1,9 +1,18 @@
 function fish_prompt --description 'Write out the prompt'
-    set -l grey_fg (set_color '#858585')
-    set -l grey_bg (set_color -o -b '#858585')
+    set theme (cat ~/.theme)
+    if [ "$theme" = "dark" ]
+        set -g decoration_fg (set_color '#D8DEE9')
+        set -g decoration_bg (set_color -o -b '#D8DEE9')
+        set -g fg (set_color '#2E3440')
+    else
+        set -g decoration_fg (set_color '#3b4252')
+        set -g decoration_bg (set_color -o -b '#3b4252')
+        set -g fg (set_color '#D8DEE9')
+    end
 
-    set -l red_fg (set_color '#875f5f')
-    set -l red_bg (set_color -o -b '#875f5f')
+    
+    set -l color2_fg (set_color '#858585')
+    set -l color2_bg (set_color -o -b '#858585')
 
     set -l green_fg (set_color '#afd700')
 
@@ -16,10 +25,18 @@ function fish_prompt --description 'Write out the prompt'
         if test -n "$dirty"
             set -f dirty ' '
         end
-        set -f git_info (printf " $red_fg$reset$red_bg$branch$dirty$reset$red_fg$reset")
+        set -f git_info (printf " $color2_fg$reset$color2_bg$branch$dirty$reset$color2_fg$reset")
     end
 
-    printf "$grey_fg$reset$grey_bg$(prompt_pwd -D 3)$reset$grey_fg$reset$git_info\n"
-    printf "╰─ "
+
+    set -l env (echo $VIRTUAL_ENV)
+    if test -n $env
+        set -gx VIRTUAL_ENV_DISABLE_PROMPT 
+        set -l env_path (echo $VIRTUAL_ENV | string split '/' | tail -n 1)
+        set -f venv_info (printf " $color2_fg$reset$color2_bg ($env_path)$reset$color2_fg$reset ")
+    end
+
+    printf "$decoration_fg╭─$fg$decoration_bg$(prompt_pwd -D 3)$reset$decoration_fg$reset$git_info$venv_info\n"
+    printf "$decoration_fg╰─ $reset"
 
 end

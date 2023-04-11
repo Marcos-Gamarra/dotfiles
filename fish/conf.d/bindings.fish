@@ -1,5 +1,5 @@
 set fish_key_bindings fish_vi_key_bindings
-bind -M insert \u014D accept-autosuggestion
+bind -M insert \ca accept-autosuggestion
 bind -M default _ beginning-of-line
 bind -M default = end-of-line
 bind -M default s forward-jump
@@ -16,4 +16,3 @@ bind -M default j fish_clipboard_copy
 bind -M default n forward-jump forward-jump
 
 
-bind -M default \ct efe

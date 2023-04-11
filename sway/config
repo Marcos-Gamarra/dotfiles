@@ -1,6 +1,6 @@
-client.focused #875f5f #875f5f #1c1c1c #ffffff #875f5f
+client.focused #D8DEE9 #D8DEE9 #1c1c1c #ffffff #875f5f
 #client.focused #333333 #60d7cd #1c1c1c #ffffff #60d7cd
-client.unfocused #333333 #333333 #b0b0b0 #ffffff #858585
+client.unfocused #3b4252 #3b4252 #b0b0b0 #ffffff #858585
 
 
 workspace_layout tabbed
@@ -21,7 +21,7 @@ set $term foot
 for_window [app_id="chromium"] move container to workspace 1
 exec chromium --enable-features=UseOzonePlatform --ozone-platform=wayland
 workspace number 2
-exec $term -c /home/hi/.config/foot/dark.ini
+exec $term -c /home/hi/.config/foot/nord.ini
 
 #mod key
 set $mod Mod4
@@ -55,7 +55,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     #copy and paste
 
     # Start a terminal
-    bindsym $mod+a exec $term -c /home/hi/.config/foot/dark.ini
+    bindsym $mod+a exec $term -c /home/hi/.config/foot/nord.ini
 
     # Start wofi
     bindsym $mod+d exec wofi --insensitive --show drun

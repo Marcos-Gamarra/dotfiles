@@ -1,6 +1,11 @@
+set theme (cat ~/.theme)
+if [ "$theme" = "dark" ]
+    theme.sh nord
+else
+    theme.sh nord-light
+end
+
 if status is-interactive
-
-
     # Emulates vim's cursor shape behavior
     set fish_cursor_default block
     set fish_cursor_insert line
@@ -20,4 +25,5 @@ if status is-interactive
     set -x EDITOR nvim
     zoxide init fish | source
 end 
+
 

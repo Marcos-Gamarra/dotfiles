@@ -1,10 +1,9 @@
-local decoration = '#875f5f'
+local decoration_bg = vim.g.decoration_bg
+local decoration_fg = vim.g.decoration_fg
 local grey = "#858585"
 local api = vim.api
-local white_fg = "#eeeeee"
-
-api.nvim_set_hl(0, "TablineBufferActive", { bg = decoration, fg = white_fg, bold = true })
-api.nvim_set_hl(0, "TablineBufferInactive", { bg = grey, fg = "#333333" })
+api.nvim_set_hl(0, "TablineBufferActive", { bg = decoration_bg, fg = decoration_fg, bold = true })
+api.nvim_set_hl(0, "TablineBufferInactive", { bg = grey, fg = "#eeeeee" })
 
 local active_buf_hi = '%#TablineBufferActive#'
 local inactive_buf_hi = '%#TablineBufferInactive#'

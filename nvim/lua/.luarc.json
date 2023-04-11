@@ -1,0 +1,29 @@
+{
+    "workspace.library": [
+        "/home/hi/.config/nvim",
+        "/etc/xdg/nvim",
+        "/home/hi/.local/share/nvim/site",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/LuaSnip",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/cmp-nvim-lsp",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/copilot.vim",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/efe",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/hydra.nvim",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/indent-blankline.nvim",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/leap.nvim",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/neoformat",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/nvim-cmp",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/nvim-surround",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/nvim-tree.lua",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/nvim-treesitter",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/plenary.nvim",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/seoul256.vim",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/telescope.nvim",
+        "/usr/share/nvim/runtime",
+        "/usr/share/nvim/runtime/pack/dist/opt/matchit",
+        "/usr/lib/nvim",
+        "/home/hi/.local/share/nvim/site/pack/plugins/start/cmp-nvim-lsp/after",
+        "/usr/share/vim/vimfiles",
+        "${3rd}/luassert/library"
+    ]
+}
