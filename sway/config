@@ -1,16 +1,16 @@
-client.focused #D8DEE9 #D8DEE9 #1c1c1c #ffffff #875f5f
+client.focused #D8DEE9 #D8DEE9 #1c1c1c #ffffff #b0b0b0
 #client.focused #333333 #60d7cd #1c1c1c #ffffff #60d7cd
-client.unfocused #3b4252 #3b4252 #b0b0b0 #ffffff #858585
+client.unfocused #3b4252 #3b4252 #b0b0b0 #ffffff #3b4252
 
 
 workspace_layout tabbed
 
-titlebar_padding 6 6
+titlebar_padding 6 5
 
 font SauceCodePro Bold 14
 
-default_border pixel 2
-hide_edge_borders --i3 both
+default_border pixel  3
+hide_edge_borders --i3 smart
 
 
 
@@ -25,9 +25,9 @@ exec $term -c /home/hi/.config/foot/nord.ini
 
 #mod key
 set $mod Mod4
-#h and s for horizontal movement
-set $left s
+
 set $right r
+set $left s
 
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -77,6 +77,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
+    # Bring browser to current workspace in vertical split
+    bindsym $mod+l exec fish ~/.config/fish/functions/browser_to_workspace.fish
 
     # Move your focus around
     bindsym $mod+$left focus left
@@ -85,20 +87,17 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Left focus left
 	bindsym $mod+Right focus right
 
-	# Move the focused window with the same, but add Shift
-	bindsym $mod+Shift+$left move left
-	bindsym $mod+Shift+$right move right
-	# Ditto, with arrow keys
-	bindsym $mod+Shift+Left move left
-	bindsym $mod+Shift+Down move down
-	bindsym $mod+Shift+Up move up
-	bindsym $mod+Shift+Right move right
 
-	#bindsym $mod+v splith
-	#bindsym $mod+z splitv
-	#bindsym $mod+Ctrl+t layout tabbed
-	bindsym $mod+v layout toggle splith tabbed
-	bindsym $mod+Ctrl+l sticky toggle
+	bindsym $mod+mod5+$right move right
+	bindsym $mod+mod5+$left move left
+
+	bindsym $mod+mod5+Left move left
+	bindsym $mod+mod5+Down move down
+	bindsym $mod+mod5+Up move up
+	bindsym $mod+mod5+Right move right
+
+	bindsym $mod+v splith
+	bindsym $mod+mod3+v layout toggle splith tabbed
 
 
 	# Toggle the current focus between tiling and floating mode
@@ -106,7 +105,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Swap focus between the tiling area and the floating area
     #bindsym $mod+e workspace back_and_forth
 	bindsym $mod+b fullscreen
-    #bindsym $mod+z focus parent
+    bindsym $mod+p focus parent
     bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+minus scratchpad show
 
@@ -138,14 +137,13 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+9 move container to workspace number 
     bindsym $mod+Shift+0 move container to workspace number 
 
-    bindsym $mod+n workspace next
-    bindsym $mod+t workspace prev
+    #bindsym $mod+n workspace next
+    #bindsym $mod+t workspace prev
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
 # Resizing containers:
 #
-bindsym $mod+c mode "resize"
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $right resize grow width 10px

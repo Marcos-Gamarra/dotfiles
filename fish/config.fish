@@ -1,10 +1,3 @@
-set theme (cat ~/.theme)
-if [ "$theme" = "dark" ]
-    theme.sh nord
-else
-    theme.sh nord-light
-end
-
 if status is-interactive
     # Emulates vim's cursor shape behavior
     set fish_cursor_default block

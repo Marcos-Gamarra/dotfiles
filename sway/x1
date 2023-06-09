@@ -27,7 +27,7 @@ exec $term -c /home/hi/.config/foot/dark.ini
 set $mod Mod4
 
 #h and s for horizontal movement
-set $left h
+et $left h
 set $right s
 
 
