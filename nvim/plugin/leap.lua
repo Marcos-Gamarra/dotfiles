@@ -14,8 +14,8 @@ require('leap').setup {
         repeat_search = '<enter>',
         next_target   = '<enter>',
         prev_target   = '<tab>',
-        next_group    = 'S',
-        prev_group    = 'H',
+        next_group    = 'R',
+        prev_group    = 'S',
         eol           = '<space>',
     },
 }

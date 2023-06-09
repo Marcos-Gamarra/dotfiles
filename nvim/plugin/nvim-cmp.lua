@@ -68,8 +68,8 @@ cmp.setup({
         },
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-f>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-m>'] = cmp.mapping.scroll_docs(4),
+        ['M'] = cmp.mapping.scroll_docs(-4),
+        ['F'] = cmp.mapping.scroll_docs(4),
         ['<C-space>'] = cmp.mapping.complete(),
         ['<C-h>'] = cmp.mapping.abort(),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.

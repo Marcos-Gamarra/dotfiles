@@ -9,21 +9,21 @@ vim.keymap.set("v", "m", "<C-y>", { noremap = true })
 vim.keymap.set("v", "f", "<C-e>", { noremap = true })
 
 --move to the start/end of line
-vim.api.nvim_set_keymap("", "<space>eh", "^", { noremap = true })
-vim.api.nvim_set_keymap("", "<space>ea", "$", { noremap = true })
+vim.api.nvim_set_keymap("", "s<return>", "^", { noremap = true })
+vim.api.nvim_set_keymap("", "r<return>", "$", { noremap = true })
 
 --visual and block mode
 vim.api.nvim_set_keymap("n", "<space>v", "<C-v>", { noremap = true })
 
 --delete text
 vim.api.nvim_set_keymap("", "e", "d", { noremap = true })
+vim.api.nvim_set_keymap("", "h", "dv", { noremap = true })
+
+--folds
+vim.api.nvim_set_keymap("n", "zl", "zo", { noremap = true })
 
 --save file
 vim.keymap.set("n", "<CR>", ":wa!<CR>", { noremap = true })
-
---folding
-vim.keymap.set("n", "zn", "zj", { noremap = true })
-vim.keymap.set("n", "zt", "zk", { noremap = true })
 
 --copilot
 vim.api.nvim_set_keymap("i", "<C-a>", "copilot#Accept('CR')", { noremap = true, silent = true, expr = true })
@@ -39,6 +39,8 @@ vim.keymap.set("n", "g<space>", "<C-6>", { noremap = true })
 vim.keymap.set("n", "<C-s>", "<C-w>h", { noremap = true })
 vim.keymap.set("n", "<C-r>", "<C-w>l", { noremap = true })
 vim.keymap.set("n", "<C-v>", "<C-w>v", { noremap = true })
+vim.keymap.set("n", "<C-m>", "<C-w>>", { noremap = true })
+vim.keymap.set("n", "<C-f>", "<C-w><", { noremap = true })
 
 --redo
 vim.keymap.set("n", "<C-u>", "<C-r>", { noremap = true })

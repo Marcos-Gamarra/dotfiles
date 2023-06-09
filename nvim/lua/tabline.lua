@@ -12,64 +12,103 @@ local inactive_buf_hi = '%#TablineBufferInactive#'
 local decoration_sep_hi = '%#Separatordecoration#'
 local grey_sep_hi = '%#SeparatorGrey#'
 
-local targets = { 'e', 'a', 'i', 'h', 'o', 'u', 'y', 'k' }
+local labels = { 'e', 'a', 'i', 'h', 'o', 'u', 'y', 'k' }
+local positions = { 1, 2, 3, 4, 5, 6, 7, 8 }
 
-local function Tabline()
-    local tabline = '%#Normal#'
-    local buf = vim.api.nvim_list_bufs()
-    local buf_listed = {}
 
-    for _, v in ipairs(buf) do
-        if (vim.fn.buflisted(v) == 1) then
-            table.insert(buf_listed, v)
+local function get_listed_buffers()
+    local listed_buffers = {}
+    local buflist = vim.api.nvim_list_bufs()
+    for _, v in pairs(buflist) do
+        if vim.fn.buflisted(v) == 1 then
+            table.insert(listed_buffers, v)
         end
     end
 
-    for k, v in ipairs(buf_listed) do
-        local buf_name = ''
-        local current_buf = vim.fn.bufnr('%')
-        if (vim.fn.buflisted(current_buf) ~= 1) then
+    return listed_buffers
+end
+
+
+local function get_buffer_names()
+    local buffer_names = {}
+    local ordered_buffer_names = {}
+    local listed_buffers = get_listed_buffers()
+    for i, v in ipairs(listed_buffers) do
+        local name = vim.fn.bufname(v)
+        if buffer_names[name] == nil then
+            buffer_names[name] = positions[i]
+            ordered_buffer_names[positions[i]] = { bufnr = v, name = name }
+        end
+    end
+    return ordered_buffer_names
+end
+
+
+local function Tabline()
+    local buffer_names = get_buffer_names()
+    local tabline = '%#Normal#'
+    local current_buffer = vim.fn.bufnr('%')
+
+    for i, v in ipairs(buffer_names) do
+        if (vim.fn.buflisted(current_buffer) ~= 1) then
             return
         end
-        if (vim.fn.bufnr('%') == vim.fn.bufnr(v)) then
+        local buf_name = ''
+        if (current_buffer == v.bufnr) then
             buf_name = decoration_sep_hi .. ''
-            local name = vim.fn.fnamemodify(vim.fn.bufname(v), ":t")
-            buf_name = buf_name .. active_buf_hi .. targets[k] .. ": " .. name
+            buf_name = buf_name .. active_buf_hi .. labels[i] .. ": " .. v.name .. " "
             buf_name = buf_name .. decoration_sep_hi .. ' '
             buf_name = active_buf_hi .. buf_name .. inactive_buf_hi
         else
             buf_name = grey_sep_hi .. ''
-            local name = vim.fn.fnamemodify(vim.fn.bufname(v), ":t")
-            buf_name = buf_name .. inactive_buf_hi .. targets[k] .. ": " .. name
+            buf_name = buf_name .. inactive_buf_hi .. labels[i] .. ": " .. v.name .. " "
             buf_name = buf_name .. grey_sep_hi .. ' '
             buf_name = active_buf_hi .. buf_name .. inactive_buf_hi
         end
         tabline = tabline .. buf_name
-        vim.keymap.set(
-            { 'n' },
-            'g' .. targets[k],
-            ':b' .. v .. '<CR>',
-            { silent = true }
-        )
     end
 
-    -- hide tabline if only one buffer is open
-    if (#buf_listed == 1) then
-        vim.opt.showtabline = 0
-        vim.api.nvim_set_option('tabline',
-            '')
-        return
-    end
-
-    vim.opt.showtabline = 2
     vim.api.nvim_set_option('tabline',
         tabline .. '%#Normal#')
 end
 
-local opts = {
+local function set_keymaps()
+    for i, v in ipairs(get_buffer_names()) do
+        vim.keymap.set(
+            { 'n' },
+            'g' .. labels[i],
+            ':b' .. v.bufnr .. '<CR>',
+            { silent = true }
+        )
+    end
+end
+
+function SwitchBufferPosition(new_position)
+    local buffer_names = get_buffer_names()
+    local current_buffer_number = vim.fn.bufnr('%')
+    for i, v in ipairs(buffer_names) do
+        if v.bufnr == current_buffer_number then
+            local tmp = positions[i]
+            positions[i] = positions[new_position]
+            positions[new_position] = tmp
+            Tabline()
+            set_keymaps()
+            break
+        end
+    end
+end
+
+local autocmd_buf_enter = {
     callback = function()
         Tabline()
     end
 }
 
-vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, opts)
+local autocmd_buf_create = {
+    callback = function()
+        set_keymaps()
+    end
+}
+
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, autocmd_buf_enter)
+vim.api.nvim_create_autocmd({ "BufNew", "BufDelete" }, autocmd_buf_create)
