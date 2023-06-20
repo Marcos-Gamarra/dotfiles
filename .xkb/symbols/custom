@@ -28,6 +28,7 @@ xkb_symbols "dvp" {
     key <AD10> {[ r,    R,  Delete,     asciicircum,    semicolon   ]};
     key <AD11> {[ Shift_L ]};
 
+
     ////lower row////
     key <AC01> {[ z,    Z,  NoSymbol,   NoSymbol,   bracketleft     ]};
     key <AC02> {[ x,    X,  NoSymbol,   9,          bracketright    ]};
@@ -36,9 +37,10 @@ xkb_symbols "dvp" {
 
     key <AC06> {[ Super_L ]};
     key <AC07> {[ g,    G,  Left,    NoSymbol,   underscore  ]};
-    key <AC08> {[ m,    M,  Up,      NoSymbol,   quotedbl    ]};
+    key <AC08> {[ m,    M,  Up,      grave,      quotedbl    ]};
     key <AC09> {[ f,    F,  Down,    NoSymbol,   dollar      ]};
     key <AC10> {[ w,    W,  Right,   NoSymbol,   question    ]};
+    
     
 
     //bottom row
@@ -47,7 +49,12 @@ xkb_symbols "dvp" {
         actions=[SetMods(mods=Shift+Mod5)]
     };
   
-	key <AB07> {[ space, NoSymbol, Return ] }; 
+	key <AB07> {[ space, NoSymbol, Return, NoSymbol, zabovedot ]}; 
+    
+    key <SPCE> {
+        type[Group1]="ONE_LEVEL",
+	    symbols[Group1] = [ ISO_Level5_Shift ]
+	};
      
 	key <AB03> {
         type[Group1] = "ONE_LEVEL",
@@ -63,23 +70,15 @@ xkb_symbols "dvp" {
         symbols=[voidsymbol],
         actions=[SetMods(mods=Control)]
     };
-
 	
     key <AB08> {
         symbols=[voidsymbol],
         actions=[SetMods(mods=Shift+Mod5)]
     }; 
-
-    key <SPCE> {
-        repeat=True,
-	    symbols[Group1] = [ voidSymbol ],
-	    actions[Group1] = [SetMods(mods=Mod3)]
-	  };
-
+    
     key <CAPS> {
 	    type[Group1]="ONE_LEVEL",
 	    symbols[Group1] = [ISO_Next_Group]
 	};
-	  
 
 };
