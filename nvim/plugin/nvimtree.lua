@@ -8,7 +8,7 @@ local function on_attach(bufnr)
     local function opts(desc)
         return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
-    vim.keymap.set('n', '<Left>', api.tree.change_root_to_parent, opts('Up'))
+    vim.keymap.set('n', '<BS>', api.tree.change_root_to_parent, opts('Up'))
     vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', 'p', api.node.open.preview, opts('Open Preview'))
     vim.keymap.set('n', 'c', api.tree.collapse_all, opts('Collapse'))

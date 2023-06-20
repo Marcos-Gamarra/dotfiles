@@ -16,6 +16,7 @@ local labels = { 'e', 'a', 'i', 'h', 'o', 'u', 'y', 'k' }
 local positions = { 1, 2, 3, 4, 5, 6, 7, 8 }
 
 
+--returns a table with the buffer numbers of the current listed buffers
 local function get_listed_buffers()
     local listed_buffers = {}
     local buflist = vim.api.nvim_list_bufs()
@@ -24,8 +25,12 @@ local function get_listed_buffers()
             table.insert(listed_buffers, v)
         end
     end
-
     return listed_buffers
+end
+
+local function buffer_name_with_parent_dir(bufnr)
+    local bufname = vim.fn.bufname(bufnr)
+    return vim.fn.fnamemodify(bufname, ":p:h:t") .. "/" .. vim.fn.fnamemodify(bufname, ":t")
 end
 
 
@@ -35,9 +40,21 @@ local function get_buffer_names()
     local listed_buffers = get_listed_buffers()
     for i, v in ipairs(listed_buffers) do
         local name = vim.fn.bufname(v)
+        name = vim.fn.fnamemodify(name, ":t")
         if buffer_names[name] == nil then
             buffer_names[name] = positions[i]
             ordered_buffer_names[positions[i]] = { bufnr = v, name = name }
+        else
+            local existing_buffer_number = ordered_buffer_names[buffer_names[name]].bufnr
+            local new_name_existing_buffer = buffer_name_with_parent_dir(existing_buffer_number)
+            buffer_names[new_name_existing_buffer] = buffer_names[name]
+            ordered_buffer_names[buffer_names[name]].name = new_name_existing_buffer
+
+            local name_for_new_buffer = buffer_name_with_parent_dir(v)
+            buffer_names[name_for_new_buffer] = positions[i]
+            ordered_buffer_names[positions[i]] = { bufnr = v, name = name_for_new_buffer }
+
+            buffer_names[name] = nil
         end
     end
     return ordered_buffer_names
@@ -104,11 +121,11 @@ local autocmd_buf_enter = {
     end
 }
 
-local autocmd_buf_create = {
+local autocmd_set_keymaps = {
     callback = function()
         set_keymaps()
     end
 }
 
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, autocmd_buf_enter)
-vim.api.nvim_create_autocmd({ "BufNew", "BufDelete" }, autocmd_buf_create)
+vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, autocmd_set_keymaps)
