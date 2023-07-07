@@ -14,10 +14,12 @@ vim.api.nvim_set_keymap("", "r<return>", "$", { noremap = true })
 
 --visual and block mode
 vim.api.nvim_set_keymap("n", "<space>v", "<C-v>", { noremap = true })
+vim.api.nvim_set_keymap("n", "lv", "V", { noremap = true })
+
 
 --delete text
 vim.api.nvim_set_keymap("", "e", "d", { noremap = true })
-vim.api.nvim_set_keymap("", "h", "dv", { noremap = true })
+vim.api.nvim_set_keymap("", "h", "c", { noremap = true })
 
 --folds
 vim.api.nvim_set_keymap("n", "zl", "zo", { noremap = true })

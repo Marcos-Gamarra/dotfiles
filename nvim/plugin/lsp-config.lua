@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, win_opts, ...)
@@ -17,8 +17,9 @@ vim.api.nvim_set_keymap('n', 'lq', '<cmd>lua vim.diagnostic.setloclist()<CR>', o
 
 
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     local opts_on_attach = { noremap = true, silent = true, buffer = bufnr }
+    client.server_capabilities.semanticTokensProvider = nil
     vim.keymap.set('n', '=', require("nvim-navbuddy").open, opts_on_attach)
     vim.keymap.set('n', 'lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts_on_attach)
     vim.keymap.set('n', 'ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts_on_attach)
@@ -60,6 +61,7 @@ require 'lspconfig'.clangd.setup {
 
 
 require 'lspconfig'.tsserver.setup {
+    capabilities = capabilities,
     on_attach = on_attach,
 }
 
