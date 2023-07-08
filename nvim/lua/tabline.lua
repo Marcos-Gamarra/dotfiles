@@ -1,5 +1,3 @@
-local decoration_bg = vim.g.decoration_bg
-local decoration_fg = vim.g.decoration_fg
 local grey = "#858585"
 local api = vim.api
 local separator_left = ""
@@ -94,6 +92,7 @@ local function renderTabline()
         end
         local buf_name = ''
         if (current_buffer == buffer.number) then
+            current_buf_index = i
             table.insert(tabline, decoration_sep_hi)
             table.insert(tabline, separator_left)
             table.insert(tabline, active_buf_hi)
@@ -140,7 +139,12 @@ local function setKeymaps()
     end
 end
 
-function SwitchBufferPosition(label)
+function SwitchBufferPosition()
+    local label = vim.fn.getchar()
+    label = string.char(label)
+    if label == '' then
+        return
+    end
     local current_buffer_pos = nil
     local target_buffer_pos = nil
     for i, buffer in ipairs(buffers) do
@@ -160,6 +164,13 @@ function SwitchBufferPosition(label)
     renderTabline()
     setKeymaps()
 end
+
+vim.keymap.set(
+    { 'n' },
+    'gs',
+    ':lua SwitchBufferPosition()<CR>',
+    { silent = true }
+)
 
 local autocmd_render_tabline = {
     callback = function()
