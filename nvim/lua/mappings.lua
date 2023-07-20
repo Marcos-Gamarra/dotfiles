@@ -19,7 +19,8 @@ vim.api.nvim_set_keymap("n", "lv", "V", { noremap = true })
 
 --delete text
 vim.api.nvim_set_keymap("", "e", "d", { noremap = true })
-vim.api.nvim_set_keymap("", "h", "c", { noremap = true })
+vim.api.nvim_set_keymap("", "<space>e", "dv", { noremap = true })
+vim.api.nvim_set_keymap("", "h", "c", { noremap = false })
 
 --folds
 vim.api.nvim_set_keymap("n", "zl", "zo", { noremap = true })

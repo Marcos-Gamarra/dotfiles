@@ -1,5 +1,7 @@
 local grey = "#858585"
 local api = vim.api
+local decoration_bg = vim.g.decoration_bg
+local decoration_fg = vim.g.decoration_fg
 local separator_left = ""
 local separator_right = ""
 api.nvim_set_hl(0, "TablineBufferActive", { bg = decoration_bg, fg = decoration_fg, bold = true })
@@ -8,79 +10,71 @@ api.nvim_set_hl(0, "TablineBufferInactive", { bg = grey, fg = "#eeeeee" })
 local active_buf_hi = '%#TablineBufferActive#'
 local inactive_buf_hi = '%#TablineBufferInactive#'
 
---Separatordecoration highlight defined in statusline.lua file
 local decoration_sep_hi = '%#Separatordecoration#'
 local grey_sep_hi = '%#SeparatorGrey#'
 
 local labels = { 'e', 'a', 'i', 'h', 'o', 'u', 'y', 'k' }
 
 local buffers = {}
+local buffer_names = {}
+local buffer_indexes = {}
 
-local function createBuffer(bufNumber)
+local function setKeymaps()
+    for i, buffer in ipairs(buffers) do
+        vim.keymap.set(
+            { 'n' },
+            'g' .. labels[i],
+            ':b' .. buffer.number .. '<CR>',
+            { silent = true }
+        )
+    end
+end
+
+local function buffer_name_with_parent_dir(bufnr)
+    local bufname = vim.fn.bufname(bufnr)
+    return vim.fn.fnamemodify(bufname, ":p:h:t") .. "/" .. vim.fn.fnamemodify(bufname, ":t")
+end
+
+local function createBufferDescriptor(bufNumber)
     local name = api.nvim_buf_get_name(bufNumber)
     name = vim.fn.fnamemodify(name, ":t")
+    if buffer_names[name] == nil then
+        buffer_names[name] = bufNumber
+    else
+        local existing_name = buffer_name_with_parent_dir(buffer_names[name])
+        local existing_index = buffer_indexes[buffer_names[name]]
+        buffers[existing_index].name = existing_name
+        name = buffer_name_with_parent_dir(bufNumber)
+    end
     return {
         name = name,
         number = bufNumber,
     }
 end
 
-local function updateBuffersList()
+local function generateBufferList(skip_bufnr)
+    buffer_names = {}
     local aux_index = 1
     local buflist = vim.api.nvim_list_bufs()
     for _, bufNumber in pairs(buflist) do
-        if vim.fn.buflisted(bufNumber) == 1 then
-            local buffer = createBuffer(bufNumber)
+        if vim.fn.buflisted(bufNumber) == 1 and bufNumber ~= skip_bufnr then
+            buffer_indexes[bufNumber] = aux_index
+            local buffer = createBufferDescriptor(bufNumber)
             buffers[aux_index] = buffer
             aux_index = aux_index + 1
         end
     end
+    setKeymaps()
 end
 
 local function removeCurrentBufferFromList()
     local currentBuffer = vim.fn.bufnr('%')
-    for i, buffer in ipairs(buffers) do
-        if buffer.number == currentBuffer then
-            table.remove(buffers, i)
-            break
-        end
-    end
+    local currentBufferIndex = buffer_indexes[currentBuffer]
+    table.remove(buffers, currentBufferIndex)
+    generateBufferList(currentBuffer)
 end
 
-updateBuffersList()
-
-
---local function buffer_name_with_parent_dir(bufnr)
---    local bufname = vim.fn.bufname(bufnr)
---    return vim.fn.fnamemodify(bufname, ":p:h:t") .. "/" .. vim.fn.fnamemodify(bufname, ":t")
---end
---
---
---local function get_buffer_names()
---    local buffer_names = {}
---    local ordered_buffer_names = {}
---    local listed_buffers = get_listed_buffers()
---    for i, v in ipairs(listed_buffers) do
---        local name = vim.fn.bufname(v)
---        name = vim.fn.fnamemodify(name, ":t")
---        if buffer_names[name] == nil then
---            buffer_names[name] = positions[i]
---            ordered_buffer_names[positions[i]] = { bufnr = v, name = name }
---        else
---            local existing_buffer_number = ordered_buffer_names[buffer_names[name]].bufnr
---            local new_name_existing_buffer = buffer_name_with_parent_dir(existing_buffer_number)
---            buffer_names[new_name_existing_buffer] = buffer_names[name]
---            ordered_buffer_names[buffer_names[name]].name = new_name_existing_buffer
---
---            local name_for_new_buffer = buffer_name_with_parent_dir(v)
---            buffer_names[name_for_new_buffer] = positions[i]
---            ordered_buffer_names[positions[i]] = { bufnr = v, name = name_for_new_buffer }
---
---            buffer_names[name] = nil
---        end
---    end
---    return ordered_buffer_names
---end
+generateBufferList()
 
 local function renderTabline()
     local current_buffer = vim.fn.bufnr('%')
@@ -92,7 +86,6 @@ local function renderTabline()
         end
         local buf_name = ''
         if (current_buffer == buffer.number) then
-            current_buf_index = i
             table.insert(tabline, decoration_sep_hi)
             table.insert(tabline, separator_left)
             table.insert(tabline, active_buf_hi)
@@ -128,16 +121,7 @@ local function renderTabline()
     vim.api.nvim_set_option('tabline', tabline_str)
 end
 
-local function setKeymaps()
-    for i, buffer in ipairs(buffers) do
-        vim.keymap.set(
-            { 'n' },
-            'g' .. labels[i],
-            ':b' .. buffer.number .. '<CR>',
-            { silent = true }
-        )
-    end
-end
+
 
 function SwitchBufferPosition()
     local label = vim.fn.getchar()
@@ -172,6 +156,7 @@ vim.keymap.set(
     { silent = true }
 )
 
+
 local autocmd_render_tabline = {
     callback = function()
         renderTabline()
@@ -180,15 +165,13 @@ local autocmd_render_tabline = {
 
 local autocmd_update_buffer_list = {
     callback = function()
-        updateBuffersList()
-        setKeymaps()
+        generateBufferList()
     end
 }
 
 local autocmd_remove_current_buffer_from_list = {
     callback = function()
         removeCurrentBufferFromList()
-        setKeymaps()
     end
 }
 

@@ -16,7 +16,6 @@ vim.api.nvim_set_keymap('n', 'lq', '<cmd>lua vim.diagnostic.setloclist()<CR>', o
 -- after the language server attaches to the current buffer
 
 
-
 local on_attach = function(client, bufnr)
     local opts_on_attach = { noremap = true, silent = true, buffer = bufnr }
     client.server_capabilities.semanticTokensProvider = nil
