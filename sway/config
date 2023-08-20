@@ -17,9 +17,9 @@ hide_edge_borders --i3 smart
 #terminal
 set $term foot
 
-#exec chromium with wayland flag
+#--enable-features=UseOzonePlatform --ozone-platform=wayland
+exec chromium --ozone-platform-hint=auto
 for_window [app_id="chromium"] move container to workspace 1
-exec chromium --enable-features=UseOzonePlatform --ozone-platform=wayland
 workspace number 2
 exec $term -c /home/hi/.config/foot/nord.ini
 
@@ -55,10 +55,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     #copy and paste
 
     # Start a terminal
-    bindsym $mod+a exec $term -c /home/hi/.config/foot/nord.ini
+    bindsym $mod+a exec $term -c ~/.config/foot/nord.ini
+    bindsym $mod+mod3+a exec fish ~/.config/sway/open_vertical_term.fish
+
 
     # Start wofi
-    bindsym $mod+d exec wofi --insensitive --show drun
+    bindsym $mod+d exec fuzzel
 
     # Kill focused window
     bindsym $mod+h kill
@@ -78,7 +80,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Moving around:
     # Bring browser to current workspace in vertical split
-    bindsym $mod+l exec fish ~/.config/fish/functions/browser_to_workspace.fish
+    bindsym $mod+l exec fish ~/.config/sway/browser_to_workspace.fish
+
 
     # Move your focus around
     bindsym $mod+$left focus left
@@ -103,7 +106,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 	# Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
     # Swap focus between the tiling area and the floating area
-    #bindsym $mod+e workspace back_and_forth
+    bindsym $mod+space workspace back_and_forth
 	bindsym $mod+b fullscreen
     bindsym $mod+p focus parent
     bindsym $mod+Shift+minus move scratchpad

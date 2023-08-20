@@ -5,7 +5,6 @@ if status is-interactive
     set fish_cursor_replace_one underscore
 
     alias battery="cat /sys/class/power_supply/BAT0/capacity"
-    alias chromium="chromium --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
     alias rm="rm -i"
 
