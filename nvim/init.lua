@@ -1,8 +1,8 @@
 require('mappings')
-require('theme')
+--require('theme')
 require('statusline')
 require('tabline')
-require('win_hl_on_change')
+--require('win_hl_on_change')
 
 vim.opt.laststatus = 3
 vim.opt.number = true

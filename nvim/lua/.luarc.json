@@ -26,5 +26,6 @@
         "/usr/share/vim/vimfiles",
         "${3rd}/luassert/library"
     ],
-    "workspace.checkThirdParty": false
+    "workspace.checkThirdParty": false,
+    "completion.autoRequire": false
 }

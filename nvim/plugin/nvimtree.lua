@@ -21,7 +21,6 @@ end
 require("nvim-tree").setup({
     on_attach      = on_attach,
     sort_by        = "case_sensitive",
-    remove_keymaps = true,
     actions        = {
         change_dir = {
             global = true,

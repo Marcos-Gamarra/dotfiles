@@ -1,3 +1,5 @@
+@import "catppuccin_frappe.css";
+
 * {
     font-family: "SauceCodePro Nerd Font", monospace;
 }
@@ -5,7 +7,7 @@
 window#waybar {
 	border-radius: 0px;
     color: #cccccc;
-    background: #858585;
+    background: @surface1;
 }
 
 #workspaces button {
@@ -17,15 +19,15 @@ window#waybar {
 	margin-bottom: 10px;
     margin-left: 6px;
 	margin-right: 6px;
-    background: #333333;
-    color: #cccccc;
+    background: @base;
+    color: @text;
 	font-size: 25px;
 	font-weight: bold;
 }
 
 #workspaces button.focused {
-    background: #D8DEE9;
-	color: #333333;
+    background: @blue;
+	color: @base;
 }
 
 #workspaces button.persistent {
@@ -33,8 +35,8 @@ window#waybar {
     padding-bottom: 10px;
 	padding-left:3px;
 	padding-right: 3px;
-    background: #666666;
-    color: #cccccc;
+    background: @overlay0;
+    color: @text;
 	font-weight: bold;
 }
 
@@ -47,8 +49,8 @@ window#waybar {
 	margin-top: 10px;
 	margin-left: 6px;
 	margin-right: 6px;
-    background: #666666;
-    color: #cccccc;
+    background: @overlay0;
+    color: @text;
 	font-size: 22px;
 	font-weight: bold
 }
@@ -65,8 +67,8 @@ window#waybar {
 	margin-top: 0px;
 	margin-left: 6px;
 	margin-right: 6px;
-    background: #666666;
-    color: #cccccc;
+    background: @overlay0;
+    color: @text;
 	font-size: 22px;
 	font-weight: bold
 }
@@ -83,8 +85,8 @@ window#waybar {
 	margin-top: 10px;
 	margin-left: 6px;
 	margin-right: 6px;
-    background: #666666;
-    color: #cccccc;
+    background: @overlay0;
+    color: @text;
 	font-size: 22px;
 	font-weight: bold
 }
@@ -98,8 +100,8 @@ window#waybar {
 	margin-bottom: 10px;
 	margin-left: 6px;
 	margin-right: 6px;
-    background: #666666;
-    color: #cccccc;
+    background: @overlay0;
+    color: @text;
 	font-size: 22px;
 	font-weight: bold;
 }

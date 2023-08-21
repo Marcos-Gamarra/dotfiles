@@ -7,6 +7,6 @@ vim.keymap.set('n', '<space>tb', builtin.buffers, {})
 require('telescope').setup {
     defaults = {
         layout_strategy = 'vertical',
-        file_ignore_patterns = {'.git', 'node_modules', 'vendor', 'target'},
+        file_ignore_patterns = { '.git', 'node_modules', 'vendor', 'target' },
     }
 }

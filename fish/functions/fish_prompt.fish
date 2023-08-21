@@ -1,20 +1,10 @@
 function fish_prompt --description 'Write out the prompt'
-    set theme (cat ~/.theme)
-    if [ "$theme" = "dark" ]
-        set -g decoration_fg (set_color '#D8DEE9')
-        set -g decoration_bg (set_color -o -b '#D8DEE9')
-        set -g fg (set_color '#2E3440')
-    else
-        set -g decoration_fg (set_color '#3b4252')
-        set -g decoration_bg (set_color -o -b '#3b4252')
-        set -g fg (set_color '#D8DEE9')
-    end
-
+    set -g decoration_fg (set_color '#8caaee')
+    set -g decoration_bg (set_color -o -b '#8caaee')
+    set -g fg (set_color '#303446')
     
-    set -l color2_fg (set_color '#858585')
-    set -l color2_bg (set_color -o -b '#858585')
-
-    set -l green_fg (set_color '#afd700')
+    set -l color2_fg (set_color '#737994')
+    set -l color2_bg (set_color -o -b '#737994')
 
     set -l reset (set_color normal)
 

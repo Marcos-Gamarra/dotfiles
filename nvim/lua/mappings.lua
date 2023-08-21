@@ -28,11 +28,6 @@ vim.api.nvim_set_keymap("n", "zl", "zo", { noremap = true })
 --save file
 vim.keymap.set("n", "<CR>", ":wa!<CR>", { noremap = true })
 
---copilot
-vim.api.nvim_set_keymap("i", "<C-a>", "copilot#Accept('CR')", { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<C-j>", "<Plug>(copilot-next)", {})
-vim.api.nvim_set_keymap("n", "<space>co", ":Copilot panel<CR>", { noremap = true })
-vim.g.copilot_no_tab_map = true
 
 
 -- buffers

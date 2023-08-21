@@ -1,17 +1,22 @@
-local grey = "#858585"
+local frappe = require("catppuccin.palettes").get_palette "frappe"
+
 local api = vim.api
-local decoration_bg = vim.g.decoration_bg
-local decoration_fg = vim.g.decoration_fg
+local inactive_bg = frappe.overlay0
+local active_bg = frappe.blue
+local active_fg = frappe.base
+local text = frappe.text
 local separator_left = ""
 local separator_right = ""
-api.nvim_set_hl(0, "TablineBufferActive", { bg = decoration_bg, fg = decoration_fg, bold = true })
-api.nvim_set_hl(0, "TablineBufferInactive", { bg = grey, fg = "#eeeeee" })
+
+api.nvim_set_hl(0, "TablineBufferActive", { bg = active_bg, fg = active_fg, bold = true })
+api.nvim_set_hl(0, "TablineBufferInactive", { bg = inactive_bg, fg = text, bold = true })
 
 local active_buf_hi = '%#TablineBufferActive#'
 local inactive_buf_hi = '%#TablineBufferInactive#'
 
-local decoration_sep_hi = '%#Separatordecoration#'
-local grey_sep_hi = '%#SeparatorGrey#'
+-- This two highlight groups are defined in statusline.lua
+local separator_active_hi = '%#SeparatorActive#'
+local separator_inactive_hi = '%#SeparatorInactive#'
 
 local labels = { 'e', 'a', 'i', 'h', 'o', 'u', 'y', 'k' }
 
@@ -86,28 +91,28 @@ local function renderTabline()
         end
         local buf_name = ''
         if (current_buffer == buffer.number) then
-            table.insert(tabline, decoration_sep_hi)
+            table.insert(tabline, separator_active_hi)
             table.insert(tabline, separator_left)
             table.insert(tabline, active_buf_hi)
             table.insert(tabline, labels[i])
             table.insert(tabline, ': ')
             table.insert(tabline, buffer.name)
             table.insert(tabline, " ")
-            table.insert(tabline, decoration_sep_hi)
+            table.insert(tabline, separator_active_hi)
             table.insert(tabline, separator_right)
             table.insert(tabline, ' ')
             table.insert(tabline, active_buf_hi)
             table.insert(tabline, buf_name)
             table.insert(tabline, inactive_buf_hi)
         else
-            table.insert(tabline, grey_sep_hi)
+            table.insert(tabline, separator_inactive_hi)
             table.insert(tabline, separator_left)
             table.insert(tabline, inactive_buf_hi)
             table.insert(tabline, labels[i])
             table.insert(tabline, ': ')
             table.insert(tabline, buffer.name)
             table.insert(tabline, " ")
-            table.insert(tabline, grey_sep_hi)
+            table.insert(tabline, separator_inactive_hi)
             table.insert(tabline, separator_right)
             table.insert(tabline, ' ')
             table.insert(tabline, active_buf_hi)

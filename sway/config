@@ -1,6 +1,9 @@
-client.focused #D8DEE9 #D8DEE9 #1c1c1c #ffffff #b0b0b0
-#client.focused #333333 #60d7cd #1c1c1c #ffffff #60d7cd
-client.unfocused #3b4252 #3b4252 #b0b0b0 #ffffff #3b4252
+include scripts/catppuccin_frappe_colors
+
+# target                    title       bg          text        indicator       border
+client.focused              $blue       $blue       $base       $rosewater      $blue
+client.unfocused            $base       $overlay0   $text       $rosewater      $overlay0
+client.focused_inactive     $blue       $blue       $base       $rosewater      $blue
 
 
 workspace_layout tabbed
@@ -21,7 +24,7 @@ set $term foot
 exec chromium --ozone-platform-hint=auto
 for_window [app_id="chromium"] move container to workspace 1
 workspace number 2
-exec $term -c /home/hi/.config/foot/nord.ini
+exec $term -c /home/hi/.config/foot/catppuccin_frappe.ini
 
 #mod key
 set $mod Mod4
@@ -55,8 +58,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     #copy and paste
 
     # Start a terminal
-    bindsym $mod+a exec $term -c ~/.config/foot/nord.ini
-    bindsym $mod+mod3+a exec fish ~/.config/sway/open_vertical_term.fish
+    bindsym $mod+a exec $term -c ~/.config/foot/catppuccin_frappe.ini
+    bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
 
 
     # Start wofi
@@ -80,7 +83,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Moving around:
     # Bring browser to current workspace in vertical split
-    bindsym $mod+l exec fish ~/.config/sway/browser_to_workspace.fish
+    bindsym $mod+l exec fish ~/.config/sway/scripts/browser_to_workspace.fish
 
 
     # Move your focus around
@@ -147,7 +150,14 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 # Resizing containers:
 #
+bindsym $mod+j exec fish ~/.config/sway/scripts/switch_to_resize_mode.fish
 mode "resize" {
+
+    # target                   title       bg          text        indicator       border
+    #client.focused              $red       $red       $base       $rosewater      $red
+    #client.unfocused            $base       $overlay0   $text       $rosewater      $overlay0
+    #client.focused_inactive     $red       $red       $base       $rosewater      $red
+
     bindsym $left resize shrink width 10px
     bindsym $right resize grow width 10px
 
@@ -158,8 +168,8 @@ mode "resize" {
     bindsym Right resize grow width 10px
 
     # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym Return exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym Escape exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
 }
 
 
