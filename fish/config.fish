@@ -14,8 +14,12 @@ if status is-interactive
     alias tt="lsd --tree"
     alias ta="lsd -a"
     alias tl="lsd -l"
+
+    trap "handle-switch-theme-signal" SIGUSR1
+
     set -x EDITOR nvim
     zoxide init fish | source
+
 end 
 
 

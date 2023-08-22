@@ -24,13 +24,15 @@ set $term foot
 exec chromium --ozone-platform-hint=auto
 for_window [app_id="chromium"] move container to workspace 1
 workspace number 2
-exec $term -c /home/hi/.config/foot/catppuccin_frappe.ini
+exec open-terminal
 
 #mod key
 set $mod Mod4
 
 set $right r
 set $left s
+set $up t
+set $down n
 
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -58,7 +60,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     #copy and paste
 
     # Start a terminal
-    bindsym $mod+a exec $term -c ~/.config/foot/catppuccin_frappe.ini
+    bindsym $mod+a exec open-terminal
     bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
 
 
@@ -89,6 +91,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$right focus right
+    bindsym $mod+$up focus up
+    bindsym $mod+$down focus down
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
 	bindsym $mod+Right focus right
@@ -102,8 +106,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 	bindsym $mod+mod5+Up move up
 	bindsym $mod+mod5+Right move right
 
-	bindsym $mod+v splith
-	bindsym $mod+mod3+v layout toggle splith tabbed
+	bindsym $mod+mod3+v splith
+	bindsym $mod+v layout splith
+	bindsym $mod+o layout splitv
+    bindsym $mod+y layout tabbed
 
 
 	# Toggle the current focus between tiling and floating mode
@@ -160,6 +166,8 @@ mode "resize" {
 
     bindsym $left resize shrink width 10px
     bindsym $right resize grow width 10px
+    bindsym $down resize shrink height 10px
+    bindsym $up resize grow height 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
