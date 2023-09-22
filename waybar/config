@@ -1,7 +1,7 @@
 {
 	"layer": "top",
 	"position": "right",
-    "width": 55,
+    "width": 50,
     "ipc": true,
 	"modules-center":["sway/workspaces", "sway/mode"], 
     "modules-left":["clock", "custom/day", "clock#date"],
@@ -17,19 +17,14 @@
 		"timezone": "Asia/Taipei",
 	},
 	
-	"custom/day": {
-    	"format": "{}",
-		"interval": "once",
-		"exec" : "echo \"$(date +%a)\" | awk '{print substr($0,0,2)}' | tr [:upper:] [:lower:]",
-	},
-
+	
 	"sway/workspaces": {
     		"disable-scroll": true,
     		"format": "{name}",
 		"persistent_workspaces": {
     	    		"1": [],
     	    		"2": [],
-		            "3": [],
+		        "3": [],
     	    		"4": [],
     		}
 	},

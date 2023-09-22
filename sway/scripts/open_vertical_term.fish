@@ -1,2 +1,2 @@
 swaymsg splith
-open-terminal
+exec foot

@@ -36,7 +36,8 @@ vim.keymap.set("n", "g<space>", "<C-6>", { noremap = true })
 --splits
 vim.keymap.set("n", "<space>sv", "<C-w>v", { noremap = true })
 vim.keymap.set("n", "<space>sh", "<C-w>s", { noremap = true })
---vim.keymap.set("n", "<C-r>", "<C-w>l", { noremap = true })
+vim.keymap.set("n", "<space>sr", "<C-w>l", { noremap = true })
+vim.keymap.set("n", "<space>ss", "<C-w>h", { noremap = true })
 --vim.keymap.set("n", "<C-m>", "<C-w>>", { noremap = true })
 --vim.keymap.set("n", "<C-f>", "<C-w><", { noremap = true })
 

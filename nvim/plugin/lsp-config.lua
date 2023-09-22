@@ -15,6 +15,7 @@ vim.api.nvim_set_keymap('n', 'lq', '<cmd>lua vim.diagnostic.setloclist()<CR>', o
 
 local on_attach = function(client, bufnr)
     local opts_on_attach = { noremap = true, silent = true, buffer = bufnr }
+    local builtin = require('telescope.builtin')
     client.server_capabilities.semanticTokensProvider = nil
     vim.keymap.set('n', 'lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts_on_attach)
     vim.keymap.set('n', 'ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts_on_attach)
@@ -22,7 +23,10 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'lrn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts_on_attach)
     vim.keymap.set('n', 'lc', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts_on_attach)
     vim.keymap.set('v', 'lc', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts_on_attach)
-    vim.keymap.set('n', 'lre', '<cmd>lua vim.lsp.buf.references()<CR>', opts_on_attach)
+    vim.keymap.set('n', 'lre', builtin.lsp_references, opts_on_attach)
+    vim.keymap.set('n', 'lli', builtin.lsp_implementations, opts_on_attach)
+    vim.keymap.set('n', 'li', builtin.lsp_incoming_calls, opts_on_attach)
+    vim.keymap.set('n', 'lo', builtin.lsp_outgoing_calls, opts_on_attach)
     vim.keymap.set('n', 'la', '<cmd>lua vim.lsp.buf.format()<CR>', opts_on_attach)
 end
 

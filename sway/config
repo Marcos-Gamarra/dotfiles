@@ -1,18 +1,18 @@
 include scripts/catppuccin_frappe_colors
 
 # target                    title       bg          text        indicator       border
-client.focused              $blue       $blue       $base       $rosewater      $blue
-client.unfocused            $base       $overlay0   $text       $rosewater      $overlay0
+client.focused              $blue       #7aa2f7     #24283b       $rosewater      $blue
+client.unfocused            $base       #414868     #a9b1d6       $rosewater      $overlay0
 client.focused_inactive     $blue       $blue       $base       $rosewater      $blue
 
 
 workspace_layout tabbed
 
-titlebar_padding 6 5
+titlebar_padding 4 4
 
-font SauceCodePro Bold 14
+font SauceCodePro Bold 12
 
-default_border pixel  3
+default_border pixel  1
 hide_edge_borders --i3 smart
 
 
@@ -24,7 +24,7 @@ set $term foot
 exec chromium --ozone-platform-hint=auto
 for_window [app_id="chromium"] move container to workspace 1
 workspace number 2
-exec open-terminal
+exec foot
 
 #mod key
 set $mod Mod4
@@ -60,7 +60,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     #copy and paste
 
     # Start a terminal
-    bindsym $mod+a exec open-terminal
+    bindsym $mod+a exec foot
     bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
 
 

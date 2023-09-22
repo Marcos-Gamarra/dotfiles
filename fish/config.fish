@@ -19,6 +19,8 @@ if status is-interactive
 
     set -x EDITOR nvim
     zoxide init fish | source
+    starship init fish | source
+
 
 end 
 

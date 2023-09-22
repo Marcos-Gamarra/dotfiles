@@ -1,20 +1,19 @@
-local frappe = require("catppuccin.palettes").get_palette "frappe"
-
 local api = vim.api
-local inactive_bg = frappe.overlay0
-local active_bg = frappe.blue
-local active_fg = frappe.base
-local text = frappe.text
+local inactive_bg = '#414868'
+local active_bg = "#7aa2f7"
+local active_fg = '#24283b'
+local text = "#a9b1d6"
 local separator_left = ""
 local separator_right = ""
 
-api.nvim_set_hl(0, "TablineBufferActive", { bg = active_bg, fg = active_fg, bold = true })
-api.nvim_set_hl(0, "TablineBufferInactive", { bg = inactive_bg, fg = text, bold = true })
+api.nvim_set_hl(0, "TablineBufferActive", { bg = active_bg, fg = active_fg })
+api.nvim_set_hl(0, "TablineBufferInactive", { bg = inactive_bg, fg = text })
 
 local active_buf_hi = '%#TablineBufferActive#'
 local inactive_buf_hi = '%#TablineBufferInactive#'
 
--- This two highlight groups are defined in statusline.lua
+api.nvim_set_hl(0, "SeparatorActive", { bg = "NONE", fg = active_bg })
+api.nvim_set_hl(0, "SeparatorInactive", { bg = "NONE", fg = inactive_bg })
 local separator_active_hi = '%#SeparatorActive#'
 local separator_inactive_hi = '%#SeparatorInactive#'
 
