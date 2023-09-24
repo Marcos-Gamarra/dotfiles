@@ -1,4 +1,6 @@
+
 require('lualine').setup {
+
     options = {
         theme = 'tokyonight',
         component_separators = { left = '┃', right = '┃' },
@@ -8,7 +10,12 @@ require('lualine').setup {
 
     sections = {
         lualine_a = {
-            { 'mode', separator = { left = '', right = '' }, right_padding = 2 },
+            {
+                'mode',
+                separator = { left = '', right = '' },
+                right_padding = 2,
+            },
+
         },
 
 

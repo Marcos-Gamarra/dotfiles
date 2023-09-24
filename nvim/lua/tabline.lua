@@ -1,8 +1,8 @@
 local api = vim.api
-local inactive_bg = '#414868'
-local active_bg = "#7aa2f7"
-local active_fg = '#24283b'
-local text = "#a9b1d6"
+local inactive_bg = '#737994'
+local active_bg = "#2e7de9"
+local active_fg = '#e9e9ed'
+local text = "#e9e9ed"
 local separator_left = ""
 local separator_right = ""
 

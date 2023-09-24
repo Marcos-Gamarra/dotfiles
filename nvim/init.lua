@@ -5,7 +5,6 @@ require('tabline')
 --require('win_hl_on_change')
 
 
-vim.cmd[[colorscheme tokyonight]]
 vim.opt.laststatus = 3
 vim.opt.number = true
 vim.opt.cursorline = true
@@ -17,3 +16,5 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.showtabline = 2
+vim.cmd[[set background=light]]
+vim.cmd[[colorscheme tokyonight]]
