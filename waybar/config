@@ -4,13 +4,17 @@
     "width": 50,
     "ipc": true,
 	"modules-center":["sway/workspaces", "sway/mode"], 
-    "modules-left":["clock", "custom/day", "clock#date"],
-    "modules-right":["battery"],
+    "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date"],
+    "modules-right":["battery#icon", "battery"],
+
+    "custom/clock_icon": {"format":""},
 	
 	"clock": {
 		"format": "{:%H\n%M}",
-		"timezone": "Asia/Taipei",
+        "timezone": "Asia/Taipei",
 	},
+
+    "custom/calendar_icon": {"format":""},
 
 	"clock#date": {
 		"format": "{:%d\n%m}",
@@ -19,15 +23,21 @@
 	
 	
 	"sway/workspaces": {
-    		"disable-scroll": true,
-    		"format": "{name}",
+    	"disable-scroll": true,
+    	"format": "{name}",
 		"persistent_workspaces": {
-    	    		"1": [],
-    	    		"2": [],
-		        "3": [],
-    	    		"4": [],
-    		}
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+    	}
 	},
+
+    "battery#icon": {
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", ""],
+
+    },
 
 	"battery": {
     		"interval": 60,

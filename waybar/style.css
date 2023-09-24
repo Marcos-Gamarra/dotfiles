@@ -20,7 +20,7 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    	background: @blue;
+    background: @blue;
 	color: @base;
 }
 
@@ -30,33 +30,49 @@ window#waybar {
 	font-weight: bold;
 }
 
+#custom-clock_icon {
+    margin: 5px 5px 2px 0px;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 #clock {
 	border-radius: 25px;
-	margin: 10px 5px;
+	margin: 0px 5px 0px 5px;
 	padding: 15px 0px;
-
     background: @overlay0;
     color: @text;
 	font-size: 18px;
 	font-weight: bold
 }
 
-
-
-#clock.date {
-    	background: @overlay0;
-    	color: @text;
-	font-weight: bold
+#custom-calendar_icon{
+    margin: 20px 5px 5px 0px;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
 }
+
 
 
 #battery {
 	border-radius: 25px;
-	margin: 10px 5px;
+	margin: 0px 5px 10px 5px;
 	padding: 20px 0px;
-
-    	background: @overlay0;
-    	color: @text;
+    background: @overlay0;
+    color: @text;
 	font-size: 18px;
 	font-weight: bold;
+}
+
+#battery.icon {
+	border-radius: 0px;
+    margin: 0px 8px 2px 0px;
+	padding: 0px 0px;
+    background: @surface1;
+    color: @text;
+	font-size: 18px;
+	font-weight: bold;
+
 }
