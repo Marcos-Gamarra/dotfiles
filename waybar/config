@@ -5,7 +5,13 @@
     "ipc": true,
 	"modules-center":["sway/workspaces", "sway/mode"], 
     "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date"],
-    "modules-right":["battery#icon", "battery"],
+    "modules-right":["custom/backlight_icon", "backlight", "battery#icon", "battery"],
+
+    "custom/backlight_icon": {"format":""},
+
+    "backlight": {
+        "format": "{percent}",
+    },
 
     "custom/clock_icon": {"format":""},
 	
