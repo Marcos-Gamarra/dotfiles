@@ -43,4 +43,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3db6bfe2
 SETUVAR fish_pager_color_selected_completion:
 SETUVAR fish_pager_color_selected_description:
 SETUVAR fish_pager_color_selected_prefix:
-SETUVAR fish_user_paths:/home/hi/\x2elocal/bin\x1e/home/hi/\x2ecargo/bin
+SETUVAR fish_user_paths:/home/hi/classes/dld/verible\x2dv0\x2e0\x2d3416\x2dg470e0b95/bin\x1e/home/hi/\x2elocal/bin\x1e/home/hi/\x2ecargo/bin

@@ -33,11 +33,6 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require 'lspconfig'.html.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
 require 'lspconfig'.rust_analyzer.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -53,12 +48,6 @@ require 'lspconfig'.rust_analyzer.setup {
 }
 
 require 'lspconfig'.clangd.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
-
-require 'lspconfig'.tsserver.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
@@ -92,4 +81,26 @@ require 'lspconfig'.lua_ls.setup {
             },
         },
     },
+}
+
+require 'lspconfig'.jdtls.setup {}
+
+require 'lspconfig'.verible.setup {
+    on_attach = on_attach,
+    root_dir = function() return vim.loop.cwd() end
+}
+
+require 'lspconfig'.tsserver.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require 'lspconfig'.html.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require 'lspconfig'.cssls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
 }

@@ -68,7 +68,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+d exec fuzzel
 
     # Kill focused window
-    bindsym $mod+h kill
+    bindsym $mod+k kill
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
