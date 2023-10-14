@@ -3,25 +3,21 @@ vim.keymap.set("", "b", "(v:searchforward ? 'n' : 'N')", { noremap = true, expr 
 vim.keymap.set("", "B", "(v:searchforward ? 'N' : 'n')", { noremap = true, expr = true })
 
 --scrolling
-vim.keymap.set("n", "m", "<C-y>", { noremap = true })
-vim.keymap.set("n", "f", "<C-e>", { noremap = true })
-vim.keymap.set("v", "m", "<C-y>", { noremap = true })
-vim.keymap.set("v", "f", "<C-e>", { noremap = true })
+vim.keymap.set("n", "m", "3<C-y>", { noremap = true })
+vim.keymap.set("n", "f", "3<C-e>", { noremap = true })
+vim.keymap.set("v", "m", "3<C-y>", { noremap = true })
+vim.keymap.set("v", "f", "3<C-e>", { noremap = true })
 
 --move to the start/end of line
-vim.api.nvim_set_keymap("", "s<return>", "^", { noremap = true })
-vim.api.nvim_set_keymap("", "r<return>", "$", { noremap = true })
-
---visual and block mode
-vim.api.nvim_set_keymap("n", "<space>v", "<C-v>", { noremap = true })
-vim.api.nvim_set_keymap("n", "lv", "V", { noremap = true })
+vim.keymap.set("", "s<return>", "^", { noremap = true })
+vim.keymap.set("", "r<return>", "$", { noremap = true })
 
 
---delete text
-vim.api.nvim_set_keymap("", "e", "d", { noremap = true })
-vim.api.nvim_set_keymap("", "<space>e", "dv", { noremap = true })
-vim.api.nvim_set_keymap("", "h", "c", { noremap = true })
-vim.api.nvim_set_keymap("", "<space>h", "cv", { noremap = true })
+--delete text stuff
+vim.keymap.set("", "e", "d", { noremap = true })
+vim.keymap.set("", "<space>e", "dv", { noremap = true })
+vim.keymap.set("", "h", "c", { noremap = true })
+vim.keymap.set("", "<space>h", "cv", { noremap = true })
 
 
 --folds
@@ -30,7 +26,15 @@ vim.api.nvim_set_keymap("n", "zl", "zo", { noremap = true })
 --save file
 vim.keymap.set("n", "<CR>", ":wa!<CR>", { noremap = true })
 
+-- go to insert mode
+vim.keymap.set("n", "<tab><tab>", "ciw", { noremap = true })
 
+-- go to pair
+vim.keymap.set("", "<backspace>", "%", { noremap = false })
+
+
+--temp
+vim.keymap.set("n", "<space>a", "va", { noremap = true })
 
 -- buffers
 vim.keymap.set("n", "g<space>", "<C-6>", { noremap = true })

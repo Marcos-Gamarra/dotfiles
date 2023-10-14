@@ -20,6 +20,9 @@ hide_edge_borders --i3 smart
 #terminal
 set $term foot
 
+#to run gui applications that require root
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 #--enable-features=UseOzonePlatform --ozone-platform=wayland
 exec chromium --ozone-platform-hint=auto
 for_window [app_id="chromium"] move container to workspace 1

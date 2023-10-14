@@ -90,10 +90,17 @@ require 'lspconfig'.verible.setup {
     root_dir = function() return vim.loop.cwd() end
 }
 
+local tsserver_on_attach = function(client, buffnr)
+    on_attach(client, buffnr)
+    vim.keymap.set('n', 'la', '<cmd>silent !prettier --write %<CR>', { noremap = true, silent = true, buffer = buffnr })
+end
+
+
 require 'lspconfig'.tsserver.setup {
     capabilities = capabilities,
-    on_attach = on_attach,
+    on_attach = tsserver_on_attach,
 }
+
 
 require 'lspconfig'.html.setup {
     capabilities = capabilities,
