@@ -28,7 +28,8 @@ require("nvim-tree").setup({
         }
     },
     view           = {
-        adaptive_size = true,
+        width = 50,
+        side = 'right',
     },
     renderer       = {
         indent_markers = {

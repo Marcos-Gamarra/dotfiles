@@ -20,8 +20,8 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    background: #2e7de9;
-	color: #e9e9ed;
+    background: #7aa2f7;
+	color: @base;
 }
 
 #workspaces button.persistent {

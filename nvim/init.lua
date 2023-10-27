@@ -16,5 +16,4 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.showtabline = 2
-vim.cmd[[set background=light]]
-vim.cmd[[colorscheme tokyonight]]
+vim.opt.conceallevel = 1

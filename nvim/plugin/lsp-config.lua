@@ -92,7 +92,7 @@ require 'lspconfig'.verible.setup {
 
 local tsserver_on_attach = function(client, buffnr)
     on_attach(client, buffnr)
-    vim.keymap.set('n', 'la', '<cmd>silent !prettier --write %<CR>', { noremap = true, silent = true, buffer = buffnr })
+    vim.keymap.set('n', 'la', "gg=G''", { noremap = true, silent = true, buffer = buffnr })
 end
 
 

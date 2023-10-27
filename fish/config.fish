@@ -15,8 +15,6 @@ if status is-interactive
     alias ta="lsd -a"
     alias tl="lsd -l"
 
-    trap "handle-switch-theme-signal" SIGUSR1
-
     set -x EDITOR nvim
     zoxide init fish | source
     starship init fish | source

@@ -1,6 +1,6 @@
 local api = vim.api
 vim.g.buf_list_is_open = false
-local blue = '#6e9cb0'
+local blue = '#7aa2f7'
 api.nvim_set_hl(0, "BufferListActive", { bg = 'NONE', fg = blue, bold = true })
 
 local function list_buffers()

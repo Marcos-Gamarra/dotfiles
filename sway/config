@@ -1,7 +1,7 @@
 include scripts/catppuccin_frappe_colors
 
 # target                    title       bg          text        indicator       border
-client.focused              $blue       #2e7de9     #e9e9ed       $rosewater      $blue
+client.focused              $blue       #7aa2f7     $base       $rosewater      $blue
 client.unfocused            $base       #737994     #e9e9ed       $rosewater      $overlay0
 client.focused_inactive     $blue       $blue       $base         $rosewater      $blue
 
@@ -123,8 +123,6 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+p focus parent
     bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+minus scratchpad show
-
-#
 #
 # Workspaces:
 #

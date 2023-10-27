@@ -1,8 +1,8 @@
 local api = vim.api
 local inactive_bg = '#737994'
-local active_bg = "#2e7de9"
-local active_fg = '#e9e9ed'
-local text = "#e9e9ed"
+local active_bg = "#7aa2f7"
+local active_fg = '#24283b'
+local text = "NONE"
 local separator_left = ""
 local separator_right = ""
 
@@ -71,8 +71,8 @@ local function generateBufferList(skip_bufnr)
     setKeymaps()
 end
 
-local function removeCurrentBufferFromList()
-    local currentBuffer = vim.fn.bufnr('%')
+local function removePreviousBufferFromList()
+    local currentBuffer = vim.fn.bufnr('#')
     local currentBufferIndex = buffer_indexes[currentBuffer]
     table.remove(buffers, currentBufferIndex)
     generateBufferList(currentBuffer)
@@ -175,7 +175,8 @@ local autocmd_update_buffer_list = {
 
 local autocmd_remove_current_buffer_from_list = {
     callback = function()
-        removeCurrentBufferFromList()
+        removePreviousBufferFromList()
+        renderTabline()
     end
 }
 

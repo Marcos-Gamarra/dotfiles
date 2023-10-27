@@ -1,6 +1,6 @@
 vim.keymap.set('', 'n', "<plug>(leap-forward)", {})
 vim.keymap.set('', 't', "<plug>(leap-backward)", {})
-vim.keymap.set('', '<space>n', "<plug>(leap-from-window)", {})
+vim.keymap.set('', 'w', "<plug>(leap-from-window)", {})
 
 --local bg = '#D8DEE9'
 --local fg = '#2E3440'

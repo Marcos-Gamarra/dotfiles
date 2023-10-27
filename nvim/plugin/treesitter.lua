@@ -6,6 +6,7 @@ require 'nvim-treesitter.configs'.setup {
 
     indent = {
         enable = true,
+        disable = { 'org' },
     },
 
     autotag = {
@@ -15,30 +16,6 @@ require 'nvim-treesitter.configs'.setup {
     textobjects = {
         select = {
             enable = true,
-
-            lookahead = true,
-
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["as"] = "@class.outer",
-                ["is"] = "@class.inner",
-                ["ab"] = "@block.outer",
-                ["ib"] = "@block.inner",
-                ["al"] = "@loop.outer",
-                ["il"] = "@loop.inner",
-                --["ap"] = "@parameter.outer",
-                --["ip"] = "@parameter.inner",
-                ["an"] = "@conditional.outer",
-                ["in"] = "@conditional.inner",
-                ["ac"] = "@call.outer",
-                ["ic"] = "@call.inner",
-                ["a,"] = "@comment.outer",
-                ["i,"] = "@comment.inner",
-                ["am"] = "@assignment.outer",
-                ["im"] = "@assignment.inner",
-            },
-            --include_surrounding_whitespace = true,
         },
     },
 }

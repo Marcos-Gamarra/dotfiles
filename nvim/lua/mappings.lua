@@ -30,11 +30,10 @@ vim.keymap.set("n", "<CR>", ":wa!<CR>", { noremap = true })
 vim.keymap.set("n", "<tab><tab>", "ciw", { noremap = true })
 
 -- go to pair
-vim.keymap.set("", "<backspace>", "%", { noremap = false })
+vim.keymap.set("n", "<backspace>", "<Plug>(MatchitNormalForward)", { noremap = true })
+vim.keymap.set("o", "<backspace>", "<Plug>(MatchitOperationForward)", { noremap = true })
+vim.keymap.set("v", "<backspace>", "<Plug>(MatchitVisualForward)", { noremap = true })
 
-
---temp
-vim.keymap.set("n", "<space>a", "va", { noremap = true })
 
 -- buffers
 vim.keymap.set("n", "g<space>", "<C-6>", { noremap = true })
