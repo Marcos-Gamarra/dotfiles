@@ -11,8 +11,8 @@ window#waybar {
 
 #workspaces button {
 	border-radius: 25px;
-	margin: 5px 5px;
-	padding: 20px 0px 15px 0px;
+    margin: 5px;
+    padding: 7px 20px 0px 20px;
     background: @base;
     color: @text;
 	font-size: 20px;
@@ -30,8 +30,10 @@ window#waybar {
 	font-weight: bold;
 }
 
+
+
 #custom-clock_icon {
-    margin: 5px 5px 2px 0px;
+    margin: 0px 5px 0px 5px;
     color: @text;
     font-size: 18px;
     font-weight: bold;
@@ -39,8 +41,8 @@ window#waybar {
 
 #clock {
 	border-radius: 25px;
-	margin: 0px 5px 0px 5px;
-	padding: 20px 0px 15px 0px;
+    margin: 5px;
+    padding: 7px 20px 0px 20px;
     background: @overlay0;
     color: @text;
 	font-size: 18px;
@@ -48,23 +50,23 @@ window#waybar {
 }
 
 #custom-calendar_icon{
-    margin: 20px 5px 5px 0px;
     color: @text;
+    margin: 0px 10px 0px 20px;
     font-size: 18px;
     font-weight: bold;
 }
 
 #custom-backlight_icon{
-    margin: 5px 5px 2px 0px;
     color: @text;
+    margin: 0px 10px 0px 20px;
     font-size: 18px;
     font-weight: bold;
 }
 
 #backlight {
 	border-radius: 25px;
-	margin: 0px 5px 20px 5px;
-    padding: 25px 0px 20px 0px;
+    margin: 5px;
+    padding: 7px 20px 0px 20px;
     background: @overlay0;
     color: @text;
 	font-size: 18px;
@@ -74,8 +76,8 @@ window#waybar {
 
 #battery {
 	border-radius: 25px;
-	margin: 0px 5px 10px 5px;
-    padding: 25px 0px 20px 0px;
+    margin: 5px 5px 5px 0px;
+    padding: 7px 20px 0px 20px;
     background: @overlay0;
     color: @text;
 	font-size: 18px;
@@ -84,8 +86,8 @@ window#waybar {
 
 #battery.icon {
 	border-radius: 0px;
-    margin: 0px 8px 2px 0px;
-	padding: 0px 0px;
+    margin: 5px 20px 5px 20px;
+    padding: 0px 0px 0px 0px;
     background: @surface1;
     color: @text;
 	font-size: 18px;

@@ -1,12 +1,13 @@
 partial alphanumeric_keys
 xkb_symbols "dvp" {
     key.type[Group1] = "EIGHT_LEVEL";
+    include 
     ////upper row////
     key <AE01> {[ k,    K,  NoSymbol,   NoSymbol,   less    ]};                
     key <AE02> {[ y,    Y,  NoSymbol,   6,          plus    ]};                      
     key <AE03> {[ o,    O,  NoSymbol,   5,          minus   ]};                        
     key <AE04> {[ v,    V,  NoSymbol,   4,          greater ]};   
-    key <AE05> {[Super_L]};   
+    key <AE05> {[ Alt_R ]};   
                                                                              
     key <AE07> {[ c,    C,  Home,       NoSymbol,   exclam      ]};                                      
     key <AE08> {[ l,    L,  NoSymbol,   NoSymbol,   ampersand   ]};                                      
@@ -35,7 +36,7 @@ xkb_symbols "dvp" {
     key <AC03> {[ j,    J,  NoSymbol,   8,          braceleft       ]};
     key <AC04> {[ b,    B,  NoSymbol,   7,          braceright      ]};
 
-    key <AC06> {[ Super_L ]};
+    key <AC06> {[ Alt_R ]};
     key <AC07> {[ g,    G,  Left,    NoSymbol,   underscore  ]};
     key <AC08> {[ m,    M,  Up,      grave,      quotedbl    ]};
     key <AC09> {[ f,    F,  Down,    NoSymbol,   dollar      ]};

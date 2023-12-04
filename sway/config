@@ -8,9 +8,9 @@ client.focused_inactive     $blue       $blue       $base         $rosewater    
 
 workspace_layout tabbed
 
-titlebar_padding 4 4
+titlebar_padding 10 4
 
-font SauceCodePro Bold 12
+font SauceCodePro Bold 14
 
 default_border pixel  1
 hide_edge_borders --i3 smart
@@ -115,10 +115,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+y layout tabbed
 
 
-	# Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space workspace back_and_forth
 	bindsym $mod+b fullscreen
     bindsym $mod+p focus parent
     bindsym $mod+Shift+minus move scratchpad
@@ -131,7 +128,6 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+m workspace number 2
     bindsym $mod+f workspace number 3
     bindsym $mod+w workspace number 4
-    bindsym $mod+5 workspace number 5
     bindsym $mod+6 workspace number 6
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
@@ -139,17 +135,17 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+0 workspace number 10
 
     # Move focused container to workspace
-    bindsym $mod+mod5+g move container to workspace number 1 
+    bindsym $mod+mod5+g move container to workspace number 1
     bindsym $mod+mod5+m move container to workspace number 2
     bindsym $mod+mod5+f move container to workspace number 3
     bindsym $mod+mod5+w move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number
     bindsym $mod+Shift+6 move container to workspace number 
     bindsym $mod+Shift+7 move container to workspace number 
     bindsym $mod+Shift+8 move container to workspace number 
     bindsym $mod+Shift+9 move container to workspace number 
     bindsym $mod+Shift+0 move container to workspace number 
 
+    bindsym $mod+space workspace back_and_forth
     #bindsym $mod+n workspace next
     #bindsym $mod+t workspace prev
     # Note: workspaces can have any name you want, not just numbers.

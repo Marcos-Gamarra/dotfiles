@@ -60,6 +60,15 @@ require 'lspconfig'.svelte.setup {
 require 'lspconfig'.pylsp.setup {
     capabilities = capabilities,
     on_attach = on_attach,
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    ignore = { 'E501' },
+                }
+            }
+        }
+    }
 }
 
 require 'lspconfig'.lua_ls.setup {
