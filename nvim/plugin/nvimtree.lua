@@ -16,6 +16,7 @@ local function on_attach(bufnr)
     vim.keymap.set('n', 'd', api.tree.change_root_to_node, opts('CD'))
     vim.keymap.set('n', 'e', api.tree.expand_all, opts('Expand'))
     vim.keymap.set('n', 'r', api.fs.rename_sub, opts('Rename'))
+    vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, opts('Toggle Hidden'))
     vim.keymap.set('n', '<space>x', api.fs.remove, opts('Delete'))
 end
 

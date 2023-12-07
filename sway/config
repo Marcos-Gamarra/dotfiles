@@ -1,9 +1,10 @@
-include scripts/catppuccin_frappe_colors
 
-# target                    title       bg          text        indicator       border
-client.focused              $blue       #7aa2f7     $base       $rosewater      $blue
-client.unfocused            $base       #737994     #e9e9ed       $rosewater      $overlay0
-client.focused_inactive     $blue       $blue       $base         $rosewater      $blue
+# target                    title        bg          text        indicator    child_border
+client.focused              #8caaee      #7aa2f7     #303446     #f2d5cf      #8caaee
+client.unfocused            #303446      #737994     #e9e9ed     #f2d5cf      #24273a
+client.focused_inactive     #303446      #737994     #e9e9ed     #f2d5cf      #303446     
+client.focused_tab_title    #8caaee      #7aa2f7     #303446     #f2d5cf      #8caaee
+
 
 
 workspace_layout tabbed
@@ -12,7 +13,7 @@ titlebar_padding 10 4
 
 font SauceCodePro Bold 14
 
-default_border pixel  1
+default_border pixel 3
 hide_edge_borders --i3 smart
 
 
@@ -30,7 +31,7 @@ workspace number 2
 exec foot
 
 #mod key
-set $mod Mod4
+set $mod Mod1
 
 set $right r
 set $left s
@@ -94,8 +95,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$right focus right
-    bindsym $mod+$up focus up
-    bindsym $mod+$down focus down
+
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
 	bindsym $mod+Right focus right
@@ -110,8 +110,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 	bindsym $mod+mod5+Right move right
 
 	bindsym $mod+mod3+v splith
-	bindsym $mod+v layout splith
-	bindsym $mod+o layout splitv
+	bindsym $mod+v layout toggle splith tabbed
+	bindsym $mod+o layout toggle splitv tabbed
     bindsym $mod+y layout tabbed
 
 
@@ -171,6 +171,19 @@ mode "resize" {
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym Escape exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+}
+
+
+bindsym $mod+t exec fish ~/.config/sway/scripts/switch_to_workspace_mode.fish
+mode "workspace" {
+    bindsym s workspace number 1; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym t workspace number 2; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym n workspace number 3; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym r workspace number 4; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
 
     # Return to default mode
     bindsym Return exec fish ~/.config/sway/scripts/switch_to_default_mode.fish

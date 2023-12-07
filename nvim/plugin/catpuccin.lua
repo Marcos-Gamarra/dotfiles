@@ -7,7 +7,7 @@ require('catppuccin').setup({
     },
     custom_highlights = function(colors)
         return {
-            VertSplit = { fg = colors.blue},
+            VertSplit = { fg = colors.blue },
         }
     end
 })

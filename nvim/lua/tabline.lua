@@ -57,11 +57,12 @@ local function createBufferDescriptor(bufNumber)
 end
 
 local function generateBufferList(skip_bufnr)
+    -- skip_bufnr is passed to remove a buffer from the list
     buffer_names = {}
     local aux_index = 1
     local buflist = vim.api.nvim_list_bufs()
     for _, bufNumber in pairs(buflist) do
-        if vim.fn.buflisted(bufNumber) == 1 and bufNumber ~= skip_bufnr then
+        if vim.fn.buflisted(bufNumber) == 1 and bufNumber ~= skip_bufnr and vim.bo[bufNumber].buftype == "" then
             buffer_indexes[bufNumber] = aux_index
             local buffer = createBufferDescriptor(bufNumber)
             buffers[aux_index] = buffer
@@ -163,6 +164,7 @@ vim.keymap.set(
 
 local autocmd_render_tabline = {
     callback = function()
+        generateBufferList()
         renderTabline()
     end
 }

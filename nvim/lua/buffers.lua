@@ -22,7 +22,6 @@ local function list_buffers()
 end
 
 
-
 local window_id = nil
 local current_window = api.nvim_get_current_win()
 

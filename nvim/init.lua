@@ -3,6 +3,7 @@ require('mappings')
 --require('statusline')
 require('tabline')
 --require('win_hl_on_change')
+require('term')
 
 
 vim.opt.laststatus = 3

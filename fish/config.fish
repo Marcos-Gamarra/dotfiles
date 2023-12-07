@@ -12,8 +12,13 @@ if status is-interactive
     alias e="z"
     alias t="lsd"
     alias tt="lsd --tree"
+    alias tt1="lsd --tree --depth 1"
+    alias tt2="lsd --tree --depth 2"
+    alias tt3="lsd --tree --depth 3"
+    alias tt4="lsd --tree --depth 4"
     alias ta="lsd -a"
     alias tl="lsd -l"
+    alias n="nvim"
 
     set -x EDITOR nvim
     zoxide init fish | source
@@ -21,5 +26,3 @@ if status is-interactive
 
 
 end 
-
-
