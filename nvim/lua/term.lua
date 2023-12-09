@@ -13,21 +13,30 @@ local opts = {
     border = 'single',
 }
 
-
 local is_float_win_open = false
 local win_id = nil
 local buf_id = nil
 local channel_id = -1
 local opened_file_buffer_id = nil
 
+-- this keeps the terminal's pwd in sync with nvim's pwd
+local update_pwd_on_cd = function(servername)
+    local update_pwd = "nvim --server " ..
+        servername .. " --remote-send \"<C-\\><C-N>:cd $PWD<CR>\""
+    local switch_to_insert = "nvim --server " ..
+        servername .. " --remote-send \"<C-\\><C-N>:startinsert<CR>\""
+    return string.format('function e\n z $argv[1]\n %s\n %s\nend', update_pwd, switch_to_insert)
+end
 
+-- this defines the aliases to open files in the terminal and change the pwd
 local function on_creation()
     local servername = vim.v.servername
     local remote_send = "nvim --server " ..
-        servername .. " --remote-send '<C-\\><C-N>:lua WasOpenedFromFloatTerm=true<CR>\'"
+        servername .. " --remote-send \'<C-\\><C-N>:lua WasOpenedFromFloatTerm=true<CR>\'"
     local remote = "nvim --server " .. servername .. " --remote"
-    local alias = string.format('alias n="%s; %s"', remote_send, remote)
-    vim.api.nvim_chan_send(channel_id, alias)
+    local edit_alias = string.format('alias n="%s; %s"', remote_send, remote)
+    local update_pwd_alias = update_pwd_on_cd(servername)
+    vim.api.nvim_chan_send(channel_id, edit_alias .. "&&" .. update_pwd_alias .. "&&" .. "alias ..='e ..'")
     local scaped_insert = vim.api.nvim_replace_termcodes("i<CR>", true, false, true)
     vim.api.nvim_feedkeys(scaped_insert, "n", true)
 end
