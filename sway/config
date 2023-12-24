@@ -23,7 +23,6 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # script to set transparency of inactive windows
 exec ~/.config/sway/scripts/inactive-windows-transparency.py
-# exec ~/.config/sway/scripts/inactive-windows-transparency.py
 
 #--enable-features=UseOzonePlatform --ozone-platform=wayland
 exec chromium --ozone-platform-hint=auto
@@ -107,10 +106,13 @@ set $down n
 	bindsym $mod+mod5+Up move up
 	bindsym $mod+mod5+Right move right
 
+
+    # the marks here are used to trigger a window event
+    # that is used by the inactive-windows-transparency.py script
 	bindsym $mod+mod3+v splith
-	bindsym $mod+v layout toggle splith tabbed
-	bindsym $mod+o layout toggle splitv tabbed
-    bindsym $mod+y layout tabbed
+	bindsym $mod+v layout toggle splith tabbed; mark --toggle " " 
+	bindsym $mod+o layout toggle splitv tabbed; mark --toggle " "
+    bindsym $mod+y layout tabbed ; mark --toggle tmp
 
 
     # Swap focus between the tiling area and the floating area
