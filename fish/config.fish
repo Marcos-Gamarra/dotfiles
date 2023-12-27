@@ -10,6 +10,7 @@ if status is-interactive
 
     alias c="clear"
     alias e="z"
+    alias ..="z .."
     alias t="lsd"
     alias tt="lsd --tree"
     alias tt1="lsd --tree --depth 1"

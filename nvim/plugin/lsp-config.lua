@@ -99,15 +99,18 @@ require 'lspconfig'.verible.setup {
     root_dir = function() return vim.loop.cwd() end
 }
 
-local tsserver_on_attach = function(client, buffnr)
-    on_attach(client, buffnr)
-    vim.keymap.set('n', 'la', "gg=G''", { noremap = true, silent = true, buffer = buffnr })
-end
 
 
 require 'lspconfig'.tsserver.setup {
     capabilities = capabilities,
-    on_attach = tsserver_on_attach,
+    on_attach = on_attach,
+    settings = {
+        javascript = {
+            format = {
+                indentSize = 4,
+            },
+        },
+    }
 }
 
 
@@ -117,6 +120,11 @@ require 'lspconfig'.html.setup {
 }
 
 require 'lspconfig'.cssls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require 'lspconfig'.zls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }

@@ -18,7 +18,3 @@ vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.showtabline = 2
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
-    pattern = { "*.norg" },
-    command = "setlocal conceallevel=2"
-})
