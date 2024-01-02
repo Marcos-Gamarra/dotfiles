@@ -1,6 +1,9 @@
+local custom_catppuccin = require 'lualine.themes.catppuccin'
+custom_catppuccin.normal.a.bg = '#7aa2f7'
+
 require('lualine').setup {
     options = {
-        theme = 'catppuccin',
+        theme = custom_catppuccin,
         component_separators = { left = '┃', right = '┃' },
         section_separators = { left = '', right = '' },
 
@@ -22,5 +25,6 @@ require('lualine').setup {
         lualine_z = {
             { 'location', separator = { left = '', right = '' }, left_padding = 2 },
         },
-    }
+
+    },
 }

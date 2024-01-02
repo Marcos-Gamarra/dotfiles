@@ -1,8 +1,10 @@
 # target                    title        bg          text        indicator    child_border
-client.focused              #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a
-client.unfocused            #24273a      #737994     #e9e9ed     #f2d5cf      #24273a
-client.focused_inactive     #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a     
-client.focused_tab_title    #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a
+client.focused              #8caaee      #7aa2f7     #e9e9ed     #f2d5cf      #8caaee
+client.unfocused            #303446      #737994     #e9e9ed     #f2d5cf      #24273a
+client.focused_inactive     #303446      #737994     #e9e9ed     #f2d5cf      #303446     
+client.focused_tab_title    #8caaee      #7aa2f7     #303446     #f2d5cf      #8caaee
+
+
 
 workspace_layout tabbed
 
@@ -10,20 +12,16 @@ titlebar_padding 10 4
 
 font 'CaskaydiaCove Nerd Font' Bold 13
 
-default_border pixel 1
-titlebar_border_thickness 1
+default_border pixel 3
 hide_edge_borders --i3 smart
+
 
 
 #terminal
 set $term foot
 
 #to run gui applications that require root
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# script to set transparency of inactive windows
-exec ~/.config/sway/scripts/inactive-windows-transparency.py
-# exec ~/.config/sway/scripts/inactive-windows-transparency.py
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 #--enable-features=UseOzonePlatform --ozone-platform=wayland
 exec chromium --ozone-platform-hint=auto
@@ -39,6 +37,9 @@ set $left s
 set $up t
 set $down n
 
+
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Input configuration
 #
@@ -195,15 +196,13 @@ mode "workspace" {
 #
 # Read `man 5 sway-bar` for more information about this section.
 input * {
-	xkb_layout "custom, us"
-	xkb_variant "dvp, intl"
-		repeat_rate 100
+	xkb_layout "us, custom"
+	xkb_variant "intl, dvp"
+	repeat_rate 100
 	repeat_delay 200
 	tap enable
     #next keyboard layout with caps lock
     xkb_options grp:caps_toggle
-    #xkb_layout "us, custom"
-    #xkb_variant "intl, dvp"
 }
 
 bar {

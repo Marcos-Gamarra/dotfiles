@@ -1,13 +1,13 @@
 require('catppuccin').setup({
-    flavour = "macchiato",
+    flavour = "latte",
     integrations = {
         aerial = true,
         leap = true,
-        nvimtree = false,
     },
     custom_highlights = function(colors)
         return {
             VertSplit = { fg = colors.blue },
+            CursorLine = { bg = colors.crust},
         }
     end
 })

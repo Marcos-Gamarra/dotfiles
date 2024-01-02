@@ -1,11 +1,11 @@
 require('Comment').setup({
     opleader = {
         line = '<delete>',
-        block = 'b<delete>',
+        block = '<delete>',
     },
 
     toggler = {
         line = '<delete><delete>',
-        block = 'b<delete>',
+        block = '<delete>',
     }
 })

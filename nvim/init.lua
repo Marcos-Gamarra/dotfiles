@@ -17,4 +17,3 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.showtabline = 2
-

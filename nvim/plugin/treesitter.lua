@@ -16,16 +16,15 @@ require 'nvim-treesitter.configs'.setup {
         select = {
             enable = true,
         },
+
     },
 
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = "<backspace><backspace>", -- set to `false` to disable one of the mappings
+            init_selection = "<backspace><backspace>",
             node_incremental = "<backspace><tab>",
-            scope_incremental = "<backspace><delete>",
-            node_decremental = "<backspace><cr>"
-
+            node_decremental = "<backspace><cr>",
         },
-    },
+    }
 }
