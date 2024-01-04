@@ -129,8 +129,7 @@ require 'lspconfig'.zls.setup {
     on_attach = on_attach,
 }
 
-require'lspconfig'.guile_ls.setup{
+require 'lspconfig'.guile_ls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
-
