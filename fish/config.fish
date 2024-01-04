@@ -4,22 +4,25 @@ if status is-interactive
     set fish_cursor_insert line
     set fish_cursor_replace_one underscore
 
-    alias battery="cat /sys/class/power_supply/BAT0/capacity"
+    abbr --add battery cat /sys/class/power_supply/BAT0/capacity
 
-    alias rm="rm -i"
+    abbr --add rm rm -i
 
-    alias c="clear"
-    alias e="z"
-    alias ..="z .."
-    alias t="lsd"
-    alias tt="lsd --tree"
-    alias tt1="lsd --tree --depth 1"
-    alias tt2="lsd --tree --depth 2"
-    alias tt3="lsd --tree --depth 3"
-    alias tt4="lsd --tree --depth 4"
-    alias ta="lsd -a"
-    alias tl="lsd -l"
-    alias n="nvim"
+    abbr --add c clear
+    abbr --add e z
+    abbr --add .. z ..
+    abbr --add t lsd
+    abbr --add tt lsd --tree
+    abbr --add tt1 lsd --tree --depth 1
+    abbr --add tt2 lsd --tree --depth 2
+    abbr --add tt3 lsd --tree --depth 3
+    abbr --add tt4 lsd --tree --depth 4
+    abbr --add ta lsd -a
+    abbr --add tl lsd -l
+    abbr --add n nvim
+    
+    abbr --add bt bat
+    abbr --add btp bat -p
 
     set -x EDITOR nvim
     zoxide init fish | source
