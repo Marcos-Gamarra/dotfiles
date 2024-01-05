@@ -27,7 +27,10 @@ xkb_symbols "dvp" {
     key <AD08> {[ t,    T,  BackSpace,  asciitilde,     period      ]};     
     key <AD09> {[ n,    N,  Tab,        numbersign,     colon,      dead_tilde  ]}; 
     key <AD10> {[ r,    R,  Delete,     asciicircum,    semicolon   ]};
-    key <AD11> {[ Shift_L ]};
+    key <AD11> {
+        symbols[Group1] = [ NoSymbol ],
+        actions[Group1] = [ SetMods(mods=Shift) ]
+    };
 
 
     ////lower row////
@@ -63,12 +66,14 @@ xkb_symbols "dvp" {
     }; 
     
     key <AB04> {
-        symbols=[voidsymbol],
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ Control_L ],
         actions=[SetMods(mods=Control)]
     };
 
     key <AB06> {
-        symbols=[voidsymbol],
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ Control_L ],
         actions=[SetMods(mods=Control)]
     };
 	
