@@ -109,10 +109,12 @@ set $down n
 
     # the marks here are used to trigger a window event
     # that is used by the inactive-windows-transparency.py script
-	bindsym $mod+mod3+v splith
-	bindsym $mod+v layout toggle splith tabbed; mark --toggle " " 
-	bindsym $mod+o layout toggle splitv tabbed; mark --toggle " "
-    bindsym $mod+y layout tabbed ; mark --toggle tmp
+	bindsym $mod+mod3+v layout toggle splith tabbed; mark --toggle " "
+	bindsym $mod+mod3+o layout toggle splitv tabbed; mark --toggle " "
+    bindsym $mod+mod3+y layout tabbed ; mark --toggle " "
+	bindsym $mod+v splith
+	bindsym $mod+o splitv
+
 
 
     # Swap focus between the tiling area and the floating area
