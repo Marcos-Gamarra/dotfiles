@@ -1,11 +1,4 @@
---require('theme')
-require('mappings')
---require('statusline')
-require('tabline')
---require('win_hl_on_change')
---require('term')
-require('term/term')
-
+require('plugins')
 
 vim.opt.laststatus = 3
 vim.opt.number = true

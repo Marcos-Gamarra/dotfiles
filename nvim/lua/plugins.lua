@@ -1,0 +1,21 @@
+-- third party plugins
+require('plugin/aerial')
+require('plugin/catppuccin')
+require('plugin/comment')
+require('plugin/copilot')
+require('plugin/devicons')
+require('plugin/efe')
+require('plugin/indent_blankline')
+require('plugin/leap')
+require('plugin/lsp_config')
+require('plugin/neorg')
+require('plugin/nvim_cmp')
+require('plugin/surround')
+require('plugin/treesitter')
+require('plugin/ts_autotags')
+
+-- custom scripts
+require('custom/mappings')
+require('custom/tabline')
+require('custom/term/term')
+require('custom/statusline')
