@@ -11,8 +11,8 @@ end
 function ttn 
     set file_to_open $(fd --type f --hidden --exclude .git |
     fzf --preview "bat --color always {}" \
-    --preview-window=top:50% )
-    #--bind "super-m:preview-up,super-f:preview-down")
+    --preview-window=top:50% \
+    --bind "ctrl-j:preview-up,ctrl-b:preview-down")
 
     if test -n "$file_to_open"
         n $file_to_open
@@ -23,7 +23,7 @@ function ttd
     set dir_to_open $(fd --type d --hidden --exclude .git | 
     fzf --preview "lsd --color always --icon always {}" \
     --preview-window=top:50% \
-    --bind "ctrl-m:preview-up,ctrl-f:preview-down")
+    --bind "ctrl-j:preview-up,ctrl-b:preview-down")
 
     if test -n "$dir_to_open"
         e $dir_to_open
@@ -39,7 +39,7 @@ function ttg
     --delimiter : \
     --preview 'bat --color=always {1} --highlight-line {2}' \
     --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-    --bind "ctrl-m:preview-up,ctrl-f:preview-down")
+    --bind "ctrl-j:preview-up,ctrl-b:preview-down")
 
     if test -n "$file_to_open"
         n $file_to_open
@@ -53,8 +53,8 @@ function ttr
     end
     set file_to_open $(fd --type f --hidden --exclude .git --search-path $PROJECT_ROOT_NVIM |
     fzf --preview "bat --color always {}" \
-    --preview-window=top:50% )
-    #--bind "super-m:preview-up,super-f:preview-down")
+    --preview-window=top:50% \
+    --bind "ctrl-j:preview-up,ctrl-b:preview-down")
 
     if test -n "$file_to_open"
         n $file_to_open
