@@ -45,6 +45,16 @@ local function toggle_floating_terminal()
     is_term_open = true
 end
 
+-- oparation can be "ttn" for opening file, "ttd" for opening dir, "ttg" for opening file wiht rg
+local function open_fzf_in_term(operation)
+    toggle_floating_terminal()
+    vim.api.nvim_chan_send(channel_id, operation .. "\n")
+end
+
 
 vim.keymap.set('', '<A-e>', toggle_floating_terminal, { noremap = true, silent = true })
 vim.keymap.set('t', '<A-e>', toggle_floating_terminal, { noremap = true, silent = true })
+vim.keymap.set('n', '<space>tn', function() open_fzf_in_term("ttn") end, { noremap = true, silent = true })
+vim.keymap.set('n', '<space>td', function() open_fzf_in_term("ttd") end, { noremap = true, silent = true })
+vim.keymap.set('n', '<space>tg', function() open_fzf_in_term("ttg") end, { noremap = true, silent = true })
+vim.keymap.set('n', '<space>tr', function() open_fzf_in_term("ttr") end, { noremap = true, silent = true })

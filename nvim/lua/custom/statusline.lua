@@ -1,12 +1,19 @@
-local frappe = require("catppuccin.palettes").get_palette "frappe"
-
-local api = vim.api
-local active_bg = frappe.blue
-local active_fg = frappe.base
-local inactive_bg = frappe.overlay0
-local text = frappe.text
 local left_sep = ''
 local right_sep = ''
+
+local inactive_bg = '#737994'
+local active_bg = "#7aa2f7"
+local active_fg = 'white'
+local text = "white"
+
+local api = vim.api
+
+
+api.nvim_set_hl(0, "StatusLineMode", { bg = active_bg, fg = active_fg, bold = true })
+api.nvim_set_hl(0, "StatuslineFilename", { bg = inactive_bg, fg = text, bold = true })
+api.nvim_set_hl(0, "StatuslineInactive", { bg = inactive_bg, fg = text, bold = true })
+api.nvim_set_hl(0, "StatusLineSeparatorActive", { bg = "NONE", fg = active_bg })
+api.nvim_set_hl(0, "StatusLineSeparatorInactive", { bg = "NONE", fg = inactive_bg })
 
 
 local toggle_statusline = function()
@@ -26,12 +33,6 @@ vim.keymap.set(
     toggle_statusline,
     { silent = true }
 )
-
-api.nvim_set_hl(0, "StatusLineMode", { bg = active_bg, fg = active_fg, bold = true })
-api.nvim_set_hl(0, "StatuslineFilename", { bg = inactive_bg, fg = text, bold = true })
-api.nvim_set_hl(0, "StatuslineInactive", { bg = inactive_bg, fg = text, bold = true })
-api.nvim_set_hl(0, "SeparatorActive", { bg = "NONE", fg = active_bg })
-api.nvim_set_hl(0, "SeparatorInactive", { bg = "NONE", fg = inactive_bg })
 
 local modes = {
     ["n"] = "NORMAL",
@@ -92,30 +93,30 @@ Statusline.active = function()
         ----Mode part
         "%#Normal#",
         " ",
-        "%#SeparatorActive#",
+        "%#StatusLineSeparatorActive#",
         left_sep,
         "%#StatuslineMode#",
         mode(),
-        "%#SeparatorActive#",
+        "%#StatusLineSeparatorActive#",
         right_sep,
         ----Filename part
         "%#Normal#",
         " ",
-        "%#SeparatorInactive#",
+        "%#StatusLineSeparatorInactive#",
         left_sep,
         "%#StatuslineFilename#",
         filepath(),
         filename(),
         ----
-        "%=%#SeparatorInactive#",
+        "%=%#StatusLineSeparatorInactive#",
         right_sep,
         "%#Normal#",
         " ",
-        "%#SeparatorActive#",
+        "%#StatusLineSeparatorActive#",
         left_sep,
         "%#StatuslineMode#",
         lineinfo(),
-        "%#SeparatorActive#",
+        "%#StatusLineSeparatorActive#",
         right_sep,
         "%#Normal#",
         " ",
@@ -127,22 +128,22 @@ function Statusline.inactive()
         ----Mode part
         "%#Normal#",
         " ",
-        "%#SeparatorInactive#",
+        "%#StatusLineSeparatorInactive#",
         left_sep,
         "%#StatuslineInactive#",
         "INACTIVE",
-        "%#SeparatorInactive#",
+        "%#StatusLineSeparatorInactive#",
         right_sep,
         ----Filename part
         "%#Normal#",
         " ",
-        "%#SeparatorInactive#",
+        "%#StatusLineSeparatorInactive#",
         left_sep,
         "%#StatuslineFilename#",
         --filepath(),
         --filename(),
         " %f",
-        "%=%#SeparatorInactive#",
+        "%=%#StatusLineSeparatorInactive#",
         right_sep,
         "%#Normal#",
         " ",

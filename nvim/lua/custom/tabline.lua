@@ -12,10 +12,10 @@ api.nvim_set_hl(0, "TablineBufferInactive", { bg = inactive_bg, fg = text })
 local active_buf_hi = '%#TablineBufferActive#'
 local inactive_buf_hi = '%#TablineBufferInactive#'
 
-api.nvim_set_hl(0, "SeparatorActive", { bg = "NONE", fg = active_bg })
-api.nvim_set_hl(0, "SeparatorInactive", { bg = "NONE", fg = inactive_bg })
-local separator_active_hi = '%#SeparatorActive#'
-local separator_inactive_hi = '%#SeparatorInactive#'
+api.nvim_set_hl(0, "TablineSeparatorActive", { bg = "NONE", fg = active_bg })
+api.nvim_set_hl(0, "TablineSeparatorInactive", { bg = "NONE", fg = inactive_bg })
+local separator_active_hi = '%#TablineSeparatorActive#'
+local separator_inactive_hi = '%#TablineSeparatorInactive#'
 
 local labels = { 'e', 'a', 'i', 'h', 'o', 'u', 'y', 'k' }
 
