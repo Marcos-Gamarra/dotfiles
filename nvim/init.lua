@@ -1,6 +1,5 @@
 require('plugins')
 
-vim.opt.laststatus = 3
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.virtualedit = "block"
@@ -11,6 +10,7 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.showtabline = 0
+vim.opt.laststatus = 3
 
 -- folding
 vim.o.foldlevelstart = 99

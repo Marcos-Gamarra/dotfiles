@@ -1,10 +1,15 @@
 local left_sep = ''
 local right_sep = ''
 
-local inactive_bg = '#737994'
+local function get_bg_color()
+    local bg_color = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg')
+    return bg_color
+end
+
+local inactive_bg = '#51576d'
 local active_bg = "#7aa2f7"
-local active_fg = 'white'
-local text = "white"
+local active_fg = get_bg_color()
+local text = "#c6d0f5"
 
 local api = vim.api
 

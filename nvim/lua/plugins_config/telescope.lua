@@ -109,6 +109,14 @@ local function find_files_in_root()
     }
 end
 
+local function grep_in_root()
+    local root_dir = require('lspconfig.util').root_pattern('.git', 'Cargo.toml', 'package.json', 'node_modules')(vim.fn
+        .expand('%:p:h'))
+    builtin.live_grep {
+        cwd = root_dir,
+    }
+end
+
 local function find_notes()
     local dirman = require('neorg').modules.get_module("core.dirman")
     local path_to_workspace = dirman.get_current_workspace()[2]
@@ -119,7 +127,8 @@ end
 
 vim.keymap.set('n', '<space>tn', builtin.find_files, {})
 vim.keymap.set('n', '<space>tg', builtin.live_grep, {})
+vim.keymap.set('n', '<space>tig', grep_in_root, {})
 vim.keymap.set('n', '<space>tb', builtin.buffers, {})
 vim.keymap.set('n', '<space>th', find_files_include_hidden, {})
-vim.keymap.set('n', '<space>tr', find_files_in_root, {})
+vim.keymap.set('n', '<space>te', find_files_in_root, {})
 vim.keymap.set('n', '<space>to', find_notes, {})

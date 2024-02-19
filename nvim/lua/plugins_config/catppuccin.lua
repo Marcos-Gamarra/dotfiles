@@ -20,6 +20,7 @@ require('catppuccin').setup({
             CursorLine = { bg = colors.crust },
             LeapBackdrop = { link = 'Comment' },
             NormalFloat = { link = 'Normal' },
+            StatusLine = { bg = 'NONE' },
         }
     end
 })

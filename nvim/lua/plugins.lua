@@ -1,5 +1,5 @@
 -- third party plugins
-require('plugins_config/aerial')
+-- require('plugins_config/aerial')
 require('plugins_config/comment')
 require('plugins_config/copilot')
 require('plugins_config/devicons')
