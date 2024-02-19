@@ -50,6 +50,12 @@ end
 
 local function render_buffers()
     local unsorted_bufs = {}
+
+    if n_of_buffers == 0 then
+        vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, { " No buffers " })
+        return
+    end
+
     for key, buffer in pairs(buffer_list) do
         local line = " " .. buffer.label .. " " .. buffer.name
         table.insert(unsorted_bufs, { line = line, idx = buffer.idx })
