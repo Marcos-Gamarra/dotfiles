@@ -15,25 +15,14 @@ vim.keymap.set("", "r<return>", "$", { noremap = true })
 
 --delete text stuff
 vim.keymap.set("", "e", "d", { noremap = true })
-vim.keymap.set("", "<space>e", "dv", { noremap = true })
-vim.keymap.set("", "h", "c", { noremap = true })
-vim.keymap.set("", "<space>h", "cv", { noremap = true })
+vim.keymap.set("", "h", "v", { noremap = true })
 
-
---folds
-vim.api.nvim_set_keymap("n", "zl", "zo", { noremap = true })
 
 --save file
-vim.keymap.set("n", "<CR><CR>", ":wa!<CR>", { noremap = true })
+vim.keymap.set("n", "<tab><backspace>", ":wa!<CR>", { noremap = true })
 
 -- delete word and go to insert mode
 vim.keymap.set("n", "<tab><tab>", "ciw", { noremap = true })
-
--- go to pair
-vim.keymap.set("n", "<backspace>", "<Plug>(MatchitNormalForward)", { noremap = true })
-vim.keymap.set("o", "<backspace>", "<Plug>(MatchitOperationForward)", { noremap = true })
-vim.keymap.set("v", "<backspace>", "<Plug>(MatchitVisualForward)", { noremap = true })
-
 
 -- buffers
 vim.keymap.set("n", "g<space>", "<C-6>", { noremap = true })
@@ -52,4 +41,12 @@ vim.keymap.set("n", "<C-u>", "<C-r>", { noremap = true })
 --toggle options
 vim.keymap.set("n", "<space>on", ":set nu!<CR>", { noremap = true })
 vim.keymap.set("n", "<space>oh", ":set hlsearch!<CR>", { noremap = true })
+vim.keymap.set("n", "<space>ow", ":set wrap!<CR>", { noremap = true })
 
+--visual mode
+vim.keymap.set("", "<space>h", "V", { noremap = true })
+
+-- folding
+vim.keymap.set("", "j", "z", { noremap = true })
+vim.keymap.set("", "jt", "za", { noremap = true })
+vim.keymap.set("", "j<space>t", "zA", { noremap = true })

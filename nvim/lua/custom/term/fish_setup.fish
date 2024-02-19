@@ -9,7 +9,7 @@ function e
 end
 
 function ttn 
-    set file_to_open $(fd --type f --hidden --exclude .git |
+    set file_to_open $(fd --type f --no-require-git |
     fzf --preview "bat --color always {}" \
     --preview-window=top:50% \
     --bind "ctrl-j:preview-up,ctrl-b:preview-down")
@@ -20,7 +20,7 @@ function ttn
 end
 
 function ttd
-    set dir_to_open $(fd --type d --hidden --exclude .git | 
+    set dir_to_open $(fd --type d --no-require-git | 
     fzf --preview "lsd --color always --icon always {}" \
     --preview-window=top:50% \
     --bind "ctrl-j:preview-up,ctrl-b:preview-down")
@@ -32,7 +32,8 @@ end
 
 function ttg
     set rg_command "rg --column --line-number --no-heading --color=always --smart-case " 
-    set file_to_open $(fd --type f --hidden --exclude .git |
+    # set file_to_open $(fd --type f --hidden --exclude .git |
+    set file_to_open $(fd --type f --no-require-git |
     fzf --ansi --disabled  \
     --bind "start:reload:$rg_command {q}" \
     --bind "change:reload:sleep 0.1; $rg_command {q} || true"\
@@ -51,7 +52,7 @@ function ttr
         echo "project root not set"
         return 1
     end
-    set file_to_open $(fd --type f --hidden --exclude .git --search-path $PROJECT_ROOT_NVIM |
+    set file_to_open $(fd --type f --no-require-git --search-path $PROJECT_ROOT_NVIM |
     fzf --preview "bat --color always {}" \
     --preview-window=top:50% \
     --bind "ctrl-j:preview-up,ctrl-b:preview-down")
@@ -64,7 +65,7 @@ end
 function search_root
     set -f current_search_dir $PWD
     while test "$current_search_dir" != "/";
-        set -l results (fd --base-directory $current_search_dir -H -d 1 --no-ignore-vcs "^Cargo.toml\$|^.git\$|^package.json\$")
+        set -l results (fd --base-directory $current_search_dir -H -d 1 --no-require-git "^Cargo.toml\$|^.git\$|^package.json\$")
         if test -n "$results"
             echo $current_search_dir
             return

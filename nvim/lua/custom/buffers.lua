@@ -1,61 +1,139 @@
-local api = vim.api
-vim.g.buf_list_is_open = false
+local borders = {
+    "┏", "━", "┓", "┃", "┛", "━", "┗", "┃",
+}
+
+local width = math.floor(vim.o.columns * 0.5)
+local height = math.floor(vim.o.lines * 0.5)
+local col = vim.o.columns
+local row = 0
+
+local opts = {
+    relative = 'editor',
+    width = width,
+    height = height,
+    anchor = 'NE',
+    col = col,
+    row = row,
+    style = 'minimal',
+    border = borders,
+    title = { { " Buffers ", "FloatBorder" } },
+    title_pos = 'center',
+}
+
+local is_buflist_open = false
+local buf_id = vim.api.nvim_create_buf(false, true)
+local win_id = 0
+
+local labels = { 'e', 'a', 'i', 'h', 'j', 'x', 'o', 'y', 'v', 'k', 'z' }
+
 local blue = '#7aa2f7'
-api.nvim_set_hl(0, "BufferListActive", { bg = 'NONE', fg = blue, bold = true })
+vim.api.nvim_set_hl(0, "BufferActive", { bg = 'NONE', fg = blue, bold = true })
 
-local function list_buffers()
+local buffer_list = {}
+local n_of_buffers = 0
+
+
+local function init_buffer_list()
     local buffers = vim.api.nvim_list_bufs()
-    local buf_listed = {}
-    local number_of_buffers = 0
-
-    local current_buf = nil
-    for _, v in ipairs(buffers) do
-        if (vim.fn.buflisted(v) == 1) then
-            number_of_buffers = number_of_buffers + 1
-            if (vim.fn.bufnr(v) == vim.fn.bufnr('%')) then
-                current_buf = number_of_buffers
-            end
-            table.insert(buf_listed, vim.fn.bufname(v))
+    for _, buf in ipairs(buffers) do
+        local name = vim.api.nvim_buf_get_name(buf)
+        if name ~= '' and vim.bo[buf].buflisted and buffer_list[buf] == nil then
+            -- get buffer name + parent and grandparent directory
+            name = string.match(name, ".*/(.*/.*/.*)")
+            buffer_list[buf] = { name = name, label = labels[n_of_buffers + 1], idx = n_of_buffers + 1 }
+            n_of_buffers = n_of_buffers + 1
         end
     end
-    return { current_buf, buf_listed, number_of_buffers }
 end
 
 
-local window_id = nil
-local current_window = api.nvim_get_current_win()
 
-local toggle_list_of_buffers = function()
-    local width = vim.api.nvim_get_option("columns")
+local function render_buffers()
+    local unsorted_bufs = {}
+    for key, buffer in pairs(buffer_list) do
+        local line = " " .. buffer.label .. " " .. buffer.name
+        table.insert(unsorted_bufs, { line = line, idx = buffer.idx })
 
-    local buf = api.nvim_create_buf(false, true)
-    if vim.g.buf_list_is_open == true then
-        api.nvim_win_close(window_id, true)
-        vim.g.buf_list_is_open = false
-    else
-        local buf_info = list_buffers()
-        window_id = api.nvim_open_win(buf,
-            true,
-            {
-                relative = 'editor',
-                width = 30,
-                height = buf_info[3],
-                row = 0,
-                col = width - 30,
-                border = 'rounded',
-                style = 'minimal',
-            }
+        vim.keymap.set(
+            { 'n' },
+            'g' .. buffer.label,
+            ':b' .. key .. '<CR>',
+            { silent = true }
         )
-        vim.g.buf_list_is_open = true
-        api.nvim_buf_set_lines(buf, 0, 1, false, buf_info[2])
-        vim.fn.matchaddpos("BufferListActive", { buf_info[1] })
-        api.nvim_set_current_win(current_window)
+    end
+
+    table.sort(unsorted_bufs, function(a, b)
+        return a.idx < b.idx
+    end)
+
+    local lines = {}
+    for _, buffer in ipairs(unsorted_bufs) do
+        table.insert(lines, buffer.line)
+    end
+
+    local buf = vim.api.nvim_get_current_buf()
+    vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, lines)
+    vim.api.nvim_buf_add_highlight(buf_id, -1, "BufferActive", buffer_list[buf].idx - 1, 0, -1)
+end
+
+local function on_buf_delete()
+    local buf = vim.api.nvim_get_current_buf()
+    if vim.bo[buf].buflisted and buffer_list[buf] ~= nil then
+        local idx = buffer_list[buf].idx
+        buffer_list[buf] = nil
+        n_of_buffers = n_of_buffers - 1
+
+        for _, buffer in pairs(buffer_list) do
+            if buffer.idx > idx then
+                buffer.idx = buffer.idx - 1
+                buffer.label = labels[buffer.idx]
+            end
+        end
     end
 end
 
-vim.keymap.set(
-    { 'n' },
-    '<Tab>',
-    toggle_list_of_buffers,
-    { silent = false }
-)
+local function on_buf_enter()
+    local buf = vim.api.nvim_get_current_buf()
+    local name = vim.api.nvim_buf_get_name(buf)
+    if name ~= '' and vim.bo[buf].buflisted and buffer_list[buf] == nil then
+        name = string.match(name, ".*/(.*/.*/.*)")
+        buffer_list[buf] = { name = name, label = labels[n_of_buffers + 1], idx = n_of_buffers + 1 }
+        n_of_buffers = n_of_buffers + 1
+    end
+
+    if is_buflist_open then
+        render_buffers()
+    end
+end
+
+
+
+local function toggle_list()
+    if is_buflist_open then
+        vim.api.nvim_win_close(win_id, true)
+        is_buflist_open = false
+    else
+        render_buffers()
+        win_id = vim.api.nvim_open_win(buf_id, false, opts)
+        is_buflist_open = true
+    end
+end
+
+local autocmd_on_enter = {
+    callback = function()
+        on_buf_enter()
+    end
+}
+
+local autocmd_on_delete = {
+    callback = function()
+        on_buf_delete()
+    end
+}
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, autocmd_on_enter)
+vim.api.nvim_create_autocmd({ "BufDelete" }, autocmd_on_delete)
+
+vim.keymap.set('', 'b', toggle_list, { noremap = true, silent = true })
+
+init_buffer_list()

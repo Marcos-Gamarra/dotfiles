@@ -1,3 +1,6 @@
+local borders = {
+    "┏", "━", "┓", "┃", "┛", "━", "┗", "┃",
+}
 local width = math.floor(vim.o.columns * 0.9)
 local height = math.floor(vim.o.lines * 0.8)
 local col = (vim.o.columns - width) / 2
@@ -10,7 +13,9 @@ local opts = {
     col = col,
     row = row,
     style = 'minimal',
-    border = 'rounded',
+    border = borders,
+    title = { { "Terminal", "FloatBorder" } },
+    title_pos = 'center',
 }
 
 local source_fish_setup_file = "source ~/.config/nvim/lua/custom/term/fish_setup.fish\n"
@@ -30,7 +35,7 @@ local function toggle_floating_terminal()
     if channel_id ~= nil then
         win_id = vim.api.nvim_open_win(buf_id, true, opts)
     else
-        buf_id = vim.api.nvim_create_buf(false, false)
+        buf_id = vim.api.nvim_create_buf(false, true)
         win_id = vim.api.nvim_open_win(buf_id, true, opts)
         channel_id = vim.fn.termopen('fish', {
             on_exit = function()
@@ -54,7 +59,7 @@ end
 
 vim.keymap.set('', '<A-e>', toggle_floating_terminal, { noremap = true, silent = true })
 vim.keymap.set('t', '<A-e>', toggle_floating_terminal, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>tn', function() open_fzf_in_term("ttn") end, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>td', function() open_fzf_in_term("ttd") end, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>tg', function() open_fzf_in_term("ttg") end, { noremap = true, silent = true })
-vim.keymap.set('n', '<space>tr', function() open_fzf_in_term("ttr") end, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<space>tn', function() open_fzf_in_term("ttn") end, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<space>td', function() open_fzf_in_term("ttd") end, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<space>tg', function() open_fzf_in_term("ttg") end, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<space>tr', function() open_fzf_in_term("ttr") end, { noremap = true, silent = true })

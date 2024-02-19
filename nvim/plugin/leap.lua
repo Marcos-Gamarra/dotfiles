@@ -5,8 +5,7 @@ vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
 require('leap').setup {
     case_sensitive = false,
-    --safe_labels = { "t", "n", "s", "r", "m", "f", "l", "p", "g", "c", "q", "w"},
-    safe_labels = {},
+    safe_labels = { "t", "n", "s", "r", "m", "f", "l", "p", "g", "c", "q", "w"},
     labels = { "e", "a", "i", "h", "j", "b", "x", "o", "v", "y", "k", "z", "t", "n", "s", "r", "m", "f", "l", "p", "g",
         "c", "q", "w", "d", "u", "E", "A", "I", "H", "J", "B", "X", "O", "V", "Y", "K", "Z", "T", "N", "S", "R", "M",
         "F", "L", "P", "G", "C", "Q", "W", "D", "U" },
