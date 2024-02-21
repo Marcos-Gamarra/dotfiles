@@ -8,11 +8,17 @@ local win_id = 0
 
 local labels = { 'e', 'a', 'i', 'h', 'j', 'x', 'o', 'y', 'v', 'k', 'z' }
 
-local blue = '#7aa2f7'
+local function get_float_border_color()
+    local bg_color = vim.fn.synIDattr(vim.fn.hlID('FloatBorder'), 'fg')
+    return bg_color
+end
+
+local blue = get_float_border_color()
 vim.api.nvim_set_hl(0, "BufferActive", { bg = 'NONE', fg = blue, bold = true })
 
 local buffer_list = {}
 local n_of_buffers = 0
+local current_buf = nil
 
 local width = math.floor(vim.o.columns * 0.25)
 local col = vim.o.columns
@@ -40,7 +46,7 @@ local function init_buffer_list()
     local buffers = vim.api.nvim_list_bufs()
     for _, buf in ipairs(buffers) do
         local name = vim.api.nvim_buf_get_name(buf)
-        if name ~= '' and vim.bo[buf].buflisted and buffer_list[buf] == nil then
+        if name ~= '' and vim.bo[buf].buflisted then
             -- get buffer name + parent and grandparent directory
             name = string.match(name, ".*/(.*/.*)")
             buffer_list[buf] = { name = name, label = labels[n_of_buffers + 1], idx = n_of_buffers + 1 }
@@ -50,12 +56,12 @@ local function init_buffer_list()
 end
 
 local function render_buffers()
-    local unsorted_bufs = {}
-
-    if n_of_buffers == 0 then
-        vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, { " No buffers " })
+    if n_of_buffers == 0 or current_buf == nil then
+        vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, { " No open buffers " })
         return
     end
+
+    local unsorted_bufs = {}
 
     for key, buffer in pairs(buffer_list) do
         local line = " " .. buffer.label .. " " .. buffer.name
@@ -78,7 +84,7 @@ local function render_buffers()
         table.insert(lines, buffer.line)
     end
 
-    local buf = vim.api.nvim_get_current_buf()
+    local buf = current_buf
     vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, lines)
 
     if buffer_list[buf] ~= nil then
@@ -87,17 +93,28 @@ local function render_buffers()
 end
 
 local function on_buf_delete()
-    local buf = vim.api.nvim_get_current_buf()
-    if vim.bo[buf].buflisted and buffer_list[buf] ~= nil then
-        local idx = buffer_list[buf].idx
-        buffer_list[buf] = nil
-        n_of_buffers = n_of_buffers - 1
+    if current_buf == nil then
+        return
+    end
 
-        for _, buffer in pairs(buffer_list) do
-            if buffer.idx > idx then
-                buffer.idx = buffer.idx - 1
-                buffer.label = labels[buffer.idx]
-            end
+    local buf = current_buf
+    local idx = buffer_list[buf].idx
+
+    buffer_list[buf] = nil
+    n_of_buffers = n_of_buffers - 1
+
+    if n_of_buffers == 0 then
+        current_buf = nil
+        render_buffers()
+        vim.api.nvim_win_close(win_id, true)
+        win_id = vim.api.nvim_open_win(buf_id, false, float_opts(n_of_buffers))
+        return
+    end
+
+    for _, buffer in pairs(buffer_list) do
+        if buffer.idx > idx then
+            buffer.idx = buffer.idx - 1
+            buffer.label = labels[buffer.idx]
         end
     end
 end
@@ -105,13 +122,14 @@ end
 local function on_buf_enter()
     local buf = vim.api.nvim_get_current_buf()
     local name = vim.api.nvim_buf_get_name(buf)
-    if vim.bo[buf].buflisted then
-        if name ~= '' and buffer_list[buf] == nil then
+    if vim.bo[buf].buflisted and name ~= '' then
+        if buffer_list[buf] == nil then
             name = string.match(name, ".*/(.*/.*)")
             buffer_list[buf] = { name = name, label = labels[n_of_buffers + 1], idx = n_of_buffers + 1 }
             n_of_buffers = n_of_buffers + 1
         end
 
+        current_buf = buf
         if is_buflist_open then
             render_buffers()
             vim.api.nvim_win_close(win_id, true)
