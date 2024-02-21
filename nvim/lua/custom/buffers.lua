@@ -138,7 +138,32 @@ local function on_buf_enter()
     end
 end
 
+local function change_buffer_order()
+    local label = vim.fn.getchar()
+    label = string.char(label)
+    if label == '' then
+        return
+    end
 
+    for _, target_buffer in pairs(buffer_list) do
+        if target_buffer.label == label then
+            local current_buffer = vim.api.nvim_get_current_buf()
+            local tmp_idx = buffer_list[current_buffer].idx
+            local tmp_label = buffer_list[current_buffer].label
+            buffer_list[current_buffer].idx = target_buffer.idx
+            buffer_list[current_buffer].label = target_buffer.label
+            target_buffer.idx = tmp_idx
+            target_buffer.label = tmp_label
+            render_buffers()
+            if is_buflist_open then
+                vim.api.nvim_win_close(win_id, true)
+                win_id = vim.api.nvim_open_win(buf_id, false, float_opts(n_of_buffers))
+            end
+
+            return
+        end
+    end
+end
 
 local function toggle_list()
     if is_buflist_open then
@@ -167,6 +192,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, autocmd_on_enter)
 vim.api.nvim_create_autocmd({ "BufDelete" }, autocmd_on_delete)
 
 vim.keymap.set('', 'b', toggle_list, { noremap = true, silent = true })
+vim.keymap.set('', '<space>b', change_buffer_order, { noremap = true, silent = true })
 
 init_buffer_list()
 -- toggle_list()
