@@ -30,15 +30,8 @@
 	"sway/workspaces": {
     	"disable-scroll": true,
     	"format": "{name}",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-    	}
+        
 	},
-
-
 
     "battery#icon": {
         "format": "{icon}",
@@ -54,5 +47,5 @@
             },
             "format": "{capacity}",
             "max-length": 25
-    }
+    },
 }

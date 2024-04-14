@@ -9,7 +9,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
-vim.opt.showtabline = 0
+vim.opt.showtabline = 1
 vim.opt.laststatus = 3
 
 -- folding

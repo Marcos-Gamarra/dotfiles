@@ -25,6 +25,9 @@ local buf_id = nil
 local win_id = nil
 local channel_id = nil
 
+
+
+
 local function toggle_floating_terminal()
     if is_term_open then
         vim.api.nvim_win_close(win_id, true)

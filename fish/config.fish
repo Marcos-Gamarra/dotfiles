@@ -1,8 +1,8 @@
 if status is-interactive
     # Emulates vim's cursor shape behavior
-    set fish_cursor_default block
-    set fish_cursor_insert line
-    set fish_cursor_replace_one underscore
+    #set fish_cursor_default block
+    #set fish_cursor_insert line
+    #set fish_cursor_replace_one underscore
 
     abbr --add battery cat /sys/class/power_supply/BAT0/capacity
 
@@ -10,6 +10,7 @@ if status is-interactive
 
     abbr --add c clear
     abbr --add e z
+    abbr --add ie zi
     abbr --add .. z ..
     abbr --add t lsd
     abbr --add tt lsd --tree
@@ -24,9 +25,12 @@ if status is-interactive
     abbr --add bt bat
     abbr --add btp bat -p
 
+    # copilot cli abbr
+    abbr --add ghcs gh copilot suggest -t shell 
+    abbr --add ghce gh copilot explain
+
     set -x EDITOR nvim
     zoxide init fish | source
     starship init fish | source
-
 
 end 

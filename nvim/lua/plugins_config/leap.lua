@@ -12,8 +12,8 @@ require('leap').setup {
     special_keys = {
         prev_target = '<backspace>',
         next_target = '<enter>',
-        next_group  = '<left>',
-        prev_group  = '<right>',
+        next_group  = '<right>',
+        prev_group  = '<left>',
         eol         = '<space>',
     },
 }

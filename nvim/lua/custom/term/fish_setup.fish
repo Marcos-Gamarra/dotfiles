@@ -1,11 +1,11 @@
 function n
-    # closes (toggles) terminal window in remote nvim instance before opening new file
     nvim --server $NVIM --remote-send "<A-e>"
     nvim --server $NVIM --remote $argv
 end
 
 function e 
-    z $argv;nvim --server $NVIM --remote-send "<C-\><C-N>:cd $PWD<CR>";nvim --server $NVIM --remote-send "i"
+    z $argv;
+    nvim --server $NVIM --remote-send "<C-\><C-N>:cd $PWD<CR>i"
 end
 
 function ttn 

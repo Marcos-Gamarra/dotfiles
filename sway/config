@@ -1,5 +1,5 @@
 # target                    title        bg          text        indicator    child_border
-client.focused              #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a
+client.focused              #24273a      #7aa2f7     #303446     #f2d5cf      #24273a
 client.unfocused            #24273a      #737994     #e9e9ed     #f2d5cf      #24273a
 client.focused_inactive     #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a     
 client.focused_tab_title    #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a
@@ -15,20 +15,16 @@ titlebar_border_thickness 1
 hide_edge_borders --i3 smart
 
 
-#terminal
-set $term foot
-
 #to run gui applications that require root
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
 # script to set transparency of inactive windows
-exec ~/.config/sway/scripts/inactive-windows-transparency.py
+# exec ~/.config/sway/scripts/inactive-windows-transparency.py
 
-#--enable-features=UseOzonePlatform --ozone-platform=wayland
-exec chromium --ozone-platform-hint=auto
+set $term foot
+exec chromium-snapshot-bin
 for_window [app_id="chromium"] move container to workspace 1
 workspace number 2
-exec foot
+exec $term
 
 #mod key
 set $mod Mod1
@@ -53,15 +49,21 @@ set $down n
 # Basics:
 	#Screenshot
     bindsym Print exec grim - | wl-copy 
-    #audio
-    bindsym XF86AudioMute exec amixer -q set Master toggle
-    bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-    bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
+        
+    # volume control
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+
+    # brightness control
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
 
     #copy and paste
 
     # Start a terminal
-    bindsym $mod+a exec foot
+    bindsym $mod+a exec $term
     bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
 
 
@@ -109,19 +111,18 @@ set $down n
 
     # the marks here are used to trigger a window event
     # that is used by the inactive-windows-transparency.py script
-	bindsym $mod+mod3+v layout toggle splith tabbed; mark --toggle " "
-	bindsym $mod+mod3+o layout toggle splitv tabbed; mark --toggle " "
-    bindsym $mod+mod3+y layout tabbed ; mark --toggle " "
+	bindsym $mod+mod3+v layout toggle splith tabbed
+	bindsym $mod+mod3+o layout toggle splitv tabbed
+    bindsym $mod+mod3+y layout tabbed
 	bindsym $mod+v splith
 	bindsym $mod+o splitv
 
 
-
-    # Swap focus between the tiling area and the floating area
 	bindsym $mod+b fullscreen
     bindsym $mod+p focus parent
-    bindsym $mod+Shift+minus move scratchpad
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+mod3+x move scratchpad
+    bindsym $mod+x scratchpad show
+    bindsym $mod+mod3+z floating toggle
 #
 # Workspaces:
 #
@@ -230,6 +231,7 @@ bar {
 #        inactive_workspace #666666 #1c1c1c #ffffff
 #		font "SauceCodePro Nerd Font Regular 13"
 #    }
+
 #}
 
 include /etc/sway/config.d/*

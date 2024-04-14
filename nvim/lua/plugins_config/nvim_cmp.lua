@@ -44,10 +44,10 @@ cmp.setup({
             return vim_item
         end
     },
-    matching = {
-        disallow_fuzzy_matching = true,
-        disallow_partial_matching = true,
-    },
+    -- matching = {
+    --     disallow_fuzzy_matching = true,
+    --     disallow_partial_matching = true,
+    -- },
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)

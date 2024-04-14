@@ -1,5 +1,5 @@
 -- third party plugins
--- require('plugins_config/aerial')
+require('plugins_config/aerial')
 require('plugins_config/comment')
 require('plugins_config/copilot')
 require('plugins_config/devicons')
@@ -14,6 +14,7 @@ require('plugins_config/treesitter')
 require('plugins_config/ts_autotags')
 require('plugins_config/telescope')
 require('plugins_config/catppuccin')
+require('plugins_config/neoclip')
 
 -- custom scripts
 require('custom/theme')

@@ -17,10 +17,10 @@ hide_edge_borders --i3 both
 set $term foot
 
 #exec chromium with wayland flag
-exec lutris 
+exec foot
 
 #mod key
-set $mod Mod4
+set $mod mod4
 
 #h and s for horizontal movement
 
@@ -53,7 +53,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     #bindsym $mod+m exec ./.local/bin/styler
 
     # Kill focused window
-    bindsym $mod+comma kill
+    bindsym $mod+q kill
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

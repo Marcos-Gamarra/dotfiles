@@ -1,16 +1,18 @@
 require("copilot").setup({
     panel = {
         enabled = true,
-        auto_refresh = false,
+        auto_refresh = true,
         keymap = {
             jump_prev = "[[",
             jump_next = "]]",
             accept = "<CR>",
             refresh = "gr",
+            open = "<C-|>", -- Mod5 + Mod 3 + p in keyboard layout
         },
+
         layout = {
-            position = "bottom", -- | top | left | right
-            ratio = 0.4
+            position = "right", -- | top | left | right
+            ratio = 0.5
         },
     },
 
@@ -20,15 +22,13 @@ require("copilot").setup({
         debounce = 75,
         keymap = {
             accept = "<C-a>",
-            accept_word = false,
-            accept_line = false,
+            accept_line = "<C-l>",
             next = "<C-b>",
             prev = "<C-j>",
-            dismiss = "<C-z>",
+            dismiss = "<C-x>",
         },
     },
 
 })
 
-vim.api.nvim_set_keymap("n", "<space>co", ":Copilot panel<CR>", { noremap = true })
 vim.g.copilot_no_tab_map = true

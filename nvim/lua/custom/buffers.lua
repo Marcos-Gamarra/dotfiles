@@ -4,7 +4,7 @@ local borders = {
 
 local is_buflist_open = false
 local buf_id = vim.api.nvim_create_buf(false, true)
-local win_id = 0
+local win_id = nil
 
 local labels = { 'e', 'a', 'i', 'h', 'j', 'x', 'o', 'y', 'v', 'k', 'z' }
 
@@ -20,7 +20,7 @@ local buffer_list = {}
 local n_of_buffers = 0
 local current_buf = nil
 
-local width = math.floor(vim.o.columns * 0.25)
+local width = math.floor(vim.o.columns * 0.40)
 local col = vim.o.columns
 local row = 1
 
@@ -46,7 +46,7 @@ local function init_buffer_list()
     local buffers = vim.api.nvim_list_bufs()
     for _, buf in ipairs(buffers) do
         local name = vim.api.nvim_buf_get_name(buf)
-        if name ~= '' and vim.bo[buf].buflisted then
+        if name ~= '' and vim.bo[buf].buflisted and vim.bo[buf].buftype ~= 'terminal' then
             -- get buffer name + parent and grandparent directory
             name = string.match(name, ".*/(.*/.*)")
             buffer_list[buf] = { name = name, label = labels[n_of_buffers + 1], idx = n_of_buffers + 1 }
@@ -93,7 +93,7 @@ local function render_buffers()
 end
 
 local function on_buf_delete()
-    if current_buf == nil then
+    if current_buf == nil or win_id == nil then
         return
     end
 
@@ -122,7 +122,7 @@ end
 local function on_buf_enter()
     local buf = vim.api.nvim_get_current_buf()
     local name = vim.api.nvim_buf_get_name(buf)
-    if vim.bo[buf].buflisted and name ~= '' then
+    if vim.bo[buf].buflisted and name ~= '' and vim.bo[buf].buftype ~= 'terminal' then
         if buffer_list[buf] == nil then
             name = string.match(name, ".*/(.*/.*)")
             buffer_list[buf] = { name = name, label = labels[n_of_buffers + 1], idx = n_of_buffers + 1 }
@@ -195,4 +195,3 @@ vim.keymap.set('', 'b', toggle_list, { noremap = true, silent = true })
 vim.keymap.set('', '<space>b', change_buffer_order, { noremap = true, silent = true })
 
 init_buffer_list()
--- toggle_list()
