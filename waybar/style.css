@@ -83,6 +83,8 @@ window#waybar {
     font-weight: bold;
 }
 
+
+
 #battery.icon {
     border-radius: 0px;
     margin: 6px 20px 5px 20px;
@@ -92,6 +94,26 @@ window#waybar {
     font-size: 18px;
     font-weight: bold;
 
+}
+
+#pulseaudio.bluetooth.icon {
+    border-radius: 0px;
+    margin: 0px 15px 0px 0px;
+    padding: 2px 0px 0px 0px;
+    background: @surface1;
+    color: @text;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#pulseaudio.icon {
+    border-radius: 0px;
+    margin: 0px 15px 0px 0px;
+    padding: 2px 0px 0px 0px;
+    background: @surface1;
+    color: @text;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #pulseaudio {

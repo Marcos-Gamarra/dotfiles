@@ -21,7 +21,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec ~/.config/sway/scripts/inactive-windows-transparency.py
 
 set $term foot
-exec chromium-snapshot-bin
+exec chromium
 for_window [app_id="chromium"] move container to workspace 1
 workspace number 2
 exec $term

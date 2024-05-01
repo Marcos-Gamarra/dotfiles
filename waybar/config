@@ -1,51 +1,75 @@
 {
-	"layer": "top",
-	"position": "bottom",
-    "ipc": true,
-    "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date"],
-	"modules-center":["sway/workspaces", "sway/mode"], 
-    "modules-right":["custom/backlight_icon", "backlight", "battery#icon", "battery"],
+    "layer": "top",
+        "position": "bottom",
+        "ipc": true,
+        "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date"],
+        "modules-center":["sway/workspaces", "sway/mode"], 
+        "modules-right":["pulseaudio#icon", "pulseaudio", "custom/backlight_icon", "backlight", "battery#icon", "battery"],
 
-    "custom/backlight_icon": {"format":""},
+        "custom/backlight_icon": {"format":""},
 
-    "backlight": {
-        "format": "{percent}",
-    },
+        "backlight": {
+            "format": "{percent}",
+        },
 
-    "custom/clock_icon": {"format":""},
-	
-	"clock": {
-		"format": "{:%H:%M}",
-        "timezone": "Asia/Taipei",
-	},
+        "custom/clock_icon": {"format":""},
 
-    "custom/calendar_icon": {"format":""},
+        "clock": {
+            "format": "{:%H:%M}",
+            "timezone": "Asia/Taipei",
+        },
 
-	"clock#date": {
-		"format": "{:%d/%m}",
-		"timezone": "Asia/Taipei",
-	},
-	
-	
-	"sway/workspaces": {
-    	"disable-scroll": true,
-    	"format": "{name}",
-        
-	},
+        "custom/calendar_icon": {"format":""},
 
-    "battery#icon": {
-        "format": "{icon}",
-        "format-icons": ["", "", "", "", ""],
+        "clock#date": {
+            "format": "{:%d/%m}",
+            "timezone": "Asia/Taipei",
+        },
 
-    },
 
-	"battery": {
-    		"interval": 60,
-    		"states": {
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "format": "{name}",
+
+        },
+
+        "battery#icon": {
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", ""],
+
+        },
+
+        "battery": {
+            "interval": 60,
+            "states": {
                 "warning": 30,
                 "critical": 15
             },
             "format": "{capacity}",
             "max-length": 25
-    },
+        },
+
+        "pulseaudio#icon": {
+            "format": "{icon}",
+            "format-muted": "󰝟",
+            "format-bluetooth": "󰥰",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "speaker": "",
+                "default": ["", ""]
+            }
+        },
+
+        "pulseaudio": {
+            "format": "{volume}",
+            "format-muted": "--",
+            "format-bluetooth": "{volume}",
+            "scroll-step": 1,
+            "on-click": "pavucontrol",
+        }
 }
