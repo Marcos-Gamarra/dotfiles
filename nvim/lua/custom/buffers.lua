@@ -2,7 +2,7 @@ local borders = {
     "┏", "━", "┓", "┃", "┛", "━", "┗", "┃",
 }
 
-local is_buflist_open = false
+local buflist_is_open = false
 local buf_id = vim.api.nvim_create_buf(false, true)
 local win_id = nil
 
@@ -15,10 +15,6 @@ end
 
 local blue = get_float_border_color()
 vim.api.nvim_set_hl(0, "BufferActive", { bg = 'NONE', fg = blue, bold = true })
-
-local buffer_list = {}
-local n_of_buffers = 0
-local current_buf = nil
 
 local width = math.floor(vim.o.columns * 0.40)
 local col = vim.o.columns
@@ -41,6 +37,10 @@ local function float_opts(height)
         title_pos = 'center',
     }
 end
+
+local buffer_list = {}
+local n_of_buffers = 0
+local current_buf = nil
 
 local function init_buffer_list()
     local buffers = vim.api.nvim_list_bufs()
@@ -93,7 +93,7 @@ local function render_buffers()
 end
 
 local function on_buf_delete()
-    if current_buf == nil or win_id == nil then
+    if current_buf == nil then
         return
     end
 
@@ -106,8 +106,10 @@ local function on_buf_delete()
     if n_of_buffers == 0 then
         current_buf = nil
         render_buffers()
-        vim.api.nvim_win_close(win_id, true)
-        win_id = vim.api.nvim_open_win(buf_id, false, float_opts(n_of_buffers))
+        if buflist_is_open then
+            vim.api.nvim_win_close(win_id, true)
+            win_id = vim.api.nvim_open_win(buf_id, false, float_opts(n_of_buffers))
+        end
         return
     end
 
@@ -130,7 +132,7 @@ local function on_buf_enter()
         end
 
         current_buf = buf
-        if is_buflist_open then
+        if buflist_is_open then
             render_buffers()
             vim.api.nvim_win_close(win_id, true)
             win_id = vim.api.nvim_open_win(buf_id, false, float_opts(n_of_buffers))
@@ -155,7 +157,7 @@ local function change_buffer_order()
             target_buffer.idx = tmp_idx
             target_buffer.label = tmp_label
             render_buffers()
-            if is_buflist_open then
+            if buflist_is_open then
                 vim.api.nvim_win_close(win_id, true)
                 win_id = vim.api.nvim_open_win(buf_id, false, float_opts(n_of_buffers))
             end
@@ -166,13 +168,14 @@ local function change_buffer_order()
 end
 
 local function toggle_list()
-    if is_buflist_open then
+    if buflist_is_open then
         vim.api.nvim_win_close(win_id, true)
-        is_buflist_open = false
+        buflist_is_open = false
+        win_id = nil
     else
         render_buffers()
         win_id = vim.api.nvim_open_win(buf_id, false, float_opts(n_of_buffers))
-        is_buflist_open = true
+        buflist_is_open = true
     end
 end
 

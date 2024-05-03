@@ -2,8 +2,8 @@
     "layer": "top",
         "position": "bottom",
         "ipc": true,
-        "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date"],
-        "modules-center":["sway/workspaces", "sway/mode"], 
+        "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date", "sway/mode"],
+        "modules-center":["sway/workspaces"], 
         "modules-right":["pulseaudio#icon", "pulseaudio", "custom/backlight_icon", "backlight", "battery#icon", "battery"],
 
         "custom/backlight_icon": {"format":""},
@@ -71,5 +71,10 @@
             "format-bluetooth": "{volume}",
             "scroll-step": 1,
             "on-click": "pavucontrol",
+        },
+
+        "sway/mode": {
+            "format": "mode: {}",
+            "max-length": 50
         }
 }

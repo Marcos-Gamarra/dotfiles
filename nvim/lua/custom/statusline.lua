@@ -1,22 +1,22 @@
 local left_sep = ''
 local right_sep = ''
 
-local function get_bg_color()
+--[[ local function get_bg_color()
     local bg_color = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg')
     return bg_color
-end
+end ]]
 
+local black = '#303446'
+local white = '#e9e9ed'
 local inactive_bg = '#51576d'
 local active_bg = "#7aa2f7"
-local active_fg = get_bg_color()
-local text = "#c6d0f5"
 
 local api = vim.api
 
 
-api.nvim_set_hl(0, "StatusLineMode", { bg = active_bg, fg = active_fg, bold = true })
-api.nvim_set_hl(0, "StatuslineFilename", { bg = inactive_bg, fg = text, bold = true })
-api.nvim_set_hl(0, "StatuslineInactive", { bg = inactive_bg, fg = text, bold = true })
+api.nvim_set_hl(0, "StatusLineMode", { bg = active_bg, fg = black, bold = true })
+api.nvim_set_hl(0, "StatuslineFilename", { bg = inactive_bg, fg = white, bold = true })
+api.nvim_set_hl(0, "StatuslineInactive", { bg = inactive_bg, fg = white, bold = true })
 api.nvim_set_hl(0, "StatusLineSeparatorActive", { bg = "NONE", fg = active_bg })
 api.nvim_set_hl(0, "StatusLineSeparatorInactive", { bg = "NONE", fg = inactive_bg })
 

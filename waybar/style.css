@@ -125,3 +125,13 @@ window#waybar {
     font-size: 18px;
     font-weight: bold;
 }
+
+#mode {
+    border-radius: 25px;
+    margin: 5px 5px 5px 18px;
+    padding: 0px 20px 0px 20px;
+    background: #7aa2f7;
+    color: @base;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -52,8 +52,8 @@ set $down n
         
     # volume control
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
     # brightness control
     bindsym XF86MonBrightnessUp exec brightnessctl set +5%
@@ -156,7 +156,7 @@ set $down n
 
 # Resizing containers:
 #
-bindsym $mod+j exec fish ~/.config/sway/scripts/switch_to_resize_mode.fish
+bindsym $mod+j mode "resize"
 mode "resize" {
 
     # target                   title       bg          text        indicator       border
@@ -176,21 +176,22 @@ mode "resize" {
     bindsym Right resize grow width 10px
 
     # Return to default mode
-    bindsym Return exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
-    bindsym Escape exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+j mode "default"
 }
 
 
-bindsym $mod+t exec fish ~/.config/sway/scripts/switch_to_workspace_mode.fish
+bindsym $mod+t mode "workspace"
 mode "workspace" {
-    bindsym s workspace number 1; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
-    bindsym t workspace number 2; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
-    bindsym n workspace number 3; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
-    bindsym r workspace number 4; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym s workspace number 1
+    bindsym t workspace number 2
+    bindsym n workspace number 3
+    bindsym r workspace number 4
 
     # Return to default mode
-    bindsym Return exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
-    bindsym Escape exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 
