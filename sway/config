@@ -1,8 +1,8 @@
 # target                    title        bg          text        indicator    child_border
-client.focused              #24273a      #7aa2f7     #303446     #f2d5cf      #24273a
+client.focused              #24273a      #7aa2f7     #303446     #f2d5cf      #24273a 
 client.unfocused            #24273a      #737994     #e9e9ed     #f2d5cf      #24273a
-client.focused_inactive     #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a     
-client.focused_tab_title    #24273a      #7aa2f7     #e9e9ed     #f2d5cf      #24273a
+client.focused_inactive     #24273a      #737994     #e9e9ed     #f2d5cf      #24273a     
+client.focused_tab_title    #24273a      #7aa2f7     #303446     #f2d5cf      #24273a
 
 workspace_layout tabbed
 
@@ -10,8 +10,8 @@ titlebar_padding 10 4
 
 font 'CaskaydiaCove Nerd Font' Bold 13
 
-default_border pixel 1
-titlebar_border_thickness 1
+# default_border pixel 1
+default_border normal 1
 hide_edge_borders --i3 smart
 
 
@@ -52,8 +52,8 @@ set $down n
         
     # volume control
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+    bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 10%+ 
+    bindsym XF86AudioLowerVolume exec wpctl set-volume -l 0 @DEFAULT_AUDIO_SINK@ 10%-
 
     # brightness control
     bindsym XF86MonBrightnessUp exec brightnessctl set +5%
@@ -94,6 +94,8 @@ set $down n
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$right focus right
+    bindsym $mod+$up focus up
+    bindsym $mod+$down focus down
 
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
@@ -111,11 +113,11 @@ set $down n
 
     # the marks here are used to trigger a window event
     # that is used by the inactive-windows-transparency.py script
-	bindsym $mod+mod3+v layout toggle splith tabbed
-	bindsym $mod+mod3+o layout toggle splitv tabbed
-    bindsym $mod+mod3+y layout tabbed
-	bindsym $mod+v splith
-	bindsym $mod+o splitv
+	bindsym $mod+v layout toggle splith tabbed
+	bindsym $mod+o layout toggle splitv tabbed
+    bindsym $mod+y layout tabbed
+	bindsym $mod+mod3+v splith
+	bindsym $mod+mod3+o splitv
 
 
 	bindsym $mod+b fullscreen
@@ -158,22 +160,16 @@ set $down n
 #
 bindsym $mod+j mode "resize"
 mode "resize" {
-
-    # target                   title       bg          text        indicator       border
-    #client.focused              $red       $red       $base       $rosewater      $red
-    #client.unfocused            $base       $overlay0   $text       $rosewater      $overlay0
-    #client.focused_inactive     $red       $red       $base       $rosewater      $red
-
-    bindsym $left resize shrink width 10px
-    bindsym $right resize grow width 10px
-    bindsym $down resize shrink height 10px
-    bindsym $up resize grow height 10px
+    bindsym $left resize shrink width 30px
+    bindsym $right resize grow width 30px
+    bindsym $down resize shrink height 30px
+    bindsym $up resize grow height 30px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width 30px
+    bindsym Down resize grow height 30px
+    bindsym Up resize shrink height 30px
+    bindsym Right resize grow width 30px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -182,17 +178,17 @@ mode "resize" {
 }
 
 
-bindsym $mod+t mode "workspace"
-mode "workspace" {
-    bindsym s workspace number 1
-    bindsym t workspace number 2
-    bindsym n workspace number 3
-    bindsym r workspace number 4
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+# bindsym $mod+t mode "workspace"
+# mode "workspace" {
+#     bindsym s workspace number 1
+#     bindsym t workspace number 2
+#     bindsym n workspace number 3
+#     bindsym r workspace number 4
+# 
+#     # Return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
 
 
 

@@ -16,11 +16,11 @@ end
 local blue = get_float_border_color()
 vim.api.nvim_set_hl(0, "BufferActive", { bg = 'NONE', fg = blue, bold = true })
 
-local width = math.floor(vim.o.columns * 0.40)
 local col = vim.o.columns
 local row = 1
 
 local function float_opts(height)
+    local width = math.floor(vim.o.columns * 0.40)
     if height == 0 then
         height = 1
     end
@@ -42,7 +42,8 @@ local buffer_list = {}
 local n_of_buffers = 0
 local current_buf = nil
 
-local function init_buffer_list()
+local function update_buffer_list()
+    n_of_buffers = 0
     local buffers = vim.api.nvim_list_bufs()
     for _, buf in ipairs(buffers) do
         local name = vim.api.nvim_buf_get_name(buf)
@@ -191,10 +192,15 @@ local autocmd_on_delete = {
     end
 }
 
+local autocmd_on_buf_new = {
+    callback = function()
+        update_buffer_list()
+    end
+}
+
 vim.api.nvim_create_autocmd({ "BufEnter" }, autocmd_on_enter)
 vim.api.nvim_create_autocmd({ "BufDelete" }, autocmd_on_delete)
+vim.api.nvim_create_autocmd({ "BufNew" }, autocmd_on_buf_new)
 
 vim.keymap.set('', 'b', toggle_list, { noremap = true, silent = true })
 vim.keymap.set('', '<space>b', change_buffer_order, { noremap = true, silent = true })
-
-init_buffer_list()
