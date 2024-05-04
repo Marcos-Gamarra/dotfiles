@@ -34,9 +34,10 @@ vim.keymap.set("n", "kr", "<C-w>l", { noremap = true })
 vim.keymap.set("n", "ks", "<C-w>h", { noremap = true })
 vim.keymap.set("n", "kt", "<C-w>k", { noremap = true })
 vim.keymap.set("n", "kn", "<C-w>j", { noremap = true })
-vim.keymap.set("n", "kq", "<C-w>q", { noremap = true })
---vim.keymap.set("n", "<C-m>", "<C-w>>", { noremap = true })
---vim.keymap.set("n", "<C-f>", "<C-w><", { noremap = true })
+vim.keymap.set("n", "kw", "<C-w>q", { noremap = true })
+vim.keymap.set("n", "kq", "<C-w>>", { noremap = true })
+vim.keymap.set("n", "kc", "<C-w><", { noremap = true })
+vim.keymap.set("n", "k=", "<C-w>=", { noremap = true }) -- balance splits
 
 --redo
 vim.keymap.set("n", "<C-u>", "<C-r>", { noremap = true })
@@ -52,9 +53,6 @@ vim.keymap.set("", "j", "z", { noremap = true })
 vim.keymap.set("", "jt", "za", { noremap = true })
 vim.keymap.set("", "j<space>t", "zA", { noremap = true })
 
-
 -- terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 
--- even out vertical splits
-vim.keymap.set("n", "k=", "<C-w>=", { noremap = true })

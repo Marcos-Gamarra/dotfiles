@@ -4,6 +4,10 @@ require('catppuccin').setup({
         dark = "frappe",
     },
 
+    no_italic = true,
+    no_underline = true,
+
+
     integrations = {
         cmp = true,
         aerial = true,

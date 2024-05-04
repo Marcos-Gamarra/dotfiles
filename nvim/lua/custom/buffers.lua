@@ -204,3 +204,5 @@ vim.api.nvim_create_autocmd({ "BufNew" }, autocmd_on_buf_new)
 
 vim.keymap.set('', 'b', toggle_list, { noremap = true, silent = true })
 vim.keymap.set('', '<space>b', change_buffer_order, { noremap = true, silent = true })
+
+update_buffer_list()

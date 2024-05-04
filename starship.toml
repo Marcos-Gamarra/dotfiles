@@ -3,9 +3,9 @@ add_newline = false
 format = """
 [░▒▓](#a3aed2)\
 [ 󰣇 ](bg:#a3aed2 fg:#303446)\
-[](bg:#7aa2f7 fg:#a3aed2)\
+[](bg:#539bf5 fg:#a3aed2)\
 $directory\
-[](fg:#7aa2f7 bg:#73799e)\
+[](fg:#539bf5 bg:#73799e)\
 $git_branch\
 $git_status\
 [](bg:#565a6e fg:#73799e)\
@@ -18,7 +18,7 @@ $php\
 \n$character"""
 
 [directory]
-style = "fg:#303446  bg:#7aa2f7"
+style = "fg:#303446  bg:#539bf5"
 format = "[ $path ]($style)"
 truncation_length = 4
 truncation_symbol = "…/"
@@ -47,9 +47,9 @@ format = '[[ $symbol ($version) ](fg:#e9e9ed bg:#565a6e)]($style)'
 [python]
 symbol = ""
 style = "bg:#394260"
-format = '[[ $symbol ($version \($virtualenv\)) ](fg:#e9e9ed bg:#73799e)]($style)'
+format = '[[ $symbol ($version \($virtualenv\)) ](fg:#e9e9ed bg:#565a6e)]($style)'
 
 [nodejs]
 symbol = ""
 style = "bg:#394260"
-format = '[[ $symbol ($version) ](fg:#e9e9ed bg:#73799e)]($style)'
+format = '[[ $symbol ($version) ](fg:#e9e9ed bg:#565a6e)]($style)'

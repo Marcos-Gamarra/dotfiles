@@ -9,7 +9,7 @@ end ]]
 local black = '#303446'
 local white = '#e9e9ed'
 local inactive_bg = '#51576d'
-local active_bg = "#7aa2f7"
+local active_bg = "#539bf5"
 
 local api = vim.api
 
@@ -25,10 +25,8 @@ local toggle_statusline = function()
     local option = vim.api.nvim_get_option('laststatus')
     if (option == 0) then
         vim.api.nvim_set_option('laststatus', 3)
-        vim.api.nvim_set_option('cmdheight', 1)
     else
         vim.api.nvim_set_option('laststatus', 0)
-        vim.api.nvim_set_option('cmdheight', 0)
     end
 end
 
