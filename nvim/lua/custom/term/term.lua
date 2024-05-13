@@ -64,3 +64,20 @@ vim.keymap.set('t', '<A-e>', toggle_floating_terminal, { noremap = true, silent 
 -- vim.keymap.set('n', '<space>td', function() open_fzf_in_term("ttd") end, { noremap = true, silent = true })
 -- vim.keymap.set('n', '<space>tg', function() open_fzf_in_term("ttg") end, { noremap = true, silent = true })
 -- vim.keymap.set('n', '<space>tr', function() open_fzf_in_term("ttr") end, { noremap = true, silent = true })
+
+local autocmd_win_resize = {
+    callback = function()
+        width = math.floor(vim.o.columns * 0.9)
+        height = math.floor(vim.o.lines * 0.8)
+        col = (vim.o.columns - width) / 2
+        row = (vim.o.lines - height) / 2 - 1
+
+        opts.width = width
+        opts.height = height
+        opts.col = col
+        opts.row = row
+
+    end
+}
+
+vim.api.nvim_create_autocmd({ "VimResized" }, autocmd_win_resize)

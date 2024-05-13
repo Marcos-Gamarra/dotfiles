@@ -3,10 +3,10 @@ vim.keymap.set("", "N", "(v:searchforward ? 'n' : 'N')", { noremap = true, expr 
 vim.keymap.set("", "T", "(v:searchforward ? 'N' : 'n')", { noremap = true, expr = true })
 
 --scrolling
-vim.keymap.set("n", "m", "3<C-y>", { noremap = true })
-vim.keymap.set("n", "f", "3<C-e>", { noremap = true })
-vim.keymap.set("v", "m", "3<C-y>", { noremap = true })
-vim.keymap.set("v", "f", "3<C-e>", { noremap = true })
+vim.keymap.set("n", ")", "3<C-y>", { noremap = true })
+vim.keymap.set("n", "=", "3<C-e>", { noremap = true })
+vim.keymap.set("v", ")", "3<C-y>", { noremap = true })
+vim.keymap.set("v", "=", "3<C-e>", { noremap = true })
 
 --move to the start/end of line
 vim.keymap.set("", "s<return>", "^", { noremap = true })
@@ -56,3 +56,5 @@ vim.keymap.set("", "j<space>t", "zA", { noremap = true })
 -- terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 
+-- indententation
+vim.keymap.set("", "<space>a", "=", { noremap = true })

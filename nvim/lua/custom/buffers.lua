@@ -17,10 +17,10 @@ local blue = get_float_border_color()
 vim.api.nvim_set_hl(0, "BufferActive", { bg = 'NONE', fg = blue, bold = true })
 
 local col = vim.o.columns
+local width = math.floor(vim.o.columns * 0.40)
 local row = 1
 
 local function float_opts(height)
-    local width = math.floor(vim.o.columns * 0.40)
     if height == 0 then
         height = 1
     end
@@ -197,6 +197,16 @@ local autocmd_on_buf_new = {
         update_buffer_list()
     end
 }
+
+
+local autocmd_win_resize = {
+    callback = function()
+        col = vim.o.columns
+        width = math.floor(vim.o.columns * 0.40)
+    end
+}
+
+vim.api.nvim_create_autocmd({ "VimResized" }, autocmd_win_resize)
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, autocmd_on_enter)
 vim.api.nvim_create_autocmd({ "BufDelete" }, autocmd_on_delete)

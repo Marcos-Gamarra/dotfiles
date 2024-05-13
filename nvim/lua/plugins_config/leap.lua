@@ -4,7 +4,7 @@ vim.keymap.set('', 'w', "<plug>(leap-from-window)", {})
 
 require('leap').setup {
     case_sensitive = false,
-    safe_labels = { "b", "j", "v", "y", "x", "p", "z", "k" },
+    safe_labels = { "b", "j", "v", "y", "x", "p", "z", "k", "m", "f", ")", "=", "(", "/", "E", "A", "I", "H" },
     labels = { "b", "j", "v", "y", "x", "p", "z", "k", "e", "h", "a", "i", "o", "t", "n", "s", "r", "m", "f", "l", "v", "g",
         "c", "q", "w", "d", "u", "E", "A", "I", "H", "J", "B", "X", "O", "V", "Y", "K", "Z", "T", "N", "S", "R", "M",
         "F", "L", "P", "G", "C", "Q", "W", "D", "U" },
@@ -62,6 +62,7 @@ local function select_node_range(target)
 end
 
 local function leap_ts()
+    vim.cmd('normal! v')
     require('leap').leap {
         target_windows = { api.nvim_get_current_win() },
         targets = get_ts_nodes,
@@ -69,4 +70,4 @@ local function leap_ts()
     }
 end
 
-vim.keymap.set({ 'x', 'o' }, '<tab>', leap_ts)
+vim.keymap.set('', '<backspace><Return>', leap_ts)
