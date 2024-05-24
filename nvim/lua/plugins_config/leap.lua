@@ -21,6 +21,7 @@ require('leap').setup {
 local api = vim.api
 local ts = vim.treesitter
 
+-- treesitter node selection
 local function get_ts_nodes()
     if not pcall(ts.get_parser) then return end
     local wininfo = vim.fn.getwininfo(api.nvim_get_current_win())[1]

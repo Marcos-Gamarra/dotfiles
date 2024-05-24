@@ -28,11 +28,6 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
--- hide all semantic highlight groups
-for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-    vim.api.nvim_set_hl(0, group, {})
-end
-
 vim.keymap.set('n', 'le', vim.diagnostic.open_float, { noremap = true, silent = true })
 vim.keymap.set('n', 'lt', vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set('n', 'ln', vim.diagnostic.goto_next, { noremap = true, silent = true })
@@ -43,10 +38,6 @@ vim.keymap.set('n', 'lq', vim.diagnostic.setloclist, { noremap = true, silent = 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
-        -- disable semantic highlightings
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        client.server_capabilities.semanticTokensProvider = nil
-
         local opts = { noremap = true, silent = true, buffer = ev.buffer }
         vim.keymap.set('n', 'lD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'ld', vim.lsp.buf.definition, opts)
@@ -60,7 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'lo', require('telescope.builtin').lsp_outgoing_calls, opts)
         vim.keymap.set('n', 'lb', require('telescope.builtin').lsp_definitions, opts)
         vim.keymap.set('n', 'lld', require('telescope.builtin').diagnostics, opts)
-
+        vim.keymap.set('n', 'llh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
     end,
 })
 

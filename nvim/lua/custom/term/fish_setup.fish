@@ -3,8 +3,12 @@ function n
     nvim --server $NVIM --remote $argv
 end
 
-function e 
-    z $argv;
+# function e 
+#     z $argv;
+#     nvim --server $NVIM --remote-send "<C-\><C-N>:cd $PWD<CR>i"
+# end
+
+function __update_nvim_pwd --on-variable PWD --description 'update nvim directory'
     nvim --server $NVIM --remote-send "<C-\><C-N>:cd $PWD<CR>i"
 end
 
@@ -91,8 +95,8 @@ end
 set_project_root
 
 abbr --add n n
-abbr --add e e
+abbr --add e z
 
-abbr --add .. e ..
-abbr --add ../.. e ../..
-abbr --add ../../.. e ../../..
+abbr --add .. z ..
+abbr --add ../.. z ../..
+abbr --add ../../.. z ../../..
