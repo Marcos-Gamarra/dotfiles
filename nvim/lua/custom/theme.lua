@@ -33,7 +33,7 @@ require('catppuccin').setup({
 
 if theme == "dark" then
     vim.o.background = "dark"
-    vim.cmd.colorscheme('catppuccin-frappe')
+    vim.cmd.colorscheme('catppuccin-mocha')
 else
     vim.o.background = "light"
     vim.cmd.colorscheme('catppuccin-latte')

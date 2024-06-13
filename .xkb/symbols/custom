@@ -59,9 +59,7 @@ xkb_symbols "dvp" {
         actions=[SetMods(mods=Shift+Mod5)]
     };
 
-    key <AB07> {
-        symbols=[ space, NoSymbol, Return, NoSymbol, space ]
-    }; 
+    key <AB07> {[ space, NoSymbol, Return, NoSymbol, space ]}; 
     
     key <SPCE> {
         type[Group1] = "ONE_LEVEL",

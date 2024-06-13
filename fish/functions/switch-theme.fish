@@ -7,7 +7,7 @@ function switch-theme
     else
         set -Ux THEME "dark"
         dconf write /org/gnome/desktop/interface/color-scheme \'prefer-dark\'
-        fish_config theme save "catppuccin_frappe"
+        fish_config theme save "catppuccin_mocha"
         cp ~/.config/foot/dark.ini ~/.config/foot/foot.ini
     end
 end
