@@ -1,17 +1,17 @@
 # target                    title        bg          text        indicator    child_border
-client.focused              #24273a      #7aa2f7     #303446     #f2d5cf      #24273a 
+client.focused              #24273a      #539bf5     #303446     #f2d5cf      #24273a 
 client.unfocused            #24273a      #737994     #e9e9ed     #f2d5cf      #24273a
 client.focused_inactive     #24273a      #737994     #e9e9ed     #f2d5cf      #24273a     
-client.focused_tab_title    #24273a      #7aa2f7     #303446     #f2d5cf      #24273a
+client.focused_tab_title    #24273a      #539bf5     #303446     #f2d5cf      #24273a
 
 workspace_layout tabbed
 
 titlebar_padding 10 4
 
-font 'CaskaydiaCove Nerd Font' Bold 13
+font 'GeistMono Nerd Font' Bold 13
 
 # default_border pixel 1
-default_border normal 1
+# default_border pixel 1
 hide_edge_borders --i3 smart
 
 
@@ -56,8 +56,8 @@ set $down n
     bindsym XF86AudioLowerVolume exec wpctl set-volume -l 0 @DEFAULT_AUDIO_SINK@ 10%-
 
     # brightness control
-    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set +1%
+    bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 
 
     #copy and paste

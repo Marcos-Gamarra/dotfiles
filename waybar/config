@@ -4,9 +4,12 @@
         "ipc": true,
         "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date", "sway/mode"],
         "modules-center":["sway/workspaces"], 
-        "modules-right":["pulseaudio#icon", "pulseaudio", "custom/backlight_icon", "backlight", "battery#icon", "battery"],
+        "modules-right":["pulseaudio#icon", "pulseaudio", "backlight#icon", "backlight", "battery#icon", "battery"],
 
-        "custom/backlight_icon": {"format":""},
+        "backlight#icon": {
+            "format":"{icon}",
+            "format-icons": ["󱩏","󱩑","󱩓","󱩕","󰛨"],
+        },
 
         "backlight": {
             "format": "{percent}",

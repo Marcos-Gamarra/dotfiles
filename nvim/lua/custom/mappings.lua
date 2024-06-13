@@ -12,7 +12,6 @@ vim.keymap.set("v", "=", "3<C-e>", { noremap = true })
 vim.keymap.set("", "s<return>", "^", { noremap = true })
 vim.keymap.set("", "r<return>", "$", { noremap = true })
 
-
 --delete text stuff
 vim.keymap.set("", "e", "d", { noremap = true })
 vim.keymap.set("", "h", "c", { noremap = true })
@@ -21,17 +20,14 @@ vim.keymap.set("", "h", "c", { noremap = true })
 --save file
 vim.keymap.set("n", "<tab><backspace>", ":wa!<CR>", { noremap = true })
 
--- delete word and go to insert mode
-vim.keymap.set("n", "<tab><tab>", "ciw", { noremap = true })
-
 -- buffers
 vim.keymap.set("n", "g<space>", "<C-6>", { noremap = true })
 
 --splits
 vim.keymap.set("n", "kv", "<C-w>v", { noremap = true })
 vim.keymap.set("n", "kh", "<C-w>s", { noremap = true })
-vim.keymap.set("n", "kr", "<C-w>l", { noremap = true })
-vim.keymap.set("n", "ks", "<C-w>h", { noremap = true })
+vim.keymap.set("n", "kr", "<c-w>l", { noremap = true })
+vim.keymap.set("n", "ks", "<c-w>h", { noremap = true })
 vim.keymap.set("n", "kt", "<C-w>k", { noremap = true })
 vim.keymap.set("n", "kn", "<C-w>j", { noremap = true })
 vim.keymap.set("n", "kw", "<C-w>q", { noremap = true })
@@ -46,12 +42,6 @@ vim.keymap.set("n", "<C-u>", "<C-r>", { noremap = true })
 vim.keymap.set("n", "<space>on", ":set nu!<CR>", { noremap = true })
 vim.keymap.set("n", "<space>oh", ":set hlsearch!<CR>", { noremap = true })
 vim.keymap.set("n", "<space>ow", ":set wrap!<CR>", { noremap = true })
-
-
--- folding
-vim.keymap.set("", "j", "z", { noremap = true })
-vim.keymap.set("", "jt", "za", { noremap = true })
-vim.keymap.set("", "j<space>t", "zA", { noremap = true })
 
 -- terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })

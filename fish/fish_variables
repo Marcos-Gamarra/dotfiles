@@ -1,6 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export CLOUDINARY_API_KEY:644643673617283
 SETUVAR --export CLOUDINARY_API_SECRET:I35d1jckOMQkcDX2zM4GeLKXAG0
+SETUVAR --export CLOUDINARY_CLOUD_NAME:dbx8iqaef
 SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dcolor\x3dbg\x2b\x3a\x23414559\x2cbg\x3a\x23303446\x2cspinner\x3a\x23f2d5cf\x2chl\x3a\x23e78284\x20\x2d\x2dcolor\x3dfg\x3a\x23c6d0f5\x2cheader\x3a\x23e78284\x2cinfo\x3a\x23ca9ee6\x2cpointer\x3a\x23f2d5cf\x20\x2d\x2dcolor\x3dmarker\x3a\x23f2d5cf\x2cfg\x2b\x3a\x23c6d0f5\x2cprompt\x3a\x23ca9ee6\x2chl\x2b\x3a\x23e78284
 SETUVAR --export --path LD_LIBRARY_PATH:/home/hi/\x2elocal/lib/mojo/
 SETUVAR --export --path PATH:/home/hi/\x2elocal/bin\x1e/home/hi/\x2ecargo/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
