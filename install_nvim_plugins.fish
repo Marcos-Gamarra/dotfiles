@@ -6,14 +6,10 @@ git clone https://github.com/hrsh7th/cmp-nvim-lsp
 git clone https://github.com/saadparwaiz1/cmp_luasnip
 git clone https://github.com/zbirenbaum/copilot.lua
 git clone https://github.com/Marcos-Gamarra/efe
-git clone https://github.com/projekt0n/github-nvim-theme.git
 git clone https://github.com/lukas-reineke/indent-blankline.nvim
 git clone https://github.com/ggandor/leap-spooky.nvim.git
 git clone https://github.com/ggandor/leap.nvim
 git clone https://github.com/nvim-lualine/lualine.nvim.git
-git clone https://github.com/benlubas/molten-nvim.git
-git clone https://github.com/nvim-neorg/neorg.git
-git clone https://github.com/shaunsingh/nord.nvim.git
 git clone https://github.com/catppuccin/nvim.git
 git clone https://github.com/hrsh7th/nvim-cmp
 git clone https://github.com/neovim/nvim-lspconfig
@@ -24,7 +20,7 @@ git clone https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
 git clone https://github.com/RRethy/nvim-treesitter-textsubjects.git
 git clone https://github.com/windwp/nvim-ts-autotag
 git clone https://github.com/nvim-tree/nvim-web-devicons
-git clone https://github.com/stevearc/oil.nvim.git
 git clone https://github.com/nvim-lua/plenary.nvim
 git clone https://github.com/kevinhwang91/promise-async
 git clone https://github.com/nvim-telescope/telescope.nvim.git
+git clone https://github.com/CopilotC-Nvim/CopilotChat.nvim.git
