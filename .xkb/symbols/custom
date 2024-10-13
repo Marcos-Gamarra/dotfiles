@@ -1,20 +1,16 @@
 partial alphanumeric_keys
 xkb_symbols "dvp" {
     key.type[Group1] = "EIGHT_LEVEL";
-    ////function row////
-    key <FK01>  {[ XF86AudioMute ]};
-    key <FK02>  {[ XF86AudioLowerVolume ]};
-    key <FK03>  {[ XF86AudioRaiseVolume ]};
-    key <FK04>  {[ XF86MonBrightnessDown ]};
-    key <FK05>  {[ XF86MonBrightnessUp ]};
-
-
     ////upper row////
     key <AE01> {[ k,    K,  NoSymbol,   NoSymbol,   less    ]};                
     key <AE02> {[ y,    Y,  NoSymbol,   6,          plus    ]};                      
     key <AE03> {[ o,    O,  NoSymbol,   5,          minus, oacute   ]}; 
     key <AE04> {[ v,    V,  NoSymbol,   4,          greater ]};   
-    key <AE05> {[ Alt_R ]};   
+    key <AE05> {
+        symbols=[voidsymbol],
+        actions=[SetMods(mods=Mod1)]
+    };
+  
                                                                              
     key <AE07> {[ c,    C,  Home,       NoSymbol,   exclam      ]};                                      
     key <AE08> {[ l,    L,  zabovedot,          NoSymbol,   ampersand   ]};                                      
@@ -23,22 +19,21 @@ xkb_symbols "dvp" {
 
     ////home row////
     key <TAB>   {[Shift_L]};
-    key <AD01>  {[ h,    H,  NoSymbol,   3,          slash,          NoSymbol    ]};     
-    key <AD02>  {[ i,    I,  NoSymbol,   2,          parenleft,      NoSymbol    ]}; 
-    key <AD03>  {[ e,    E,  NoSymbol,   1,          parenright,     NoSymbol    ]};
-    key <AD04>  {[ a,    A,  NoSymbol,   0,          equal,          NoSymbol    ]};  
-	key <AD05>  {[ u,    U,  NoSymbol,   NoSymbol,   asterisk,       NoSymbol    ]};       
+    key <AD01>  {[ h,    H,  NoSymbol,   3,          slash,          NoSymbol                           ]}; 
+    key <AD02>  {[ i,    I,  NoSymbol,   2,          parenleft,      NoSymbol, XF86AudioMute            ]}; 
+    key <AD03>  {[ e,    E,  NoSymbol,   1,          parenright,     NoSymbol, XF86AudioLowerVolume     ]};
+    key <AD04>  {[ a,    A,  NoSymbol,   0,          equal,          NoSymbol, XF86AudioRaiseVolume     ]};  
+	key <AD05>  {[ u,    U,  NoSymbol,   NoSymbol,   asterisk,       NoSymbol                           ]};       
                                                           
-	key <AD06> {[ d,    D,  NoSymbol,   backslash,      apostrophe  ]};   
-    key <AD07> {[ s,    S,  Escape,     percent,        comma       ]};     
-    key <AD08> {[ t,    T,  BackSpace,  asciitilde,     period      ]};     
-    key <AD09> {[ n,    N,  Tab,        numbersign,     colon,      ntilde  ]}; 
-    key <AD10> {[ r,    R,  Delete,     asciicircum,    semicolon   ]};
+	key <AD06> {[ d,    D,  NoSymbol,   backslash,      apostrophe                                   ]};   
+    key <AD07> {[ s,    S,  Escape,     percent,        comma, NoSymbol                              ]};     
+    key <AD08> {[ t,    T,  BackSpace,  asciitilde,     period, NoSymbol, XF86MonBrightnessDown      ]};     
+    key <AD09> {[ n,    N,  Tab,        numbersign,     colon,      ntilde, XF86MonBrightnessUp      ]}; 
+    key <AD10> {[ r,    R,  Delete,     asciicircum,    semicolon                                    ]};
     key <AD11> {
         symbols[Group1] = [ NoSymbol ],
         actions[Group1] = [ SetMods(mods=Shift) ]
     };
-
 
     ////lower row////
     key <AC01> {[ z,    Z,  NoSymbol,   NoSymbol,   bracketleft     ]};
@@ -46,11 +41,15 @@ xkb_symbols "dvp" {
     key <AC03> {[ j,    J,  NoSymbol,   8,          braceleft       ]};
     key <AC04> {[ b,    B,  NoSymbol,   7,          braceright      ]};
 
-    key <AC06> {[ Alt_R ]};
+    key <AC06> {
+        symbols=[voidsymbol],
+        actions=[SetMods(mods=Mod1)]
+    };
     key <AC07> {[ g,    G,  Left,    grave,         underscore   ]};
     key <AC08> {[ m,    M,  Up,      dead_acute, 	quotedbl     ]};
     key <AC09> {[ f,    F,  Down,    NoSymbol, 		dollar       ]};
     key <AC10> {[ w,    W,  Right,   NoSymbol,      question     ]};
+
     
 
     //bottom row
@@ -59,7 +58,9 @@ xkb_symbols "dvp" {
         actions=[SetMods(mods=Shift+Mod5)]
     };
 
-    key <AB07> {[ space, NoSymbol, Return, NoSymbol, space ]}; 
+    key <AB07> {
+        symbols=[ space, NoSymbol, Return, NoSymbol, space ]
+    }; 
     
     key <SPCE> {
         type[Group1] = "ONE_LEVEL",
@@ -93,4 +94,8 @@ xkb_symbols "dvp" {
 	    symbols[Group1] = [ISO_Next_Group]
 	};
 
+    key <LALT> {
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ ISO_Level3_Shift ]
+    };
 };
