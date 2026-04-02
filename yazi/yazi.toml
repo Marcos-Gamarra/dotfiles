@@ -1,0 +1,4 @@
+[opener]
+edit = [
+	{ run = '$YAZI_EDITOR "$@"', block = true, for = "unix" },
+]

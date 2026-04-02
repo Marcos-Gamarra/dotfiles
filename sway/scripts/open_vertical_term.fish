@@ -1,0 +1,2 @@
+swaymsg splith
+exec foot

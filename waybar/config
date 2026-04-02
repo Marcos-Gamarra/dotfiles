@@ -1,0 +1,83 @@
+{
+    "layer": "top",
+        "position": "bottom",
+        "ipc": true,
+        "modules-left":["custom/clock_icon","clock", "custom/calendar_icon", "clock#date", "sway/mode"],
+        "modules-center":["sway/workspaces"], 
+        "modules-right":["pulseaudio#icon", "pulseaudio", "backlight#icon", "backlight", "battery#icon", "battery"],
+
+        "backlight#icon": {
+            "format":"{icon}",
+            "format-icons": ["󱩏","󱩑","󱩓","󱩕","󰛨"],
+        },
+
+        "backlight": {
+            "format": "{percent}",
+        },
+
+        "custom/clock_icon": {"format":""},
+
+        "clock": {
+            "format": "{:%H:%M}",
+            "timezone": "America/Asuncion",
+        },
+
+        "custom/calendar_icon": {"format":""},
+
+        "clock#date": {
+            "format": "{:%d/%m}",
+            "timezone": "America/Asuncion",
+        },
+
+
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "format": "{name}",
+
+        },
+
+        "battery#icon": {
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", ""],
+
+        },
+
+        "battery": {
+            "interval": 60,
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{capacity}",
+            "max-length": 25
+        },
+
+        "pulseaudio#icon": {
+            "format": "{icon}",
+            "format-muted": "󰝟",
+            "format-bluetooth": "󰥰",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "speaker": "",
+                "default": ["", ""]
+            }
+        },
+
+        "pulseaudio": {
+            "format": "{volume}",
+            "format-muted": "--",
+            "format-bluetooth": "{volume}",
+            "scroll-step": 1,
+            "on-click": "pavucontrol",
+        },
+
+        "sway/mode": {
+            "format": "mode: {}",
+            "max-length": 50
+        }
+}

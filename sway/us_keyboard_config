@@ -1,0 +1,230 @@
+# target                    title        bg          text        indicator    child_border
+client.focused              #8caaee      #7aa2f7     #e9e9ed     #f2d5cf      #8caaee
+client.unfocused            #303446      #737994     #e9e9ed     #f2d5cf      #24273a
+client.focused_inactive     #303446      #737994     #e9e9ed     #f2d5cf      #303446     
+client.focused_tab_title    #8caaee      #7aa2f7     #303446     #f2d5cf      #8caaee
+
+
+
+workspace_layout tabbed
+
+titlebar_padding 10 4
+
+font 'CaskaydiaCove Nerd Font' Bold 13
+
+default_border pixel 3
+hide_edge_borders --i3 smart
+
+
+
+#terminal
+set $term foot
+
+#to run gui applications that require root
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+#--enable-features=UseOzonePlatform --ozone-platform=wayland
+exec chromium --ozone-platform-hint=auto
+for_window [app_id="chromium"] move container to workspace 1
+workspace number 2
+exec foot
+
+#mod key
+set $mod Mod1
+
+set $right r
+set $left s
+set $up t
+set $down n
+
+
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+### Input configuration
+#
+   input "2:14:SynPS/2_Synaptics_TouchPad" {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+
+### Key bindings
+#
+# Basics:
+	#Screenshot
+    bindsym Print exec grim - | wl-copy 
+    #audio
+    bindsym XF86AudioMute exec amixer -q set Master toggle
+    bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+    bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
+
+    #copy and paste
+
+    # Start a terminal
+    bindsym $mod+a exec foot
+    bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
+
+
+    # Start wofi
+    bindsym $mod+d exec fuzzel
+
+    # Kill focused window
+    bindsym $mod+mod3+k kill
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change NORMAl to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+    # Bring browser to current workspace in vertical split
+    bindsym $mod+l exec fish ~/.config/sway/scripts/browser_to_workspace.fish
+
+
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$right focus right
+
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+	bindsym $mod+Right focus right
+
+
+	bindsym $mod+mod5+$right move right
+	bindsym $mod+mod5+$left move left
+
+	bindsym $mod+mod5+Left move left
+	bindsym $mod+mod5+Down move down
+	bindsym $mod+mod5+Up move up
+	bindsym $mod+mod5+Right move right
+
+	bindsym $mod+mod3+v splith
+	bindsym $mod+v layout toggle splith tabbed
+	bindsym $mod+o layout toggle splitv tabbed
+    bindsym $mod+y layout tabbed
+
+
+    # Swap focus between the tiling area and the floating area
+	bindsym $mod+b fullscreen
+    bindsym $mod+p focus parent
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+g workspace number 1
+    bindsym $mod+m workspace number 2
+    bindsym $mod+f workspace number 3
+    bindsym $mod+w workspace number 4
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+
+    # Move focused container to workspace
+    bindsym $mod+mod5+g move container to workspace number 1
+    bindsym $mod+mod5+m move container to workspace number 2
+    bindsym $mod+mod5+f move container to workspace number 3
+    bindsym $mod+mod5+w move container to workspace number 4
+    bindsym $mod+Shift+6 move container to workspace number 
+    bindsym $mod+Shift+7 move container to workspace number 
+    bindsym $mod+Shift+8 move container to workspace number 
+    bindsym $mod+Shift+9 move container to workspace number 
+    bindsym $mod+Shift+0 move container to workspace number 
+
+    bindsym $mod+space workspace back_and_forth
+    #bindsym $mod+n workspace next
+    #bindsym $mod+t workspace prev
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+
+# Resizing containers:
+#
+bindsym $mod+j exec fish ~/.config/sway/scripts/switch_to_resize_mode.fish
+mode "resize" {
+
+    # target                   title       bg          text        indicator       border
+    #client.focused              $red       $red       $base       $rosewater      $red
+    #client.unfocused            $base       $overlay0   $text       $rosewater      $overlay0
+    #client.focused_inactive     $red       $red       $base       $rosewater      $red
+
+    bindsym $left resize shrink width 10px
+    bindsym $right resize grow width 10px
+    bindsym $down resize shrink height 10px
+    bindsym $up resize grow height 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym Escape exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+}
+
+
+bindsym $mod+t exec fish ~/.config/sway/scripts/switch_to_workspace_mode.fish
+mode "workspace" {
+    bindsym s workspace number 1; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym t workspace number 2; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym n workspace number 3; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym r workspace number 4; exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+
+    # Return to default mode
+    bindsym Return exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+    bindsym Escape exec fish ~/.config/sway/scripts/switch_to_default_mode.fish
+}
+
+
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+input * {
+	xkb_layout "us, custom"
+	xkb_variant "intl, dvp"
+	repeat_rate 100
+	repeat_delay 200
+	tap enable
+    #next keyboard layout with caps lock
+    xkb_options grp:caps_toggle
+}
+
+bar {
+    swaybar_command waybar
+}
+
+#bar {
+#    position bottom
+#	mode hide
+#	modifier $mod
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#
+#    colors {
+#        statusline #ffffff
+#        background #444444
+#		focused_workspace #333333 #5f87af #000000
+#        inactive_workspace #666666 #1c1c1c #ffffff
+#		font "SauceCodePro Nerd Font Regular 13"
+#    }
+#}
+
+include /etc/sway/config.d/*

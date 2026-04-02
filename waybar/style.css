@@ -1,0 +1,141 @@
+@import "catppuccin_frappe.css";
+
+* {
+    font-family: "GeistMono Nerd Font";
+}
+
+window#waybar {
+    color: #cccccc;
+    background: @surface1;
+}
+
+#workspaces button {
+    border-radius: 25px;
+    margin: 5px;
+    padding: 0px 20px;
+    background: @base;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#workspaces button.focused {
+    background: #539bf5;
+    color: @base;
+}
+
+#workspaces button.persistent {
+    background: @overlay0;
+    color: @text;
+    font-weight: bold;
+}
+
+#workspaces button.current_output.visible {
+    background: #539bf5;
+    color: @base;
+}    
+
+#custom-clock_icon {
+    margin: 0px 10px;
+    padding: 0px 0px;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+#clock {
+    border-radius: 25px;
+    margin: 5px 10px 5px 0px;
+    padding: 0px 20px;
+    background: @overlay0;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold
+}
+
+#custom-calendar_icon {
+    color: @text;
+    margin: 0px 10px;
+    padding: 0px 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#pulseaudio.bluetooth.icon {
+    color: @text;
+    background: @surface1;
+    margin: 0px 15px;
+    padding: 0px 0px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#pulseaudio.icon {
+    color: @text;
+    background: @surface1;
+    margin: 0px 15px;
+    padding: 0px 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#pulseaudio {
+    border-radius: 25px;
+    margin: 5px 10px 5px 0px;
+    padding: 0px 20px;
+    background: @overlay0;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+#backlight.icon {
+    margin: 0px 10px;
+    padding: 0px 0px;
+    background: @surface1;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#backlight {
+    border-radius: 25px;
+    margin: 5px 10px 5px 0px;
+    padding: 0px 20px;
+    background: @overlay0;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#battery {
+    border-radius: 25px;
+    margin: 5px 10px 5px 0px;
+    padding: 0px 20px;
+    background: @overlay0;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#battery.icon {
+    margin: 0px 15px;
+    padding: 0px 0px;
+    background: @surface1;
+    color: @text;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+#mode {
+    border-radius: 25px;
+    margin: 5px 5px 5px 18px;
+    padding: 0px 20px 0px 20px;
+    background: #7aa2f7;
+    color: @base;
+    font-size: 18px;
+    font-weight: bold;
+}

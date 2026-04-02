@@ -1,0 +1,2 @@
+bind \ca accept-autosuggestion
+

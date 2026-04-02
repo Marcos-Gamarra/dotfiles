@@ -1,0 +1,233 @@
+# target                    title        bg          text        indicator    child_border
+client.focused              #24273a      #539bf5     #303446     #f2d5cf      #24273a 
+client.unfocused            #24273a      #737994     #e9e9ed     #f2d5cf      #24273a
+client.focused_inactive     #24273a      #737994     #e9e9ed     #f2d5cf      #24273a     
+client.focused_tab_title    #24273a      #539bf5     #303446     #f2d5cf      #24273a
+
+workspace_layout tabbed
+
+titlebar_padding 10 4
+
+font 'GeistMono Nerd Font' Bold 13
+
+# default_border pixel 1
+# default_border pixel 1
+hide_edge_borders --i3 smart
+
+
+#to run gui applications that require root
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# script to set transparency of inactive windows
+# exec ~/.config/sway/scripts/inactive-windows-transparency.py
+
+set $term foot
+set $browser firefox
+exec $browser
+for_window [app_id="firefox"] move container to workspace 1
+workspace number 2
+# exec $term
+
+#mod key
+set $mod Mod1
+
+set $right r
+set $left s
+set $up t
+set $down n
+
+
+### Input configuration
+#
+   input "2:14:SynPS/2_Synaptics_TouchPad" {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+
+### Key bindings
+#
+# Basics:
+	#Screenshot
+    bindsym Print exec grim - | wl-copy 
+        
+    # volume control
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ 
+    bindsym XF86AudioLowerVolume exec wpctl set-volume -l 0 @DEFAULT_AUDIO_SINK@ 5%-
+
+    # brightness control
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+
+    #copy and paste
+
+    # Start a terminal
+    bindsym $mod+a exec $term
+    bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
+    bindsym $mod+equal exec fish ~/.config/sway/scripts/open_vertical_term.fish
+
+
+    # Start wofi
+    bindsym $mod+d exec fuzzel
+
+    # Kill focused window
+    bindsym $mod+mod3+k kill
+    bindsym $mod+less kill
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change NORMAl to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+    # Bring browser to current workspace in vertical split
+    bindsym $mod+l exec fish ~/.config/sway/scripts/browser_to_workspace.fish
+
+
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$right focus right
+    bindsym $mod+$up focus up
+    bindsym $mod+$down focus down
+
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+	bindsym $mod+Right focus right
+	bindsym $mod+Up focus up
+	bindsym $mod+Down focus down
+
+
+	bindsym $mod+mod5+$right move right
+	bindsym $mod+delete move right
+	bindsym $mod+mod5+$left move left
+	bindsym $mod+escape move left
+    
+
+	bindsym $mod+mod5+Left move left
+	bindsym $mod+mod5+Down move down
+	bindsym $mod+mod5+Up move up
+	bindsym $mod+mod5+Right move right
+
+
+    # the marks here are used to trigger a window event
+    # that is used by the inactive-windows-transparency.py script
+	bindsym $mod+v layout toggle splith tabbed
+	bindsym $mod+o layout toggle splitv tabbed
+    bindsym $mod+y layout tabbed
+	bindsym $mod+mod3+v splith
+	bindsym $mod+greater splith
+	bindsym $mod+minus splitv
+
+
+	bindsym $mod+b fullscreen
+    bindsym $mod+p focus parent
+    bindsym $mod+mod3+x move scratchpad
+    bindsym $mod+bracketleft move scratchpad
+    bindsym $mod+x scratchpad show
+    bindsym $mod+z floating toggle
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+g workspace number 1
+    bindsym $mod+m workspace number 2
+    bindsym $mod+f workspace number 3
+    bindsym $mod+w workspace number 4
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+
+    # Move focused container to workspace
+    bindsym $mod+mod5+g move container to workspace number 1
+    bindsym $mod+underscore move container to workspace number 1
+    bindsym $mod+mod5+m move container to workspace number 2
+    bindsym $mod+quotedbl move container to workspace number 2
+    bindsym $mod+mod5+f move container to workspace number 3
+    bindsym $mod+dollar move container to workspace number 3
+    bindsym $mod+mod5+w move container to workspace number 4
+    bindsym $mod+question move container to workspace number 4
+    bindsym $mod+Shift+6 move container to workspace number 
+    bindsym $mod+Shift+7 move container to workspace number 
+    bindsym $mod+Shift+8 move container to workspace number 
+    bindsym $mod+Shift+9 move container to workspace number 
+    bindsym $mod+Shift+0 move container to workspace number 
+
+    bindsym $mod+space workspace back_and_forth
+    #bindsym $mod+n workspace next
+    #bindsym $mod+t workspace prev
+    bindsym $mod+end move workspace to output right
+    bindsym $mod+home move workspace to output left
+
+# Resizing containers:
+#
+bindsym $mod+j mode "resize"
+mode "resize" {
+    bindsym $left resize shrink width 30px
+    bindsym $right resize grow width 30px
+    bindsym $down resize shrink height 30px
+    bindsym $up resize grow height 30px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 30px
+    bindsym Down resize grow height 30px
+    bindsym Up resize shrink height 30px
+    bindsym Right resize grow width 30px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+j mode "default"
+}
+
+
+# bindsym $mod+t mode "workspace"
+# mode "workspace" {
+#     bindsym s workspace number 1
+#     bindsym t workspace number 2
+#     bindsym n workspace number 3
+#     bindsym r workspace number 4
+# 
+#     # Return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+
+
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+input * {
+	xkb_layout "custom,us"
+	xkb_variant "dvp, "
+	repeat_rate 100
+	repeat_delay 200
+	tap enable
+    #next keyboard layout with caps lock
+    xkb_options grp:caps_toggle
+    #xkb_layout "us, custom"
+    #xkb_variant "intl, dvp"
+}
+
+bar {
+    swaybar_command waybar
+}
+
+output eDP-1 {
+    position 0 0
+}
+
+include /etc/sway/config.d/*
