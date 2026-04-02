@@ -89,6 +89,38 @@ local function get_git()
     }
 end
 
+
+local function get_diagnostics()
+    local diagnostics = vim.diagnostic.get(0)
+    if #diagnostics == 0 then return '' end
+
+    local severity = vim.diagnostic.severity
+
+    local counts = {
+        [severity.ERROR] = 0,
+        [severity.WARN] = 0,
+        [severity.INFO] = 0,
+        [severity.HINT] = 0
+    }
+
+    for _, diag in ipairs(diagnostics) do
+        counts[diag.severity] = counts[diag.severity] + 1
+    end
+
+    local parts = {}
+    if counts[severity.ERROR] > 0 then table.insert(parts, ('%d '):format(counts[severity.ERROR])) end
+    if counts[severity.WARN] > 0 then table.insert(parts, (' %d '):format(counts[severity.WARN])) end
+    if counts[severity.INFO] > 0 then table.insert(parts, (' %d '):format(counts[severity.INFO])) end
+    if counts[severity.HINT] > 0 then table.insert(parts, ('󰌵%d '):format(counts[severity.HINT])) end
+
+    return table.concat {
+        hl.sep_inactive, sep.left,
+        hl.inactive, ' ', table.concat(parts), ' ',
+        hl.sep_inactive, sep.right,
+        hl.normal, ' ',
+    }
+end
+
 -- Statusline
 function M.statusline()
     return table.concat {
@@ -107,6 +139,8 @@ function M.statusline()
         '%=',
         hl.sep_inactive, sep.right,
         hl.normal, ' ',
+        -- diagnostics section
+        get_diagnostics(),
         -- line info section
         hl.sep_active, sep.left,
         hl.mode, get_lineinfo(),
