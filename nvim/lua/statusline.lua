@@ -108,10 +108,10 @@ local function get_diagnostics()
     end
 
     local parts = {}
-    if counts[severity.ERROR] > 0 then table.insert(parts, ('%d '):format(counts[severity.ERROR])) end
+    if counts[severity.ERROR] > 0 then table.insert(parts, (' %d '):format(counts[severity.ERROR])) end
     if counts[severity.WARN] > 0 then table.insert(parts, (' %d '):format(counts[severity.WARN])) end
     if counts[severity.INFO] > 0 then table.insert(parts, (' %d '):format(counts[severity.INFO])) end
-    if counts[severity.HINT] > 0 then table.insert(parts, ('󰌵%d '):format(counts[severity.HINT])) end
+    if counts[severity.HINT] > 0 then table.insert(parts, (' %d '):format(counts[severity.HINT])) end
 
     return table.concat {
         hl.sep_inactive, sep.left,
