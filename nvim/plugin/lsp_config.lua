@@ -26,17 +26,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         local opts = { noremap = true, silent = true, buffer = ev.buf }
         vim.keymap.set('n', 'lD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'le', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'le', require('telescope.builtin').lsp_definitions, opts)
         vim.keymap.set('n', 'lli', require('telescope.builtin').lsp_implementations, opts)
         vim.keymap.set('n', 'lh', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'lrn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', 'lc', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'la', vim.lsp.buf.format, opts)
-        vim.keymap.set('n', 'lld', require('telescope.builtin').lsp_definitions, opts)
         vim.keymap.set('n', 'lre', require('telescope.builtin').lsp_references, opts)
         vim.keymap.set('n', 'li', require('telescope.builtin').lsp_incoming_calls, opts)
         vim.keymap.set('n', 'lo', require('telescope.builtin').lsp_outgoing_calls, opts)
-        vim.keymap.set('n', 'lb', require('telescope.builtin').lsp_definitions, opts)
         vim.keymap.set('n', 'ld', require('telescope.builtin').diagnostics, opts)
         vim.keymap.set('n', 'llh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
     end,
@@ -123,13 +121,14 @@ vim.lsp.config('svelte', {
 })
 
 
-vim.lsp.enable({
-    'rust_analyzer',
-    'pylsp',
-    'lua_ls',
-    'ts_ls',
-    'html',
-    'cssls',
-    'tailwindcss',
-    'svelte',
-})
+-- disable automatic server setup
+-- vim.lsp.enable({
+--     'rust_analyzer',
+--     'pylsp',
+--     'lua_ls',
+--     'ts_ls',
+--     'html',
+--     'cssls',
+--     'tailwindcss',
+--     'svelte',
+-- })

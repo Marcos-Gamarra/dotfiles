@@ -8,7 +8,6 @@ local colors = {
     inactive = '#51576d',
     active   = '#539bf5',
     none     = 'NONE',
-
 }
 
 local modes = {
@@ -36,7 +35,8 @@ local modes = {
 
 -- Highlight helpers
 local hl = {
-    mode             = '%#StatusLineMode#',
+    active           = '%#StatusLineMode#',
+    lsp              = '%#StatusLineMode#',
     filename         = '%#StatuslineFilename#',
     inactive         = '%#StatuslineInactive#',
     sep_active       = '%#StatusLineSeparatorActive#',
@@ -53,13 +53,11 @@ local function setup_highlights()
         StatusLineSeparatorActive      = { bg = 'NONE', fg = colors.active },
         StatusLineSeparatorInactive    = { bg = 'NONE', fg = colors.inactive },
         StatusLineSeparatorInactiveRev = { bg = colors.active, fg = colors.inactive },
-
     }
     for name, opts in pairs(hls) do
         vim.api.nvim_set_hl(0, name, opts)
     end
 end
-
 
 local function get_mode()
     local m = modes[vim.api.nvim_get_mode().mode] or 'UNKNOWN'
@@ -68,8 +66,20 @@ end
 
 local function get_filepath()
     local fpath = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.:h')
-    if fpath == '' or fpath == '.' then return ' ' end
-    return (' %%<%s/%s '):format(fpath, vim.fn.expand '%:t')
+    local fname = vim.fn.expand '%:t'
+
+    -- If it's an empty/unnamed buffer
+    if fname == '' then
+        return ' [No Name] '
+    end
+
+    -- If file is in the current directory, just show the name
+    if fpath == '' or fpath == '.' then
+        return (' %s '):format(fname)
+    end
+
+    -- Otherwise show path/name
+    return (' %%<%s/%s '):format(fpath, fname)
 end
 
 local function get_lineinfo()
@@ -88,7 +98,6 @@ local function get_git()
         hl.normal, ' ',
     }
 end
-
 
 local function get_diagnostics()
     local diagnostics = vim.diagnostic.get(0)
@@ -121,29 +130,60 @@ local function get_diagnostics()
     }
 end
 
+local lsp_icons = {
+    ['copilot'] = '',
+    ['rust_analyzer'] = '',
+    ['ts_ls'] = '',
+    ['html'] = '',
+    ['cssls'] = '',
+    ['tailwindcss'] = '󱏿',
+    ['svelte'] = '',
+    ['lua_ls'] = '',
+}
+
+local function get_lsp_icons()
+    local clients = vim.lsp.get_clients { bufnr = 0 }
+    if #clients == 0 then return '' end
+
+    local names = {}
+    for _, client in ipairs(clients) do
+        local name = lsp_icons[client.name] or client.name
+        table.insert(names, name)
+    end
+
+    -- Return just the icons with a clean leading separator space, 
+    -- retaining the filename bar background color
+    return ('%s '):format(table.concat(names, ' '))
+end
+
+-- Statusline
 -- Statusline
 function M.statusline()
     return table.concat {
         -- mode section
         hl.normal, ' ',
         hl.sep_active, sep.left,
-        hl.mode, get_mode(),
-        hl.sep_active,
-        sep.right,
+        hl.active, get_mode(),
+        hl.sep_active, sep.right,
         hl.normal, ' ',
+
         -- git section
         get_git(),
-        -- filename section
+
+        -- filename & lsp integrated section (Expanding)
         hl.sep_inactive, sep.left,
         hl.filename, get_filepath(),
         '%=',
+        hl.filename, get_lsp_icons(),
         hl.sep_inactive, sep.right,
         hl.normal, ' ',
+
         -- diagnostics section
         get_diagnostics(),
+
         -- line info section
         hl.sep_active, sep.left,
-        hl.mode, get_lineinfo(),
+        hl.active, get_lineinfo(),
         hl.sep_active, sep.right,
         hl.normal, ' ',
     }

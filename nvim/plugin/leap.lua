@@ -8,8 +8,8 @@ require('leap').setup {
     case_sensitive = false,
     safe_labels = { "b", "j", "y", "x", "p", "z", "k", "m", "f", ")", "=", "(", "/", "E", "A", "I", "H" },
     labels = { "b", "j", "v", "y", "x", "p", "z", "k", "e", "h", "a", "i", "o", "t", "n", "s", "r", "m", "f", "l", "v", "g",
-        "c", "q", "w", "d", "u", "E", "A", "I", "H", "J", "B", "X", "O", "V", "Y", "K", "Z", "T", "N", "S", "R", "M",
-        "F", "L", "P", "G", "C", "Q", "W", "D", "U" },
+    "c", "q", "w", "d", "u", "E", "A", "I", "H", "J", "B", "X", "O", "V", "Y", "K", "Z", "T", "N", "S", "R", "M",
+    "F", "L", "P", "G", "C", "Q", "W", "D", "U" },
 
     special_keys = {
         prev_target = '<backspace>',
@@ -26,8 +26,9 @@ require('leap').setup {
 local function ft(key_specific_args)
     require('leap').leap(
         vim.tbl_deep_extend('keep', key_specific_args, {
-            inputlen = 1,
+            inputlen = 2,
             inclusive = false,
+            pattern = (function (pat) return '\\%.l'..pat end) or nil, -- restrict to current line
             opts = {
                 -- Force autojump.
                 labels = '',

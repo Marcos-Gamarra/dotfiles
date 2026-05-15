@@ -88,7 +88,6 @@ require('telescope').setup {
 
     pickers = {
         lsp_definitions = {
-            jump_type = 'never',
             initial_mode = 'normal',
             scroll_speed = 1,
             create_layout = create_layout,

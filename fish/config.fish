@@ -1,10 +1,5 @@
 if status is-interactive
-    # Emulates vim's cursor shape behavior
-    #set fish_cursor_default block
-    #set fish_cursor_insert line
-    #set fish_cursor_replace_one underscore
 
-    abbr --add battery cat /sys/class/power_supply/BAT0/capacity
 
     abbr --add rm rm -i
 
@@ -21,6 +16,7 @@ if status is-interactive
     abbr --add ta lsd -a
     abbr --add tl lsd -l
     abbr --add n nvim
+    abbr --add sshs sshs --config ~/.ssh/config
     
     abbr --add bt bat
     abbr --add btp bat -p
@@ -32,11 +28,6 @@ if status is-interactive
     set -x EDITOR nvim
     zoxide init fish | source
     starship init fish | source
-     mcfly init fish | source
-       mcfly-fzf  init fish | source
+    atuin init fish --disable-up-arrow | source
 
 end 
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

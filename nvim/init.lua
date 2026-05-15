@@ -10,12 +10,6 @@ vim.opt.termguicolors = true
 vim.opt.showtabline = 1
 vim.opt.laststatus = 3
 
--- folding
-vim.o.foldlevelstart = 99
-vim.o.foldenable = false
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
 require('mappings')
 require('statusline')
 require('incremental_selection')
