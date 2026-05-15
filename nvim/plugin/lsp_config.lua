@@ -121,14 +121,13 @@ vim.lsp.config('svelte', {
 })
 
 
--- disable automatic server setup
--- vim.lsp.enable({
---     'rust_analyzer',
---     'pylsp',
---     'lua_ls',
---     'ts_ls',
---     'html',
---     'cssls',
---     'tailwindcss',
---     'svelte',
--- })
+vim.lsp.enable({
+    -- 'rust_analyzer',
+    'pylsp',
+    'lua_ls',
+    'ts_ls',
+    'html',
+    'cssls',
+    'tailwindcss',
+    'svelte',
+})
