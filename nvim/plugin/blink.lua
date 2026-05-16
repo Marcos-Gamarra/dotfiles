@@ -3,12 +3,12 @@ require('blink.cmp').setup({
     completion = {
         menu = {
             border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder"
+            --winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder"
         },
         documentation = {
             window = {
                 border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-                winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder"
+                --winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder"
             },
         }
     },

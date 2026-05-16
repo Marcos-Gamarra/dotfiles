@@ -25,7 +25,7 @@ require('catppuccin').setup({
             VertSplit = { fg = colors.blue },
             CursorLine = { bg = colors.crust },
             LeapBackdrop = { link = 'Comment' },
-            NormalFloat = { link = 'Normal' },
+            --NormalFloat = { link = 'Normal' },
             StatusLine = { bg = 'NONE' },
         }
     end

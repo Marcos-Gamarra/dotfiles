@@ -4,10 +4,6 @@ local borders_telescope = {
     "━", "┃", "━", "┃", "┏", "┓", "┛", "┗",
 }
 
-local borders = {
-    "┏", "━", "┓", "┃", "┛", "━", "┗", "┃",
-}
-
 local Layout = require "telescope.pickers.layout"
 
 local create_layout = function(picker)
@@ -20,7 +16,6 @@ local create_layout = function(picker)
             height = height,
             row = row,
             col = col,
-            border = borders,
             title = title,
             title_pos = "center",
         })
@@ -61,7 +56,7 @@ local create_layout = function(picker)
             destroy_window(self.preview)
             destroy_window(self.prompt)
         end,
-        update = function(self) end,
+        update = function() end,
     }
 
     return layout
