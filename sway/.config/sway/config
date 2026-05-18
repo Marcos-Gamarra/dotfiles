@@ -10,20 +10,23 @@ titlebar_padding 10 4
 
 font 'GeistMono Nerd Font' Bold 13
 
+# background
+output "*" bg /home/hi/.local/share/backgrounds/arch_background.png fill
+
 # default_border pixel 1
 # default_border pixel 1
 hide_edge_borders --i3 smart
 
 
 #to run gui applications that require root
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # script to set transparency of inactive windows
 # exec ~/.config/sway/scripts/inactive-windows-transparency.py
 
 set $term foot
-set $browser firefox
+set $browser chromium
 exec $browser
-for_window [app_id="firefox"] move container to workspace 1
+for_window [app_id="chromium"] move container to workspace 1
 workspace number 2
 # exec $term
 
@@ -34,6 +37,8 @@ set $right r
 set $left s
 set $up t
 set $down n
+set $disp1 eDP-1
+set $disp2 HDMI-A-1
 
 
 ### Input configuration
@@ -44,6 +49,18 @@ set $down n
        natural_scroll enabled
        middle_emulation enabled
    }
+
+# setup workspaces
+workspace 1 output $disp2 
+workspace 2 output $disp2 
+workspace 3 output $disp2 
+workspace 4 output $disp2 
+workspace 5 output $disp2 
+workspace 6 output $disp2 
+workspace 7 output $disp2 
+workspace 8 output $disp2 
+workspace 9 output $disp2
+workspace 10 output $disp1
 
 ### Key bindings
 #
@@ -167,8 +184,10 @@ set $down n
     bindsym $mod+space workspace back_and_forth
     #bindsym $mod+n workspace next
     #bindsym $mod+t workspace prev
+    bindsym $mod+F23 move workspace to output up
     bindsym $mod+end move workspace to output right
     bindsym $mod+home move workspace to output left
+    bindsym $mod+F24 move workspace to output down
 
 # Resizing containers:
 #
@@ -204,26 +223,29 @@ mode "resize" {
 #     bindsym Escape mode "default"
 # }
 
-
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 input * {
-	xkb_layout "custom,us"
-	xkb_variant "dvp, "
+	xkb_layout "us, custom"
+	xkb_variant ",dvp"
 	repeat_rate 100
-	repeat_delay 200
+	repeat_delay 400
 	tap enable
-    #next keyboard layout with caps lock
     xkb_options grp:caps_toggle
-    #xkb_layout "us, custom"
-    #xkb_variant "intl, dvp"
+}
+
+input 1267:12584:ASUE1301:00_04F3:3128_Touchpad {
+    tap enabled
+    natural_scroll disabled
+    dwt enabled
+    accel_profile "flat" 
+    pointer_accel 1.0
 }
 
 bar {
     swaybar_command waybar
+}
+
+output HDMI-A-1 {
+    position 1920 0
 }
 
 output eDP-1 {
