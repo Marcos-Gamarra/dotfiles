@@ -53,16 +53,19 @@ set $disp2 HDMI-A-1
    }
 
 # setup workspaces
+set $ws5 "5:h"
+set $ws6 "6:e"
+
 workspace 1 output $disp2 
 workspace 2 output $disp2 
 workspace 3 output $disp2 
 workspace 4 output $disp2 
-workspace 5 output $disp2 
-workspace 6 output $disp2 
+workspace $ws5 output $disp1
+workspace $ws6 output $disp1 
 workspace 7 output $disp2 
 workspace 8 output $disp2 
 workspace 9 output $disp2
-workspace 10 output $disp1
+workspace 10 output $disp2
 
 ### Key bindings
 #
@@ -157,12 +160,14 @@ workspace 10 output $disp1
 #
 # Workspaces:
 #
+
     # Switch to workspace
     bindsym $mod+g workspace number 1
     bindsym $mod+m workspace number 2
     bindsym $mod+f workspace number 3
     bindsym $mod+w workspace number 4
-    bindsym $mod+6 workspace number 6
+    bindsym $mod+h workspace $ws5
+    bindsym $mod+e workspace $ws6
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
@@ -177,11 +182,16 @@ workspace 10 output $disp1
     bindsym $mod+dollar move container to workspace number 3
     bindsym $mod+mod5+w move container to workspace number 4
     bindsym $mod+question move container to workspace number 4
-    bindsym $mod+Shift+6 move container to workspace number 
-    bindsym $mod+Shift+7 move container to workspace number 
-    bindsym $mod+Shift+8 move container to workspace number 
-    bindsym $mod+Shift+9 move container to workspace number 
-    bindsym $mod+Shift+0 move container to workspace number 
+
+    bindsym $mod+slash move container to workspace number 5
+
+    bindsym $mod+parenleft move container to workspace number 6
+
+    # bindsym $mod+shift+6 move container to workspace number 
+    # bindsym $mod+Shift+7 move container to workspace number 
+    # bindsym $mod+Shift+8 move container to workspace number 
+    # bindsym $mod+Shift+9 move container to workspace number 
+    # bindsym $mod+Shift+0 move container to workspace number 
 
     bindsym $mod+space workspace back_and_forth
     #bindsym $mod+n workspace next
