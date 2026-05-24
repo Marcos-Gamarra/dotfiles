@@ -1,8 +1,11 @@
+set $transp       #00000000
+
 # target                    title        bg          text        indicator    child_border
-client.focused              #24273a      #539bf5     #303446     #f2d5cf      #24273a 
-client.unfocused            #24273a      #737994     #e9e9ed     #f2d5cf      #24273a
-client.focused_inactive     #24273a      #737994     #e9e9ed     #f2d5cf      #24273a     
-client.focused_tab_title    #24273a      #539bf5     #303446     #f2d5cf      #24273a
+client.focused              #24273a      #539bf5     #303446     #f2d5cf      #539bf5
+client.unfocused            #24273a      #737994     #e9e9ed     #f2d5cf      $transp
+client.focused_inactive     #24273a      #737994     #e9e9ed     #f2d5cf      $transp
+client.focused_tab_title    #24273a      #539bf5     #303446     #f2d5cf      $transp
+client.background           $transp
 
 workspace_layout tabbed
 
@@ -13,7 +16,6 @@ font 'GeistMono Nerd Font' Bold 13
 # background
 output "*" bg /home/hi/.local/share/backgrounds/arch_background.png fill
 
-# default_border pixel 1
 # default_border pixel 1
 hide_edge_borders --i3 smart
 

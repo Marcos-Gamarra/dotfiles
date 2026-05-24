@@ -31,3 +31,7 @@ if status is-interactive
     atuin init fish --disable-up-arrow | source
 
 end 
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/hi/.local/bin" $PATH
