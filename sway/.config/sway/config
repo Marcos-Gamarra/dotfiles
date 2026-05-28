@@ -54,7 +54,7 @@ set $disp2 HDMI-A-1
 
 # setup workspaces
 set $ws5 "5:h"
-set $ws6 "6:e"
+set $ws6 "6:i"
 
 workspace 1 output $disp2 
 workspace 2 output $disp2 
@@ -167,7 +167,7 @@ workspace 10 output $disp2
     bindsym $mod+f workspace number 3
     bindsym $mod+w workspace number 4
     bindsym $mod+h workspace $ws5
-    bindsym $mod+e workspace $ws6
+    bindsym $mod+i workspace $ws6
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
