@@ -184,8 +184,7 @@ workspace 10 output $disp2
     bindsym $mod+question move container to workspace number 4
 
     bindsym $mod+slash move container to workspace number $ws5
-
-    bindsym $mod+parenright move container to workspace number $ws6
+    bindsym $mod+parenleft move container to workspace number $ws6
 
     # bindsym $mod+shift+6 move container to workspace number 
     # bindsym $mod+Shift+7 move container to workspace number 
