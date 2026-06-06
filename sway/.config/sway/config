@@ -25,200 +25,215 @@ hide_edge_borders --i3 smart
 # script to set transparency of inactive windows
 # exec ~/.config/sway/scripts/inactive-windows-transparency.py
 
-set $term foot
+set $term footclient
 set $browser chromium
-exec $browser
-for_window [app_id="chromium"] move container to workspace 1
-workspace number 2
-# exec $term
+
+set $disp1 eDP-1
+set $disp2 HDMI-A-1
+
+# setup workspaces
+set $ws1 "1:t"
+set $ws2 "2:n"
+set $ws3 "3:m"
+set $ws4 "4:f"
+set $ws5 "5:h"
+set $ws6 "6:i"
+set $ws7 "7:g"
+set $ws8 "8:w"
+
+workspace $ws1 output $disp2 
+workspace $ws2 output $disp2 
+workspace $ws3 output $disp2 
+workspace $ws4 output $disp2 
+workspace $ws5 output $disp1
+workspace $ws6 output $disp1 
+workspace $ws7 output $disp2 
+workspace $ws8 output $disp2 
+workspace 9 output $disp2
+workspace 10 output $disp2
 
 #mod key
 set $mod Mod1
 
 set $right r
 set $left s
-set $up t
-set $down n
-set $disp1 eDP-1
-set $disp2 HDMI-A-1
+
+exec $browser
+exec foot --server
+exec $term
+
+for_window [app_id="chromium"] move container to workspace $ws1
 
 
 ### Input configuration
 #
-   input "2:14:SynPS/2_Synaptics_TouchPad" {
-       dwt enabled
-       tap enabled
-       natural_scroll enabled
-       middle_emulation enabled
-   }
-
-# setup workspaces
-set $ws5 "5:h"
-set $ws6 "6:i"
-
-workspace 1 output $disp2 
-workspace 2 output $disp2 
-workspace 3 output $disp2 
-workspace 4 output $disp2 
-workspace $ws5 output $disp1
-workspace $ws6 output $disp1 
-workspace 7 output $disp2 
-workspace 8 output $disp2 
-workspace 9 output $disp2
-workspace 10 output $disp2
+input "2:14:SynPS/2_Synaptics_TouchPad" {
+    dwt enabled
+        tap enabled
+        natural_scroll enabled
+        middle_emulation enabled
+}
 
 ### Key bindings
 #
 # Basics:
-	#Screenshot
-    bindsym Print exec grim - | wl-copy 
-        
-    # volume control
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ 
-    bindsym XF86AudioLowerVolume exec wpctl set-volume -l 0 @DEFAULT_AUDIO_SINK@ 5%-
+#Screenshot
+bindsym Print exec grim - | wl-copy 
 
-    # brightness control
-    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+# volume control
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ 
+bindsym XF86AudioLowerVolume exec wpctl set-volume -l 0 @DEFAULT_AUDIO_SINK@ 5%-
 
-
-    #copy and paste
-
-    # Start a terminal
-    bindsym $mod+a exec $term
-    bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
-    bindsym $mod+equal exec fish ~/.config/sway/scripts/open_vertical_term.fish
+# brightness control
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 
-    # Start wofi
-    bindsym $mod+d exec fuzzel
+#copy and paste
 
-    # Kill focused window
-    bindsym $mod+mod3+k kill
-    bindsym $mod+less kill
+# Start a terminal
+bindsym $mod+a exec $term
+bindsym $mod+mod3+a exec fish ~/.config/sway/scripts/open_vertical_term.fish
+bindsym $mod+equal exec fish ~/.config/sway/scripts/open_vertical_term.fish
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change NORMAl to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+# Start wofi
+bindsym $mod+d exec fuzzel
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# Kill focused window
+bindsym $mod+mod3+k kill
+bindsym $mod+less kill
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change NORMAl to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
-    # Bring browser to current workspace in vertical split
-    bindsym $mod+l exec fish ~/.config/sway/scripts/browser_to_workspace.fish
+# Bring browser to current workspace in vertical split
+bindsym $mod+l exec fish ~/.config/sway/scripts/browser_to_workspace.fish
 
 
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$right focus right
-    bindsym $mod+$up focus up
-    bindsym $mod+$down focus down
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$right focus right
 
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-	bindsym $mod+Right focus right
-	bindsym $mod+Up focus up
-	bindsym $mod+Down focus down
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
 
 
-	bindsym $mod+mod5+$right move right
-	bindsym $mod+delete move right
-	bindsym $mod+mod5+$left move left
-	bindsym $mod+escape move left
-    
-
-	bindsym $mod+mod5+Left move left
-	bindsym $mod+mod5+Down move down
-	bindsym $mod+mod5+Up move up
-	bindsym $mod+mod5+Right move right
+bindsym $mod+mod5+$right move right
+bindsym $mod+delete move right
+bindsym $mod+mod5+$left move left
+bindsym $mod+escape move left
 
 
-    # the marks here are used to trigger a window event
-    # that is used by the inactive-windows-transparency.py script
-	bindsym $mod+v layout toggle splith tabbed
-	bindsym $mod+o layout toggle splitv tabbed
-    bindsym $mod+y layout tabbed
-	bindsym $mod+mod3+v splith
-	bindsym $mod+greater splith
-	bindsym $mod+minus splitv
+bindsym $mod+mod5+Left move left
+bindsym $mod+mod5+Down move down
+bindsym $mod+mod5+Up move up
+bindsym $mod+mod5+Right move right
 
 
-	bindsym $mod+b fullscreen
-    bindsym $mod+p focus parent
-    bindsym $mod+mod3+x move scratchpad
-    bindsym $mod+bracketleft move scratchpad
-    bindsym $mod+x scratchpad show
-    bindsym $mod+z floating toggle
+# the marks here are used to trigger a window event
+# that is used by the inactive-windows-transparency.py script
+bindsym $mod+v layout toggle splith tabbed
+bindsym $mod+o layout toggle splitv tabbed
+bindsym $mod+y layout tabbed
+bindsym $mod+mod3+v splith
+bindsym $mod+greater splith
+bindsym $mod+minus splitv
+
+
+bindsym $mod+b fullscreen
+bindsym $mod+p focus parent
+bindsym $mod+mod3+x move scratchpad
+bindsym $mod+bracketleft move scratchpad
+bindsym $mod+x scratchpad show
+bindsym $mod+z floating toggle
 #
 # Workspaces:
 #
 
-    # Switch to workspace
-    bindsym $mod+g workspace number 1
-    bindsym $mod+m workspace number 2
-    bindsym $mod+f workspace number 3
-    bindsym $mod+w workspace number 4
-    bindsym $mod+h workspace $ws5
-    bindsym $mod+i workspace $ws6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+# Switch to workspace
+bindsym $mod+t workspace $ws1
+bindsym $mod+n workspace $ws2
+bindsym $mod+m workspace $ws3
+bindsym $mod+f workspace $ws4
+bindsym $mod+h workspace $ws5
+bindsym $mod+i workspace $ws6
+bindsym $mod+g workspace $ws7
+bindsym $mod+w workspace $ws8
 
-    # Move focused container to workspace
-    bindsym $mod+mod5+g move container to workspace number 1
-    bindsym $mod+underscore move container to workspace number 1
-    bindsym $mod+mod5+m move container to workspace number 2
-    bindsym $mod+quotedbl move container to workspace number 2
-    bindsym $mod+mod5+f move container to workspace number 3
-    bindsym $mod+dollar move container to workspace number 3
-    bindsym $mod+mod5+w move container to workspace number 4
-    bindsym $mod+question move container to workspace number 4
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-    bindsym $mod+slash move container to workspace number $ws5
-    bindsym $mod+parenleft move container to workspace number $ws6
+# Move focused container to workspace
+bindsym $mod+mod5+t move container to workspace $ws1
+bindsym $mod+period move container to workspace $ws1
 
-    # bindsym $mod+shift+6 move container to workspace number 
-    # bindsym $mod+Shift+7 move container to workspace number 
-    # bindsym $mod+Shift+8 move container to workspace number 
-    # bindsym $mod+Shift+9 move container to workspace number 
-    # bindsym $mod+Shift+0 move container to workspace number 
+bindsym $mod+mod5+n move container to workspace $ws2
+bindsym $mod+colon move container to workspace $ws2
 
-    bindsym $mod+space workspace back_and_forth
-    #bindsym $mod+n workspace next
-    #bindsym $mod+t workspace prev
-    bindsym $mod+F23 move workspace to output up
-    bindsym $mod+end move workspace to output right
-    bindsym $mod+home move workspace to output left
-    bindsym $mod+F24 move workspace to output down
+bindsym $mod+mod5+m move container to workspace $ws3
+bindsym $mod+quotedbl move container to workspace $ws3
+
+bindsym $mod+mod5+f move container to workspace $ws4
+bindsym $mod+dollar move container to workspace $ws4
+
+bindsym $mod+slash move container to workspace number $ws5
+
+bindsym $mod+parenleft move container to workspace number $ws6
+
+bindsym $mod+mod5+g move container to workspace $ws7
+bindsym $mod+underscore move container to workspace number $ws7
+
+bindsym $mod+mod5+w move container to workspace $ws8
+bindsym $mod+question move container to workspace number $ws8
+
+
+# bindsym $mod+shift+6 move container to workspace number 
+# bindsym $mod+Shift+7 move container to workspace number 
+# bindsym $mod+Shift+8 move container to workspace number 
+# bindsym $mod+Shift+9 move container to workspace number 
+# bindsym $mod+Shift+0 move container to workspace number 
+
+bindsym $mod+space workspace back_and_forth
+#bindsym $mod+n workspace next
+#bindsym $mod+t workspace prev
+bindsym $mod+F23 move workspace to output up
+bindsym $mod+end move workspace to output right
+bindsym $mod+home move workspace to output left
+bindsym $mod+F24 move workspace to output down
 
 # Resizing containers:
 #
 bindsym $mod+j mode "resize"
 mode "resize" {
     bindsym $left resize shrink width 30px
-    bindsym $right resize grow width 30px
-    bindsym $down resize shrink height 30px
-    bindsym $up resize grow height 30px
+        bindsym $right resize grow width 30px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 30px
-    bindsym Down resize grow height 30px
-    bindsym Up resize shrink height 30px
-    bindsym Right resize grow width 30px
+# Ditto, with arrow keys
+        bindsym Left resize shrink width 30px
+        bindsym Down resize grow height 30px
+        bindsym Up resize shrink height 30px
+        bindsym Right resize grow width 30px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+j mode "default"
+# Return to default mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+j mode "default"
 }
 
 
@@ -235,20 +250,20 @@ mode "resize" {
 # }
 
 input * {
-	xkb_layout "us, custom"
-	xkb_variant ",dvp"
-	repeat_rate 100
-	repeat_delay 400
-	tap enable
-    xkb_options grp:caps_toggle
+    xkb_layout "us, custom"
+        xkb_variant ",dvp"
+        repeat_rate 100
+        repeat_delay 400
+        tap enable
+        xkb_options grp:caps_toggle
 }
 
 input 1267:12584:ASUE1301:00_04F3:3128_Touchpad {
     tap enabled
-    natural_scroll disabled
-    dwt enabled
-    accel_profile "flat" 
-    pointer_accel 1.0
+        natural_scroll disabled
+        dwt enabled
+        accel_profile "flat" 
+        pointer_accel 1.0
 }
 
 bar {
