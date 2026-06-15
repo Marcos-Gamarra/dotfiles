@@ -30,6 +30,11 @@ if status is-interactive
     starship init fish | source
     atuin init fish --disable-up-arrow | source
 
+    # setup sops age key env var if the file exists
+    if test -f /tmp/sops_age_key
+        set -gx SOPS_AGE_KEY_FILE /tmp/sops_age_key
+    end
+
 end 
 
 

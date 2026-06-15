@@ -37,6 +37,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'lo', require('telescope.builtin').lsp_outgoing_calls, opts)
         vim.keymap.set('n', 'ld', require('telescope.builtin').diagnostics, opts)
         vim.keymap.set('n', 'llh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
+        vim.keymap.set('n', 'lld', require('telescope.builtin').lsp_type_definitions, opts)
     end,
 })
 
