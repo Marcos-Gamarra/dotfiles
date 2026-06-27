@@ -80,8 +80,10 @@ binds {
     Alt+M { focus-workspace 2; }
     Alt+F { focus-workspace 3; }
     Alt+W { focus-workspace 4; }
-    Alt+Q { move-workspace-to-monitor-right; }
-    Alt+C { move-workspace-to-monitor-left; }
+    Alt+End { move-workspace-to-monitor-right; }
+    Alt+Home { move-workspace-to-monitor-left; }
+    Alt+Q { focus-monitor-right; }
+    Alt+C { focus-monitor-left; }
 
     // Move Window to Workspaces 
     Alt+Mod5+N { move-column-to-workspace-down; }
@@ -99,8 +101,6 @@ binds {
 
     // Output Navigation
     Alt+F23 { focus-monitor-up; }
-    Alt+End { focus-monitor-right; }
-    Alt+Home { focus-monitor-left; }
     Alt+F24 { focus-monitor-down; }
 
     // Resizing
