@@ -16,6 +16,11 @@ input {
     }
 }
 
+window-rule {
+    match app-id="chromium"
+    open-maximized true
+}
+
 // --- OUTPUTS ---
 output "eDP-1" {
     position x=0 y=0
