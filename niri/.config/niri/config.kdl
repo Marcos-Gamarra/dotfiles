@@ -1,0 +1,113 @@
+// --- INPUT ---
+input {
+    keyboard {
+        xkb {
+            layout "us,custom"
+            variant ",dvp"
+            options "grp:caps_toggle"
+        }
+        repeat-rate 100
+        repeat-delay 400
+    }
+
+    touchpad {
+        tap
+        dwt
+    }
+}
+
+// --- OUTPUTS ---
+output "eDP-1" {
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    focus-at-startup
+}
+
+// --- AUTOSTART ---
+spawn-at-startup "waybar"
+spawn-at-startup "chromium"
+spawn-at-startup "foot" "--server"
+spawn-at-startup "footclient"
+
+// --- BINDS ---
+binds {
+    // Media & System Controls
+    XF86AudioMute { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+    XF86AudioRaiseVolume { spawn-sh "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"; }
+    XF86AudioLowerVolume { spawn-sh "wpctl set-volume -l 0 @DEFAULT_AUDIO_SINK@ 5%-"; }
+    XF86MonBrightnessUp { spawn "brightnessctl" "set" "+5%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+
+    // Application Launchers
+    Alt+A { spawn "footclient"; }
+    Alt+D { spawn "fuzzel"; }
+    
+
+    // Window Management
+    Alt+Mod3+K { close-window; } 
+    Alt+Shift+Comma { close-window; }
+
+    // quit
+    Alt+Shift+E { quit; }
+
+    // Focus Navigation
+    Alt+S { focus-column-left; }
+    Alt+R { focus-column-right; }
+    Alt+Left { focus-column-left; }
+    Alt+Right { focus-column-right; }
+
+    // Moving Windows 
+    Alt+Mod5+R { move-column-right; }
+    Alt+Delete { move-column-right; }
+    Alt+Mod5+S { move-column-left; }
+    Alt+Escape { move-column-left; }
+    Alt+Mod5+Left { move-column-left; }
+    Alt+Mod5+Down { move-window-down; }
+    Alt+Mod5+Up { move-window-up; }
+    Alt+Mod5+Right { move-column-right; }
+
+    // View Modes
+    Alt+I { maximize-column; }
+    Alt+Z { toggle-window-floating; }
+    Alt+J { maximize-window-to-edges; }
+
+    // Workspaces 
+    Alt+T { focus-workspace-up; }
+    Alt+N { focus-workspace-down; }
+    Alt+G { focus-workspace 1; }
+    Alt+M { focus-workspace 2; }
+    Alt+F { focus-workspace 3; }
+    Alt+W { focus-workspace 4; }
+    Alt+Q { move-workspace-to-monitor-right; }
+    Alt+C { move-workspace-to-monitor-left; }
+
+    // Move Window to Workspaces 
+    Alt+Mod5+N { move-column-to-workspace-down; }
+    Alt+Colon { move-column-to-workspace-down; }
+    Alt+Mod5+T { move-column-to-workspace-up; }
+    Alt+Period { move-column-to-workspace-up; }
+    Alt+Mod5+G { move-column-to-workspace 1; }
+    Alt+Underscore { move-column-to-workspace 1; }
+    Alt+Mod5+M { move-column-to-workspace 2; }
+    Alt+Quotedbl{ move-column-to-workspace 2; }
+    Alt+Mod5+F { move-column-to-workspace 3; }
+    Alt+Dollar { move-column-to-workspace 3; }
+    Alt+Mod5+W { move-column-to-workspace 4; }
+    Alt+Question { move-column-to-workspace 4; }
+
+    // Output Navigation
+    Alt+F23 { focus-monitor-up; }
+    Alt+End { focus-monitor-right; }
+    Alt+Home { focus-monitor-left; }
+    Alt+F24 { focus-monitor-down; }
+
+    // Resizing
+    Alt+KP_Subtract { set-column-width "-30"; } 
+    Alt+Shift+Equal { set-column-width "+30"; } 
+
+    // Overvier
+    Alt+Space { toggle-overview; }
+
+}
