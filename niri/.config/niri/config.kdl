@@ -87,9 +87,9 @@ binds {
 
     // Move Window to Workspaces 
     Alt+Mod5+N { move-column-to-workspace-down; }
-    Alt+Colon { move-column-to-workspace-down; }
+    Alt+Tab { move-column-to-workspace-down; }
     Alt+Mod5+T { move-column-to-workspace-up; }
-    Alt+Period { move-column-to-workspace-up; }
+    Alt+Backspace { move-column-to-workspace-up; }
     Alt+Mod5+G { move-column-to-workspace 1; }
     Alt+Underscore { move-column-to-workspace 1; }
     Alt+Mod5+M { move-column-to-workspace 2; }
