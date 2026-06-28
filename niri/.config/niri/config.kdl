@@ -16,6 +16,13 @@ input {
     }
 }
 
+// window rules and appearance
+window-rule {
+  geometry-corner-radius 20
+
+  clip-to-geometry true
+}
+
 window-rule {
     match app-id="chromium"
     open-maximized true
@@ -30,20 +37,9 @@ output "HDMI-A-1" {
     focus-at-startup
 }
 
-// --- AUTOSTART ---
-spawn-at-startup "waybar"
-spawn-at-startup "chromium"
-spawn-at-startup "foot" "--server"
-spawn-at-startup "footclient"
 
 // --- BINDS ---
 binds {
-    // Media & System Controls
-    XF86AudioMute { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
-    XF86AudioRaiseVolume { spawn-sh "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"; }
-    XF86AudioLowerVolume { spawn-sh "wpctl set-volume -l 0 @DEFAULT_AUDIO_SINK@ 5%-"; }
-    XF86MonBrightnessUp { spawn "brightnessctl" "set" "+5%"; }
-    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
 
     // Application Launchers
     Alt+A { spawn "footclient"; }
@@ -111,8 +107,12 @@ binds {
     // Resizing
     Alt+KP_Subtract { set-column-width "-30"; } 
     Alt+Shift+Equal { set-column-width "+30"; } 
+    Alt+Equal { set-column-width "50%"; }
 
     // Overvier
     Alt+Space { toggle-overview; }
 
 }
+
+// --- AUTOSTART ---
+spawn-at-startup "foot" "--server"

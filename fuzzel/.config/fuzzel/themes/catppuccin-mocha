@@ -1,0 +1,15 @@
+# Fuzzel Colors
+# Catppuccin Mocha (Matched to Terminal Theme)
+
+[colors]
+background=1e1e2eff      # Terminal background with 80% opacity (CC)
+text=cdd6f4ff            # Terminal foreground
+prompt=89b4faff          # Blue accent (regular4)
+placeholder=a6adc8ff     # Subtext/Bright7 for placeholder text
+input=cdd6f4ff           # Terminal foreground
+match=a6e3a1ff           # Green accent (regular2) for matched characters
+selection=414356ff       # Terminal selection-background
+selection-text=cdd6f4ff  # Terminal selection-foreground
+selection-match=a6e3a1ff # Green accent (regular2) for matches in selection
+counter=f5c2e7ff         # Pink accent (regular5) for item counter
+border=89b4faff          # Blue accent (regular4) for the window border
