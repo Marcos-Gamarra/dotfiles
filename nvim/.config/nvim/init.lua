@@ -9,6 +9,7 @@ vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.showtabline = 1
 vim.opt.laststatus = 3
+vim.opt.background="light"
 
 vim.o.winborder = '┏,━,┓,┃,┛,━,┗,┃'
 

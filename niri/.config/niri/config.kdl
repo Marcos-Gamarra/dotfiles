@@ -16,16 +16,35 @@ input {
     }
 }
 
+
 // window rules and appearance
 window-rule {
   geometry-corner-radius 20
 
   clip-to-geometry true
+
+  draw-border-with-background false
 }
 
 window-rule {
     match app-id="chromium"
     open-maximized true
+}
+
+
+layout {
+    background-color "#242535"
+
+    focus-ring {
+        off
+    }
+
+    border {
+        width 3
+        active-color "#539bf5"
+        inactive-color "#51576d"
+    }
+
 }
 
 // --- OUTPUTS ---

@@ -12,6 +12,10 @@
       "rev": "0a3e09122cfd21e62a1e9d183c61aa1cacdd7da6",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
+    "everforest-nvim": {
+      "rev": "d235ca0aa6a29546e661a020e2618612acbbffbe",
+      "src": "https://github.com/neanias/everforest-nvim"
+    },
     "gitsigns.nvim": {
       "rev": "0f00d07c2c3106ba6abd594ac1c17f211141b7b5",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
