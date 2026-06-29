@@ -1,3 +1,8 @@
+// --- AUTOSTART ---
+spawn-at-startup "foot" "--server"
+
+prefer-no-csd
+
 // --- INPUT ---
 input {
     keyboard {
@@ -33,16 +38,11 @@ window-rule {
 
 
 layout {
-    background-color "#242535"
+    background-color "#9ca0b0"
 
     focus-ring {
-        off
-    }
-
-    border {
-        width 3
-        active-color "#539bf5"
-        inactive-color "#51576d"
+        width 4
+        active-color "#1e66f5"
     }
 
 }
@@ -128,10 +128,7 @@ binds {
     Alt+Shift+Equal { set-column-width "+30"; } 
     Alt+Equal { set-column-width "50%"; }
 
-    // Overvier
+    // Overview
     Alt+Space { toggle-overview; }
 
 }
-
-// --- AUTOSTART ---
-spawn-at-startup "foot" "--server"
