@@ -1,9 +1,7 @@
 add_newline = false
 
 format = """
-[░▒▓](#a3aed2)\
-[ 󰣇 ](bg:#a3aed2 fg:#303446)\
-[](bg:#539bf5 fg:#a3aed2)\
+[](fg:#539bf5)\
 $directory\
 [](fg:#539bf5 bg:#73799e)\
 $git_branch\
@@ -15,7 +13,17 @@ $golang\
 $python\
 $php\
 [ ](fg:#565a6e)\
-\n$character"""
+$fill\
+[](fg:#73799e)\
+[ 󰁹](fg:#e9e9ed bg:#73799e)\
+$battery\
+[](bg:#73799e fg:#565a6e)\
+$time\
+[ ](fg:#565a6e)
+$character"""
+
+[fill]
+symbol = " "
 
 [directory]
 style = "fg:#303446  bg:#539bf5"
@@ -48,3 +56,15 @@ symbol = ""
 style = "bg:#394260"
 format = '[[ $symbol ($version) ](fg:#e9e9ed bg:#565a6e)]($style)'
 
+[battery]
+format = '[[ $percentage ](fg:#e9e9ed bg:#73799e)]($style)'
+style = "bg:#73799e"
+
+[[battery.display]]
+threshold = 100
+
+[time]
+disabled = false
+time_format = " %R  %d/%m"
+style = "bg:#565a6e"
+format = '[[ $time ](fg:#e9e9ed bg:#565a6e)]($style)'
