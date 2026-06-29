@@ -21,6 +21,10 @@ input {
     }
 }
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 
 // window rules and appearance
 window-rule {
@@ -38,18 +42,17 @@ window-rule {
 
 
 layout {
-    background-color "#9ca0b0"
+    background-color "#e6e9ef"
 
     focus-ring {
         width 4
         active-color "#1e66f5"
     }
-
 }
 
 // -- OVERVIEW ---
 overview {
-    backdrop-color "#9ca0b0"
+    backdrop-color "#e6e9ef"
     workspace-shadow {
         off
     }
@@ -67,10 +70,24 @@ output "HDMI-A-1" {
 
 // --- BINDS ---
 binds {
+    // Volume Controls
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute        { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
 
     // Application Launchers
     Alt+A { spawn "footclient"; }
     Alt+D { spawn "fuzzel"; }
+    Alt+U { spawn "sys-menu.fish"; }
+
+    // Screenshot the entire screen
+    Print { screenshot; }
+
+    // Screenshot the currently focused window
+    Alt+Shift+Print { screenshot-window; }
+
+    // Interactive screenshot (lets you select a region)
+    Alt+Print { screenshot-screen; }
     
 
     // Window Management
@@ -112,6 +129,8 @@ binds {
     Alt+Home { move-workspace-to-monitor-left; }
     Alt+Q { focus-monitor-right; }
     Alt+C { focus-monitor-left; }
+    Alt+Shift+T    { move-workspace-up; }
+    Alt+Shift+N  { move-workspace-down; }
 
     // Move Window to Workspaces 
     Alt+Mod5+N { move-column-to-workspace-down; }
