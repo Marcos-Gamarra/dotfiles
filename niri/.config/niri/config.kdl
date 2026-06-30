@@ -42,7 +42,7 @@ window-rule {
 
 
 layout {
-    background-color "#e6e9ef"
+    background-color "#acb0be"
 
     focus-ring {
         width 4
@@ -52,7 +52,7 @@ layout {
 
 // -- OVERVIEW ---
 overview {
-    backdrop-color "#e6e9ef"
+    backdrop-color "#acb0be"
     workspace-shadow {
         off
     }
