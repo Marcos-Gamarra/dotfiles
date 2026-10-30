@@ -7,11 +7,15 @@ xkb_symbols "dvp" {
     key <AE03> {[ o,    O,  NoSymbol,   5,          minus, oacute   ]}; 
     key <AE04> {[ v,    V,  NoSymbol,   4,          greater ]};   
     key <AE05> {
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ Super_L ],
+        actions[Group1] = [ SetMods(mods=Mod4) ]
+    };
+                                                                             
+    key <AE06> {
         symbols=[voidsymbol],
         actions=[SetMods(mods=Mod1)]
     };
-  
-                                                                             
     key <AE07> {[ c,    C,  Home,       NoSymbol,   exclam      ]};                                      
     key <AE08> {[ l,    L,  F23,          NoSymbol,   ampersand   ]};                                      
     key <AE09> {[ p,    P,  F24,                NoSymbol,   bar         ]};                                      
@@ -41,9 +45,14 @@ xkb_symbols "dvp" {
     key <AC03> {[ j,    J,  NoSymbol,   8,          braceleft       ]};
     key <AC04> {[ b,    B,  NoSymbol,   7,          braceright      ]};
 
-    key <AC06> {
+    key <AC05> {
         symbols=[voidsymbol],
         actions=[SetMods(mods=Mod1)]
+    };
+    key <AC06> {
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ Super_L ],
+        actions[Group1] = [ SetMods(mods=Mod4) ]
     };
     key <AC07> {[ g,    G,  Left,    grave,         underscore   ]};
     key <AC08> {[ m,    M,  Up,      dead_acute, 	quotedbl     ]};
@@ -99,3 +108,4 @@ xkb_symbols "dvp" {
         symbols[Group1] = [ ISO_Level3_Shift ]
     };
 };
+
