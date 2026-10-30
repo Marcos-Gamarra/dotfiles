@@ -1,11 +1,13 @@
 partial alphanumeric_keys
 xkb_symbols "dvp" {
     key.type[Group1] = "EIGHT_LEVEL";
+    // Levels: 1 base | 2 Shift | 3 nav (Level3) | 4 Shift+nav
+    //         5 symbols (Level5) | 6 accents | 7 numbers (Level3+Level5)
     ////upper row////
-    key <AE01> {[ k,    K,  NoSymbol,   NoSymbol,   less    ]};                
-    key <AE02> {[ y,    Y,  NoSymbol,   6,          plus    ]};                      
-    key <AE03> {[ o,    O,  NoSymbol,   5,          minus, oacute   ]}; 
-    key <AE04> {[ v,    V,  NoSymbol,   4,          greater ]};   
+    key <AE01> {[ k,  K,  NoSymbol,  NoSymbol,      less ]};
+    key <AE02> {[ y,  Y,  NoSymbol,  NoSymbol,      plus,         NoSymbol, 6 ]};
+    key <AE03> {[ o,  O,  NoSymbol,  NoSymbol,      minus,        oacute,   5 ]};
+    key <AE04> {[ v,  V,  NoSymbol,  NoSymbol,      greater,      NoSymbol, 4 ]};
     key <AE05> {
         type[Group1] = "ONE_LEVEL",
         symbols[Group1] = [ Super_L ],
@@ -16,34 +18,34 @@ xkb_symbols "dvp" {
         symbols=[voidsymbol],
         actions=[SetMods(mods=Mod1)]
     };
-    key <AE07> {[ c,    C,  Home,       NoSymbol,   exclam      ]};                                      
-    key <AE08> {[ l,    L,  F23,          NoSymbol,   ampersand   ]};                                      
-    key <AE09> {[ p,    P,  F24,                NoSymbol,   bar         ]};                                      
-	key <AE10> {[ q,    Q,  End,                NoSymbol,   at          ]};                                          
+    key <AE07> {[ c,  C,  Home,      Home,          exclam ]};
+    key <AE08> {[ l,  L,  F23,       F23,           ampersand ]};
+    key <AE09> {[ p,  P,  F24,       F24,           bar ]};
+    key <AE10> {[ q,  Q,  End,       End,           at ]};
 
     ////home row////
     key <TAB>   {[Shift_L]};
-    key <AD01>  {[ h,    H,  NoSymbol,   3,          slash,          NoSymbol                           ]}; 
-    key <AD02>  {[ i,    I,  NoSymbol,   2,          parenleft,      NoSymbol, XF86AudioMute            ]}; 
-    key <AD03>  {[ e,    E,  NoSymbol,   1,          parenright,     NoSymbol, XF86AudioLowerVolume     ]};
-    key <AD04>  {[ a,    A,  NoSymbol,   0,          equal,          NoSymbol, XF86AudioRaiseVolume     ]};  
-	key <AD05>  {[ u,    U,  NoSymbol,   NoSymbol,   asterisk,       NoSymbol                           ]};       
+    key <AD01> {[ h,  H,  NoSymbol,  NoSymbol,      slash,        NoSymbol, 3 ]};
+    key <AD02> {[ i,  I,  NoSymbol,  NoSymbol,      parenleft,    NoSymbol, 2 ]};
+    key <AD03> {[ e,  E,  NoSymbol,  NoSymbol,      parenright,   NoSymbol, 1 ]};
+    key <AD04> {[ a,  A,  NoSymbol,  NoSymbol,      equal,        NoSymbol, 0 ]};
+    key <AD05> {[ u,  U,  NoSymbol,  NoSymbol,      asterisk ]};
                                                           
-	key <AD06> {[ d,    D,  NoSymbol,   backslash,      apostrophe                                   ]};   
-    key <AD07> {[ s,    S,  Escape,     percent,        comma, NoSymbol                              ]};     
-    key <AD08> {[ t,    T,  BackSpace,  asciitilde,     period, NoSymbol, XF86MonBrightnessDown      ]};     
-    key <AD09> {[ n,    N,  Tab,        numbersign,     colon,      ntilde, XF86MonBrightnessUp      ]}; 
-    key <AD10> {[ r,    R,  Delete,     asciicircum,    semicolon                                    ]};
+    key <AD06> {[ d,  D,  NoSymbol,  NoSymbol,      apostrophe,   NoSymbol, backslash ]};
+    key <AD07> {[ s,  S,  Escape,    Escape,        comma,        NoSymbol, percent ]};
+    key <AD08> {[ t,  T,  BackSpace, BackSpace,     period,       NoSymbol, asciitilde ]};
+    key <AD09> {[ n,  N,  Tab,       ISO_Left_Tab,  colon,        ntilde,   numbersign ]};
+    key <AD10> {[ r,  R,  Delete,    Delete,        semicolon,    NoSymbol, asciicircum ]};
     key <AD11> {
         symbols[Group1] = [ NoSymbol ],
         actions[Group1] = [ SetMods(mods=Shift) ]
     };
 
     ////lower row////
-    key <AC01> {[ z,    Z,  NoSymbol,   NoSymbol,   bracketleft     ]};
-    key <AC02> {[ x,    X,  NoSymbol,   9,          bracketright    ]};
-    key <AC03> {[ j,    J,  NoSymbol,   8,          braceleft       ]};
-    key <AC04> {[ b,    B,  NoSymbol,   7,          braceright      ]};
+    key <AC01> {[ z,  Z,  NoSymbol,  NoSymbol,      bracketleft ]};
+    key <AC02> {[ x,  X,  NoSymbol,  NoSymbol,      bracketright, NoSymbol, 9 ]};
+    key <AC03> {[ j,  J,  NoSymbol,  NoSymbol,      braceleft,    NoSymbol, 8 ]};
+    key <AC04> {[ b,  B,  NoSymbol,  NoSymbol,      braceright,   NoSymbol, 7 ]};
 
     key <AC05> {
         symbols=[voidsymbol],
@@ -54,21 +56,21 @@ xkb_symbols "dvp" {
         symbols[Group1] = [ Super_L ],
         actions[Group1] = [ SetMods(mods=Mod4) ]
     };
-    key <AC07> {[ g,    G,  Left,    grave,         underscore   ]};
-    key <AC08> {[ m,    M,  Up,      dead_acute, 	quotedbl     ]};
-    key <AC09> {[ f,    F,  Down,    NoSymbol, 		dollar       ]};
-    key <AC10> {[ w,    W,  Right,   NoSymbol,      question     ]};
+    key <AC07> {[ g,  G,  Left,      Left,          underscore,   NoSymbol, grave ]};
+    key <AC08> {[ m,  M,  Up,        Up,            quotedbl,     NoSymbol, dead_acute ]};
+    key <AC09> {[ f,  F,  Down,      Down,          dollar ]};
+    key <AC10> {[ w,  W,  Right,     Right,         question ]};
 
     
 
     //bottom row
     key <AB02> {
         symbols=[voidsymbol],
-        actions=[SetMods(mods=Shift+Mod5)]
+        actions=[SetMods(mods=Mod5+Mod3)]
     };
 
     key <AB07> {
-        symbols=[ space, NoSymbol, Return, NoSymbol, space ]
+        symbols=[ space, NoSymbol, Return, Return, space ]
     }; 
     
     key <SPCE> {
@@ -95,7 +97,7 @@ xkb_symbols "dvp" {
 	
     key <AB08> {
         symbols=[voidsymbol],
-        actions=[SetMods(mods=Shift+Mod5)]
+        actions=[SetMods(mods=Mod5+Mod3)]
     }; 
     
     key <CAPS> {
